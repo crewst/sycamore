@@ -10,9 +10,16 @@ import UIKit
 
 class ViewController: UIViewController {
 
+    @IBOutlet weak var MainProgress: KDCircularProgress!
+    @IBOutlet weak var progressLabel: UILabel!
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
+        var progressPct = 0
+        for index in 1...100 {
+            
+        }
+        
+        
     }
 
     override func didReceiveMemoryWarning() {
