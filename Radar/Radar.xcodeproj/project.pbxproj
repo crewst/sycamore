@@ -18,7 +18,6 @@
 		6FA826031E35CBE800A458B0 /* ActivityScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FA826021E35CBE800A458B0 /* ActivityScreen.swift */; };
 		8D57F8F7F4CFC6B3E110635B /* Pods_RadarTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CB494F934B5C2527C785C6A1 /* Pods_RadarTests.framework */; };
 		909ECC14EF43A791FD8C22FE /* Pods_RadarUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F0B9C007C66B3307B7BABD89 /* Pods_RadarUITests.framework */; };
-		CC1897EE66BFA58F17B2EEAD /* Pods_Radar.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8CF52F39DD881BBB261D6E5B /* Pods_Radar.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -70,7 +69,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				CC1897EE66BFA58F17B2EEAD /* Pods_Radar.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
