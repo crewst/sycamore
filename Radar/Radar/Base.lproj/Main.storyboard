@@ -92,6 +92,7 @@
                         <outlet property="MainProgress" destination="UwS-Tm-7av" id="sO1-mL-zta"/>
                         <outlet property="TitleLabel" destination="vjG-20-Je1" id="pyC-d1-S5h"/>
                         <outlet property="progressLabel" destination="UmN-xF-ino" id="FCB-14-0aI"/>
+                        <segue destination="8JH-LJ-fJ2" kind="show" identifier="ErrorSegue" id="ckg-nQ-UMv"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
@@ -113,18 +114,17 @@
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="error.png" translatesAutoresizingMaskIntoConstraints="NO" id="9g6-KL-UBy">
                                 <rect key="frame" x="37" y="106" width="300" height="300"/>
                             </imageView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="No Network Detected." textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kJa-GA-xzT">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Unknown Error" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kJa-GA-xzT">
                                 <rect key="frame" x="37" y="432" width="300" height="50"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="30"/>
                                 <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8iX-Nn-vAm">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8iX-Nn-vAm">
                                 <rect key="frame" x="82" y="529" width="211" height="45"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="19"/>
-                                <state key="normal" title="Connect to a Network">
+                                <fontDescription key="fontDescription" name=".AppleSystemUIFont" family=".AppleSystemUIFont" pointSize="19"/>
+                                <state key="normal" title="Reload App">
                                     <color key="titleColor" red="0.62592999800000004" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 </state>
                             </button>
@@ -136,11 +136,19 @@
                             <constraint firstItem="kJa-GA-xzT" firstAttribute="centerX" secondItem="EVF-Qw-y7e" secondAttribute="centerX" id="MKr-ZX-jZP"/>
                             <constraint firstItem="9g6-KL-UBy" firstAttribute="top" secondItem="xV9-kF-4Bh" secondAttribute="bottom" constant="86" id="TnD-5I-2iG"/>
                             <constraint firstItem="kJa-GA-xzT" firstAttribute="top" secondItem="9g6-KL-UBy" secondAttribute="bottom" constant="26" id="ZHZ-oR-p9d"/>
+                            <constraint firstItem="8iX-Nn-vAm" firstAttribute="centerX" secondItem="EVF-Qw-y7e" secondAttribute="centerX" id="Zba-IE-Ffb"/>
+                            <constraint firstItem="8iX-Nn-vAm" firstAttribute="leading" secondItem="EVF-Qw-y7e" secondAttribute="leadingMargin" constant="66" id="b5m-se-zqv"/>
                             <constraint firstItem="Ngf-Wl-JOC" firstAttribute="top" secondItem="9g6-KL-UBy" secondAttribute="bottom" constant="261" id="dbV-Gk-Iit"/>
+                            <constraint firstItem="Ngf-Wl-JOC" firstAttribute="top" secondItem="8iX-Nn-vAm" secondAttribute="bottom" constant="93" id="tsl-Dz-KM3"/>
                             <constraint firstItem="9g6-KL-UBy" firstAttribute="centerX" secondItem="EVF-Qw-y7e" secondAttribute="centerX" id="wDm-H3-Nnl"/>
                             <constraint firstItem="kJa-GA-xzT" firstAttribute="leading" secondItem="9g6-KL-UBy" secondAttribute="leading" id="x42-KQ-lxZ"/>
+                            <constraint firstItem="8iX-Nn-vAm" firstAttribute="top" secondItem="kJa-GA-xzT" secondAttribute="bottom" constant="47" id="ydJ-1b-EYS"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="ActionButton" destination="8iX-Nn-vAm" id="ori-0h-aLb"/>
+                        <outlet property="ErrorLabel" destination="kJa-GA-xzT" id="beC-Ip-BCX"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Rly-Tl-A7x" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

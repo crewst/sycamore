@@ -13,9 +13,17 @@ class ViewController: UIViewController {
     @IBOutlet weak var TitleLabel: UILabel!
     @IBOutlet weak var MainProgress: KDCircularProgress!
     @IBOutlet weak var progressLabel: UILabel!
+    
+    var error = "UNDEF"
+    
     override func viewDidLoad() {
         let ssid = SSID.fetchSSIDInfo()
         TitleLabel.text = ssid
+        
+        //if ssid == "didntGoIn" {
+        
+        performSegue(withIdentifier: "ErrorSegue", sender: self)
+        //}
         
     }
 

@@ -9,9 +9,17 @@
 import UIKit
 
 class NoNetworkView: UIViewController {
+    @IBOutlet weak var ErrorLabel: UILabel!
+    @IBOutlet weak var ActionButton: UIButton!
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        ActionButton.layer.cornerRadius = 5
+        
+        if globalInstance.error == "UNDEF" {
+            ErrorLabel.text = "Successful Read"
+        }
 
         // Do any additional setup after loading the view.
     }
