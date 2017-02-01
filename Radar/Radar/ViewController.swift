@@ -10,21 +10,13 @@ import UIKit
 
 class ViewController: UIViewController {
 
+    @IBOutlet weak var TitleLabel: UILabel!
     @IBOutlet weak var MainProgress: KDCircularProgress!
     @IBOutlet weak var progressLabel: UILabel!
     override func viewDidLoad() {
-        super.viewDidLoad()
-        var progressPct = 0
-        for index in 1...100 {
-            
-        }
+        let ssid = SSID.fetchSSIDInfo()
+        TitleLabel.text = ssid
         
-        
-    }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
     }
 
 

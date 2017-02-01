@@ -6,6 +6,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -21,53 +22,75 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Analyzing Network" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vjG-20-Je1">
-                                <rect key="frame" x="16" y="28" width="343" height="59"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="Yjh-cA-9yF">
+                                <rect key="frame" x="-22" y="125" width="419" height="417"/>
+                                <subviews>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="UwS-Tm-7av" customClass="KDCircularProgress" customModule="Radar" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="0.0" width="419" height="417"/>
+                                        <subviews>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0%" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UmN-xF-ino">
+                                                <rect key="frame" x="62" y="69" width="295" height="280"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="110"/>
+                                                <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                        </subviews>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                        <constraints>
+                                            <constraint firstItem="UmN-xF-ino" firstAttribute="centerY" secondItem="UwS-Tm-7av" secondAttribute="centerY" id="Ecq-WW-ZJ9"/>
+                                            <constraint firstItem="UmN-xF-ino" firstAttribute="centerX" secondItem="UwS-Tm-7av" secondAttribute="centerX" id="Ya4-q9-mbb"/>
+                                            <constraint firstItem="UmN-xF-ino" firstAttribute="leading" secondItem="UwS-Tm-7av" secondAttribute="leading" constant="62" id="fOE-Wr-0FA"/>
+                                            <constraint firstItem="UmN-xF-ino" firstAttribute="top" secondItem="UwS-Tm-7av" secondAttribute="top" constant="69" id="ycY-Sp-jgi"/>
+                                        </constraints>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="boolean" keyPath="roundedCorners" value="NO"/>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="progressThickness">
+                                                <real key="value" value="0.25"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="trackThickness">
+                                                <real key="value" value="0.25"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="color" keyPath="trackColor">
+                                                <color key="value" red="1" green="1" blue="1" alpha="0.29979130993150682" colorSpace="calibratedRGB"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="color" keyPath="IBColor1">
+                                                <color key="value" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="angle">
+                                                <real key="value" value="0.0"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="startAngle">
+                                                <real key="value" value="-90"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="glowAmount">
+                                                <real key="value" value="0.0"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
+                                    </view>
+                                </subviews>
+                            </stackView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Analyzing Network" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vjG-20-Je1">
+                                <rect key="frame" x="16" y="28" width="343" height="60"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="38"/>
                                 <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="UwS-Tm-7av" customClass="KDCircularProgress" customModule="Radar" customModuleProvider="target">
-                                <rect key="frame" x="-21" y="124" width="418" height="418"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="100%" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UmN-xF-ino">
-                                        <rect key="frame" x="62" y="69" width="294" height="281"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="110"/>
-                                        <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                </subviews>
-                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                                <userDefinedRuntimeAttributes>
-                                    <userDefinedRuntimeAttribute type="boolean" keyPath="roundedCorners" value="NO"/>
-                                    <userDefinedRuntimeAttribute type="number" keyPath="progressThickness">
-                                        <real key="value" value="0.25"/>
-                                    </userDefinedRuntimeAttribute>
-                                    <userDefinedRuntimeAttribute type="number" keyPath="trackThickness">
-                                        <real key="value" value="0.25"/>
-                                    </userDefinedRuntimeAttribute>
-                                    <userDefinedRuntimeAttribute type="color" keyPath="trackColor">
-                                        <color key="value" red="1" green="1" blue="1" alpha="0.29979130993150682" colorSpace="calibratedRGB"/>
-                                    </userDefinedRuntimeAttribute>
-                                    <userDefinedRuntimeAttribute type="color" keyPath="IBColor1">
-                                        <color key="value" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                    </userDefinedRuntimeAttribute>
-                                    <userDefinedRuntimeAttribute type="number" keyPath="angle">
-                                        <real key="value" value="360"/>
-                                    </userDefinedRuntimeAttribute>
-                                    <userDefinedRuntimeAttribute type="number" keyPath="startAngle">
-                                        <real key="value" value="-90"/>
-                                    </userDefinedRuntimeAttribute>
-                                </userDefinedRuntimeAttributes>
-                            </view>
                         </subviews>
                         <color key="backgroundColor" red="0.32506320940000083" green="0.69455543826007737" blue="0.97105586528778076" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                        <constraints>
+                            <constraint firstItem="Yjh-cA-9yF" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="0iZ-b5-cRR"/>
+                            <constraint firstItem="Yjh-cA-9yF" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="14g-4S-wgg"/>
+                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="Yjh-cA-9yF" secondAttribute="bottom" constant="125" id="FYU-Ra-vBj"/>
+                            <constraint firstItem="Yjh-cA-9yF" firstAttribute="top" secondItem="vjG-20-Je1" secondAttribute="bottom" constant="37" id="Lzq-ZT-tIz"/>
+                            <constraint firstItem="vjG-20-Je1" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="8" symbolic="YES" id="YHL-s3-8VO"/>
+                            <constraint firstItem="vjG-20-Je1" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="v5q-fS-gBC"/>
+                            <constraint firstItem="Yjh-cA-9yF" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="-38" id="yMO-DD-0UN"/>
+                            <constraint firstItem="vjG-20-Je1" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" id="z4T-4S-fft"/>
+                        </constraints>
                     </view>
                     <connections>
                         <outlet property="MainProgress" destination="UwS-Tm-7av" id="sO1-mL-zta"/>
+                        <outlet property="TitleLabel" destination="vjG-20-Je1" id="pyC-d1-S5h"/>
                         <outlet property="progressLabel" destination="UmN-xF-ino" id="FCB-14-0aI"/>
                     </connections>
                 </viewController>
@@ -75,5 +98,75 @@
             </objects>
             <point key="canvasLocation" x="32.799999999999997" y="37.331334332833585"/>
         </scene>
+        <!--No Network View-->
+        <scene sceneID="LPq-Fi-CBG">
+            <objects>
+                <viewController id="8JH-LJ-fJ2" customClass="NoNetworkView" customModule="Radar" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="xV9-kF-4Bh"/>
+                        <viewControllerLayoutGuide type="bottom" id="Ngf-Wl-JOC"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="EVF-Qw-y7e">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="error.png" translatesAutoresizingMaskIntoConstraints="NO" id="9g6-KL-UBy">
+                                <rect key="frame" x="37" y="106" width="300" height="300"/>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="No Network Detected." textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kJa-GA-xzT">
+                                <rect key="frame" x="37" y="432" width="300" height="50"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="30"/>
+                                <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8iX-Nn-vAm">
+                                <rect key="frame" x="82" y="529" width="211" height="45"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="19"/>
+                                <state key="normal" title="Connect to a Network">
+                                    <color key="titleColor" red="0.62592999800000004" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                </state>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" red="0.62592999800000004" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                        <constraints>
+                            <constraint firstItem="Ngf-Wl-JOC" firstAttribute="top" secondItem="kJa-GA-xzT" secondAttribute="bottom" constant="185" id="3vy-Tz-iqV"/>
+                            <constraint firstItem="9g6-KL-UBy" firstAttribute="leading" secondItem="EVF-Qw-y7e" secondAttribute="leadingMargin" constant="21" id="F6V-vb-U4h"/>
+                            <constraint firstItem="kJa-GA-xzT" firstAttribute="centerX" secondItem="EVF-Qw-y7e" secondAttribute="centerX" id="MKr-ZX-jZP"/>
+                            <constraint firstItem="9g6-KL-UBy" firstAttribute="top" secondItem="xV9-kF-4Bh" secondAttribute="bottom" constant="86" id="TnD-5I-2iG"/>
+                            <constraint firstItem="kJa-GA-xzT" firstAttribute="top" secondItem="9g6-KL-UBy" secondAttribute="bottom" constant="26" id="ZHZ-oR-p9d"/>
+                            <constraint firstItem="Ngf-Wl-JOC" firstAttribute="top" secondItem="9g6-KL-UBy" secondAttribute="bottom" constant="261" id="dbV-Gk-Iit"/>
+                            <constraint firstItem="9g6-KL-UBy" firstAttribute="centerX" secondItem="EVF-Qw-y7e" secondAttribute="centerX" id="wDm-H3-Nnl"/>
+                            <constraint firstItem="kJa-GA-xzT" firstAttribute="leading" secondItem="9g6-KL-UBy" secondAttribute="leading" id="x42-KQ-lxZ"/>
+                        </constraints>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Rly-Tl-A7x" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="32.799999999999997" y="766.86656671664173"/>
+        </scene>
+        <!--Overview View Controller-->
+        <scene sceneID="pqu-k4-Py1">
+            <objects>
+                <viewController id="PCZ-1K-Bfc" customClass="OverviewViewController" customModule="Radar" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="Lj7-KO-Igc"/>
+                        <viewControllerLayoutGuide type="bottom" id="MSP-3h-l69"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="USx-UJ-uRM">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" red="0.0" green="0.62745098039215685" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="tintColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="nkh-Ve-KCq" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="737" y="37"/>
+        </scene>
     </scenes>
+    <resources>
+        <image name="error.png" width="1024" height="1024"/>
+    </resources>
 </document>
