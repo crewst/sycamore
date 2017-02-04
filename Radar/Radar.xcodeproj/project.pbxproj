@@ -8,7 +8,9 @@
 
 /* Begin PBXBuildFile section */
 		6F2BAABD1E32831600571431 /* KDCircularProgress.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F2BAABC1E32831600571431 /* KDCircularProgress.swift */; };
-		6F5D4E051E4237AB00DF3BCD /* res in Resources */ = {isa = PBXBuildFile; fileRef = 6F5D4E041E4237AB00DF3BCD /* res */; };
+		6F481FE21E425D9B00558720 /* error.png in Resources */ = {isa = PBXBuildFile; fileRef = 6F481FE11E425D9B00558720 /* error.png */; };
+		6F5607FF1E42FD92007FA37B /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6F5607FE1E42FD92007FA37B /* MobileCoreServices.framework */; };
+		6F5D4E051E4237AB00DF3BCD /* res in Resources */ = {isa = PBXBuildFile; fileRef = 6F5D4E041E4237AB00DF3BCD /* res */; settings = {ASSET_TAGS = (New, ); }; };
 		6F5D4E071E4239EA00DF3BCD /* NoNetworkView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F5D4E061E4239EA00DF3BCD /* NoNetworkView.swift */; };
 		6F5D4E091E423AF900DF3BCD /* OverviewViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F5D4E081E423AF900DF3BCD /* OverviewViewController.swift */; };
 		6F6D077C1E270C790019AF00 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F6D077B1E270C790019AF00 /* AppDelegate.swift */; };
@@ -42,6 +44,8 @@
 
 /* Begin PBXFileReference section */
 		6F2BAABC1E32831600571431 /* KDCircularProgress.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KDCircularProgress.swift; sourceTree = "<group>"; };
+		6F481FE11E425D9B00558720 /* error.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = error.png; path = res/error.png; sourceTree = "<group>"; };
+		6F5607FE1E42FD92007FA37B /* MobileCoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MobileCoreServices.framework; path = System/Library/Frameworks/MobileCoreServices.framework; sourceTree = SDKROOT; };
 		6F5D4E041E4237AB00DF3BCD /* res */ = {isa = PBXFileReference; lastKnownFileType = folder; path = res; sourceTree = SOURCE_ROOT; };
 		6F5D4E061E4239EA00DF3BCD /* NoNetworkView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NoNetworkView.swift; sourceTree = "<group>"; };
 		6F5D4E081E423AF900DF3BCD /* OverviewViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OverviewViewController.swift; sourceTree = "<group>"; };
@@ -68,6 +72,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6F5607FF1E42FD92007FA37B /* MobileCoreServices.framework in Frameworks */,
 				6F8693661E422C290016581D /* SystemConfiguration.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -92,6 +97,7 @@
 		6F6D076F1E270C780019AF00 = {
 			isa = PBXGroup;
 			children = (
+				6F481FE11E425D9B00558720 /* error.png */,
 				6F6D077A1E270C790019AF00 /* Radar */,
 				6F6D078F1E270C790019AF00 /* RadarTests */,
 				6F6D079A1E270C790019AF00 /* RadarUITests */,
@@ -150,6 +156,7 @@
 		6F8693641E422C290016581D /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				6F5607FE1E42FD92007FA37B /* MobileCoreServices.framework */,
 				6F8693651E422C290016581D /* SystemConfiguration.framework */,
 			);
 			name = Frameworks;
@@ -217,6 +224,9 @@
 		6F6D07701E270C780019AF00 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
+				KnownAssetTags = (
+					New,
+				);
 				LastSwiftUpdateCheck = 0820;
 				LastUpgradeCheck = 0820;
 				ORGANIZATIONNAME = "Thomas Crews";
@@ -267,6 +277,7 @@
 			files = (
 				6F6D07861E270C790019AF00 /* LaunchScreen.storyboard in Resources */,
 				6F5D4E051E4237AB00DF3BCD /* res in Resources */,
+				6F481FE21E425D9B00558720 /* error.png in Resources */,
 				6F6D07831E270C790019AF00 /* Assets.xcassets in Resources */,
 				6F6D07811E270C790019AF00 /* Main.storyboard in Resources */,
 			);

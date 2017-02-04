@@ -10,10 +10,17 @@ import UIKit
 
 class OverviewViewController: UIViewController {
 
+    @IBOutlet weak var RescanButton: UIButton!
+    @IBOutlet weak var DiagnoseButton: UIButton!
+    @IBOutlet weak var BandwidthLabel: UILabel!
+    @IBOutlet weak var IPLabel: UILabel!
+    @IBOutlet weak var SSIDLabel: UILabel!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Do any additional setup after loading the view.
+        RescanButton.layer.cornerRadius = 5
+        DiagnoseButton.layer.cornerRadius = 5
     }
 
     override func didReceiveMemoryWarning() {

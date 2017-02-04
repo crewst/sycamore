@@ -14,4 +14,4 @@ class Globals {
         self.error = error
     }
 }
-var globalInstance = Globals(error:"UNDEF")
+var loadError = Globals(error:"UNDEF")

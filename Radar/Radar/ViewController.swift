@@ -7,6 +7,8 @@
 //
 
 import UIKit
+import Dispatch
+import CoreTelephony
 
 class ViewController: UIViewController {
 
@@ -17,14 +19,18 @@ class ViewController: UIViewController {
     var error = "UNDEF"
     
     override func viewDidLoad() {
-        let ssid = SSID.fetchSSIDInfo()
-        TitleLabel.text = ssid
-        
-        //if ssid == "didntGoIn" {
-        
-        performSegue(withIdentifier: "ErrorSegue", sender: self)
-        //}
-        
+        self.performSegue(withIdentifier: "LoadCompleteSegue", sender: self)
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        if SSID.fetchSSIDInfo() == "didntGoIn" {
+            loadError.error = "NoNet"
+            self.performSegue(withIdentifier: "ErrorSegue", sender: self)
+        }
+    }
+    
+    func uncaughtExceptionHandler(exception: NSException) {
+        self.performSegue(withIdentifier: "ErrorSegue", sender: self)
     }
 
 
