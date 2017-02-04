@@ -28,6 +28,9 @@ class OverviewViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
+    @IBAction func RescanButtonClick(_ sender: Any) {
+        self.dismiss(animated: false, completion: {})
+    }
 
     /*
     // MARK: - Navigation

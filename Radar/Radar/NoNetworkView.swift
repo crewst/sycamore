@@ -39,7 +39,7 @@ class NoNetworkView: UIViewController {
     @IBAction func ActionButtonClick(_ sender: Any) {
         
         if loadError.error == "UNDEF" {
-            
+            self.dismiss(animated: false, completion: {})
         } else if loadError.error == "NoNet" {
             
             UIApplication.shared.openURL(URL(string: "App-Prefs:root=WIFI")!)

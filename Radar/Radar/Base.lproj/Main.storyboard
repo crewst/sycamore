@@ -1,12 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="16D32" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12100" systemVersion="16D32" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12072"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+        <capability name="Segues with Peek and Pop" minToolsVersion="7.1"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -75,14 +76,56 @@
                                 <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0q3-og-7PG">
+                                <rect key="frame" x="82" y="550" width="211" height="45"/>
+                                <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="45" id="nNq-HA-76c"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name=".AppleSystemUIFont" family=".AppleSystemUIFont" pointSize="19"/>
+                                <state key="normal" title="Test Overview">
+                                    <color key="titleColor" red="0.32549019610000002" green="0.69411764710000001" blue="0.97254901959999995" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                </state>
+                                <connections>
+                                    <action selector="ActionButtonClick:" destination="8JH-LJ-fJ2" eventType="touchUpInside" id="IAO-ab-DAO"/>
+                                    <segue destination="PCZ-1K-Bfc" kind="show" animates="NO" id="2sc-bS-Byu">
+                                        <segue key="commit" inheritsFrom="parent" id="PIh-kv-RKT"/>
+                                        <segue key="preview" inheritsFrom="commit" id="mOS-L4-YA1"/>
+                                    </segue>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3RU-ef-1gB">
+                                <rect key="frame" x="82" y="603" width="211" height="45"/>
+                                <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="45" id="Lbe-bb-AhA"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name=".AppleSystemUIFont" family=".AppleSystemUIFont" pointSize="19"/>
+                                <state key="normal" title="Throw Error">
+                                    <color key="titleColor" red="0.32549019610000002" green="0.69411764710000001" blue="0.97254901959999995" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                </state>
+                                <connections>
+                                    <action selector="ActionButtonClick:" destination="8JH-LJ-fJ2" eventType="touchUpInside" id="z60-V0-Wlt"/>
+                                    <segue destination="8JH-LJ-fJ2" kind="show" animates="NO" id="mm6-nf-ALi">
+                                        <segue key="commit" inheritsFrom="parent" id="zlu-Ku-y9j"/>
+                                        <segue key="preview" inheritsFrom="commit" id="FyF-pd-Egz"/>
+                                    </segue>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" red="0.32506320940000083" green="0.69455543826007737" blue="0.97105586528778076" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                         <constraints>
                             <constraint firstItem="Yjh-cA-9yF" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="0iZ-b5-cRR"/>
                             <constraint firstItem="Yjh-cA-9yF" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="14g-4S-wgg"/>
+                            <constraint firstItem="0q3-og-7PG" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="66" id="6U6-hc-vMN"/>
                             <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="Yjh-cA-9yF" secondAttribute="bottom" constant="125" id="FYU-Ra-vBj"/>
+                            <constraint firstItem="3RU-ef-1gB" firstAttribute="top" secondItem="0q3-og-7PG" secondAttribute="bottom" constant="8" symbolic="YES" id="Gc3-o4-wvp"/>
                             <constraint firstItem="Yjh-cA-9yF" firstAttribute="top" secondItem="vjG-20-Je1" secondAttribute="bottom" constant="37" id="Lzq-ZT-tIz"/>
+                            <constraint firstItem="0q3-og-7PG" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="XDo-W7-d25"/>
                             <constraint firstItem="vjG-20-Je1" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="8" symbolic="YES" id="YHL-s3-8VO"/>
+                            <constraint firstItem="0q3-og-7PG" firstAttribute="top" secondItem="Yjh-cA-9yF" secondAttribute="bottom" constant="8" symbolic="YES" id="eGd-yF-dts"/>
+                            <constraint firstItem="3RU-ef-1gB" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="h6S-Sq-ocJ"/>
+                            <constraint firstItem="0q3-og-7PG" firstAttribute="leading" secondItem="3RU-ef-1gB" secondAttribute="leading" id="hJg-yR-0ey"/>
                             <constraint firstItem="vjG-20-Je1" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="v5q-fS-gBC"/>
                             <constraint firstItem="Yjh-cA-9yF" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="-38" id="yMO-DD-0UN"/>
                             <constraint firstItem="vjG-20-Je1" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" id="z4T-4S-fft"/>
@@ -93,7 +136,7 @@
                         <outlet property="TitleLabel" destination="vjG-20-Je1" id="pyC-d1-S5h"/>
                         <outlet property="progressLabel" destination="UmN-xF-ino" id="FCB-14-0aI"/>
                         <segue destination="8JH-LJ-fJ2" kind="show" identifier="ErrorSegue" animates="NO" id="ckg-nQ-UMv"/>
-                        <segue destination="PCZ-1K-Bfc" kind="show" identifier="LoadCompleteSegue" id="6ny-Fx-0Z4"/>
+                        <segue destination="PCZ-1K-Bfc" kind="show" identifier="LoadCompleteSegue" animates="NO" id="6ny-Fx-0Z4"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
@@ -234,6 +277,7 @@
                                 </state>
                                 <connections>
                                     <action selector="ActionButtonClick:" destination="8JH-LJ-fJ2" eventType="touchUpInside" id="bEz-rT-mdE"/>
+                                    <action selector="RescanButtonClick:" destination="PCZ-1K-Bfc" eventType="touchUpInside" id="CGz-kZ-Pvh"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Eez-12-wA3">
@@ -278,6 +322,7 @@
                             <constraint firstItem="OW7-B4-nf8" firstAttribute="trailing" secondItem="1cS-gA-XJF" secondAttribute="trailing" id="RfO-aQ-LQW"/>
                             <constraint firstItem="Eez-12-wA3" firstAttribute="leading" secondItem="ssV-OL-bWf" secondAttribute="leading" id="RtQ-hW-WhA"/>
                             <constraint firstItem="I5J-s6-qyz" firstAttribute="top" secondItem="H9r-kl-whG" secondAttribute="bottom" constant="18" id="ShY-pw-OhP"/>
+                            <constraint firstAttribute="leadingMargin" secondItem="OW7-B4-nf8" secondAttribute="leading" id="Syy-2J-8Wd"/>
                             <constraint firstItem="Eez-12-wA3" firstAttribute="trailing" secondItem="ssV-OL-bWf" secondAttribute="trailing" id="Ugf-wn-Bvt"/>
                             <constraint firstItem="OW7-B4-nf8" firstAttribute="top" secondItem="Lj7-KO-Igc" secondAttribute="bottom" constant="8" symbolic="YES" id="WLd-1L-T47"/>
                             <constraint firstItem="axS-4k-Zz7" firstAttribute="centerX" secondItem="ssV-OL-bWf" secondAttribute="centerX" id="Yk2-iN-d9i"/>
@@ -292,8 +337,10 @@
                             <constraint firstAttribute="bottom" secondItem="ssV-OL-bWf" secondAttribute="bottom" constant="20" symbolic="YES" id="hJz-ke-4zf"/>
                             <constraint firstItem="CUC-5V-EBR" firstAttribute="leading" secondItem="axS-4k-Zz7" secondAttribute="leading" id="hV5-yd-YBB"/>
                             <constraint firstItem="CUC-5V-EBR" firstAttribute="centerX" secondItem="axS-4k-Zz7" secondAttribute="centerX" id="iKQ-Xo-nn0"/>
+                            <constraint firstAttribute="leadingMargin" secondItem="1mK-Fg-WkW" secondAttribute="leading" id="iM0-Pw-9Yw"/>
                             <constraint firstItem="H9r-kl-whG" firstAttribute="trailing" secondItem="et3-KT-E12" secondAttribute="trailing" id="nsd-de-Qvn"/>
                             <constraint firstItem="1cS-gA-XJF" firstAttribute="trailing" secondItem="1mK-Fg-WkW" secondAttribute="trailing" id="rcI-si-vD8"/>
+                            <constraint firstAttribute="leadingMargin" secondItem="1cS-gA-XJF" secondAttribute="leading" id="uYx-VG-pss"/>
                             <constraint firstItem="et3-KT-E12" firstAttribute="trailing" secondItem="h4h-rI-nnc" secondAttribute="trailing" id="xIm-pm-aqx"/>
                             <constraint firstItem="h4h-rI-nnc" firstAttribute="trailing" secondItem="axS-4k-Zz7" secondAttribute="trailing" id="xXT-ZK-tQ6"/>
                             <constraint firstItem="H9r-kl-whG" firstAttribute="top" secondItem="Lj7-KO-Igc" secondAttribute="bottom" constant="4" id="xd4-0S-A8t"/>
@@ -303,7 +350,6 @@
                     </view>
                     <connections>
                         <outlet property="BandwidthLabel" destination="axS-4k-Zz7" id="M4a-Le-835"/>
-                        <outlet property="DiagnoseButtin" destination="ssV-OL-bWf" id="T53-b6-FDi"/>
                         <outlet property="DiagnoseButton" destination="Eez-12-wA3" id="x7B-Zf-hrw"/>
                         <outlet property="IPLabel" destination="et3-KT-E12" id="Ied-eA-Tlr"/>
                         <outlet property="RescanButton" destination="ssV-OL-bWf" id="Kza-Ua-i0I"/>
@@ -323,5 +369,6 @@
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="ckg-nQ-UMv"/>
+        <segue reference="2sc-bS-Byu"/>
     </inferredMetricsTieBreakers>
 </document>

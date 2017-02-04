@@ -23,6 +23,8 @@
 		6F767DA01E42442C0088990D /* globals.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F767D9F1E42442C0088990D /* globals.swift */; };
 		6F8693661E422C290016581D /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6F8693651E422C290016581D /* SystemConfiguration.framework */; };
 		6F8693681E422C410016581D /* SSID.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F8693671E422C410016581D /* SSID.swift */; };
+		6F9A333F1E4581C5003627FB /* check.png in Resources */ = {isa = PBXBuildFile; fileRef = 6F9A333D1E4581C5003627FB /* check.png */; };
+		6F9A33401E4581C5003627FB /* wifi.png in Resources */ = {isa = PBXBuildFile; fileRef = 6F9A333E1E4581C5003627FB /* wifi.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -65,6 +67,8 @@
 		6F767D9F1E42442C0088990D /* globals.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = globals.swift; sourceTree = "<group>"; };
 		6F8693651E422C290016581D /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 		6F8693671E422C410016581D /* SSID.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SSID.swift; sourceTree = "<group>"; };
+		6F9A333D1E4581C5003627FB /* check.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = check.png; path = res/check.png; sourceTree = "<group>"; };
+		6F9A333E1E4581C5003627FB /* wifi.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = wifi.png; path = res/wifi.png; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -97,6 +101,8 @@
 		6F6D076F1E270C780019AF00 = {
 			isa = PBXGroup;
 			children = (
+				6F9A333D1E4581C5003627FB /* check.png */,
+				6F9A333E1E4581C5003627FB /* wifi.png */,
 				6F481FE11E425D9B00558720 /* error.png */,
 				6F6D077A1E270C790019AF00 /* Radar */,
 				6F6D078F1E270C790019AF00 /* RadarTests */,
@@ -275,6 +281,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6F9A333F1E4581C5003627FB /* check.png in Resources */,
+				6F9A33401E4581C5003627FB /* wifi.png in Resources */,
 				6F6D07861E270C790019AF00 /* LaunchScreen.storyboard in Resources */,
 				6F5D4E051E4237AB00DF3BCD /* res in Resources */,
 				6F481FE21E425D9B00558720 /* error.png in Resources */,

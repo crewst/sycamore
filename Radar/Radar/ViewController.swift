@@ -19,7 +19,7 @@ class ViewController: UIViewController {
     var error = "UNDEF"
     
     override func viewDidLoad() {
-        self.performSegue(withIdentifier: "LoadCompleteSegue", sender: self)
+        
     }
     
     override func viewDidAppear(_ animated: Bool) {
