@@ -44,3 +44,5 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
 }
 
+
+// S.D.G.

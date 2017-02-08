@@ -15,12 +15,26 @@ class OverviewViewController: UIViewController {
     @IBOutlet weak var BandwidthLabel: UILabel!
     @IBOutlet weak var IPLabel: UILabel!
     @IBOutlet weak var SSIDLabel: UILabel!
+    @IBOutlet weak var InternetImage: UIImageView!
+    @IBOutlet weak var IPImage: UIImageView!
+    
+    let IPAddress = IP()
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
         RescanButton.layer.cornerRadius = 5
         DiagnoseButton.layer.cornerRadius = 5
+        
+        IPLabel.text = IPAddress.getWiFiAddress()
+        
+        if loadError.error == "NoIP" {
+            view.backgroundColor = UIColor(red: 220/255.0, green: 0/255.0, blue: 0/255.0, alpha: 1.0)
+            DiagnoseButton.tintColor = UIColor(red: 220/255.0, green: 0/255.0, blue: 0/255.0, alpha: 1.0)
+            RescanButton.tintColor = UIColor(red: 220/255.0, green: 0/255.0, blue: 0/255.0, alpha: 1.0)
+            IPImage.image = UIImage(named: "warning.png")
+            InternetImage.image = UIImage(named: "warning.png")
+        }
     }
 
     override func didReceiveMemoryWarning() {
@@ -43,3 +57,6 @@ class OverviewViewController: UIViewController {
     */
 
 }
+
+
+// S.D.G.

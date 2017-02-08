@@ -18,7 +18,11 @@ class ViewController: UIViewController {
     
     var error = "UNDEF"
     
+    let IPAddress = IP()
+    
     override func viewDidLoad() {
+        
+        loadError.error = "UNDEF"
         
     }
     
@@ -26,7 +30,25 @@ class ViewController: UIViewController {
         if SSID.fetchSSIDInfo() == "didntGoIn" {
             loadError.error = "NoNet"
             self.performSegue(withIdentifier: "ErrorSegue", sender: self)
+        } else {
+            MainProgress.angle = 133
+            progressLabel.text = "37%"
         }
+        
+        if IPAddress.getWiFiAddress() != nil {
+            progressLabel.text = "81%"
+            MainProgress.angle = 292
+        } else {
+            loadError.error = "NoIP"
+            self.performSegue(withIdentifier: "LoadCompleteSegue", sender: self)
+        }
+        
+        if Reachability.isConnectedToNetwork() == false {
+            loadError.error = "NoInternet"
+            self.performSegue(withIdentifier: "LoadCompleteSegue", sender: self)
+        }
+        
+        
     }
     
     func uncaughtExceptionHandler(exception: NSException) {
@@ -36,3 +58,5 @@ class ViewController: UIViewController {
 
 }
 
+
+// S.D.G.

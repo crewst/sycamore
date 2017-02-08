@@ -11,21 +11,18 @@ import UIKit
 class NoNetworkView: UIViewController {
     @IBOutlet weak var ErrorLabel: UILabel!
     @IBOutlet weak var ActionButton: UIButton!
-    
-    var loads = 0
+    @IBOutlet weak var SubLabel: UILabel!
 
     override func viewDidLoad() {
         super.viewDidLoad()
         
         ActionButton.layer.cornerRadius = 5
         
-        loads += 1
-        
         if loadError.error == "UNDEF" {
-            ErrorLabel.text = "Successful Read"
+            ErrorLabel.text = "Unknown Error"
         } else if loadError.error == "NoNet" {
             ErrorLabel.text = "No Network Detected"
-            ActionButton.setTitle("Connect to Network", for: .normal)
+            SubLabel.text = "Connect to a WiFi network."
         }
 
         // Do any additional setup after loading the view.
@@ -38,15 +35,9 @@ class NoNetworkView: UIViewController {
     
     @IBAction func ActionButtonClick(_ sender: Any) {
         
-        if loadError.error == "UNDEF" {
-            self.dismiss(animated: false, completion: {})
-        } else if loadError.error == "NoNet" {
-            
-            UIApplication.shared.openURL(URL(string: "App-Prefs:root=WIFI")!)
-            
-        }
-        
+        self.dismiss(animated: false)
     }
+
     
     override func viewDidAppear(_ animated: Bool) {
     }
@@ -64,3 +55,6 @@ class NoNetworkView: UIViewController {
     */
 
 }
+
+
+// S.D.G.

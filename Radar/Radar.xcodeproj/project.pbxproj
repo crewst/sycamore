@@ -10,9 +10,12 @@
 		6F2BAABD1E32831600571431 /* KDCircularProgress.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F2BAABC1E32831600571431 /* KDCircularProgress.swift */; };
 		6F481FE21E425D9B00558720 /* error.png in Resources */ = {isa = PBXBuildFile; fileRef = 6F481FE11E425D9B00558720 /* error.png */; };
 		6F5607FF1E42FD92007FA37B /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6F5607FE1E42FD92007FA37B /* MobileCoreServices.framework */; };
+		6F57332C1E4B9C2000C86881 /* warning.png in Resources */ = {isa = PBXBuildFile; fileRef = 6F57332B1E4B9C2000C86881 /* warning.png */; };
+		6F57332E1E4B9F1700C86881 /* Reachability.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F57332D1E4B9F1700C86881 /* Reachability.swift */; };
 		6F5D4E051E4237AB00DF3BCD /* res in Resources */ = {isa = PBXBuildFile; fileRef = 6F5D4E041E4237AB00DF3BCD /* res */; settings = {ASSET_TAGS = (New, ); }; };
 		6F5D4E071E4239EA00DF3BCD /* NoNetworkView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F5D4E061E4239EA00DF3BCD /* NoNetworkView.swift */; };
 		6F5D4E091E423AF900DF3BCD /* OverviewViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F5D4E081E423AF900DF3BCD /* OverviewViewController.swift */; };
+		6F6316661E48BB2200988A5A /* IP.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F6316651E48BB2200988A5A /* IP.swift */; };
 		6F6D077C1E270C790019AF00 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F6D077B1E270C790019AF00 /* AppDelegate.swift */; };
 		6F6D077E1E270C790019AF00 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F6D077D1E270C790019AF00 /* ViewController.swift */; };
 		6F6D07811E270C790019AF00 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6F6D077F1E270C790019AF00 /* Main.storyboard */; };
@@ -48,9 +51,13 @@
 		6F2BAABC1E32831600571431 /* KDCircularProgress.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KDCircularProgress.swift; sourceTree = "<group>"; };
 		6F481FE11E425D9B00558720 /* error.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = error.png; path = res/error.png; sourceTree = "<group>"; };
 		6F5607FE1E42FD92007FA37B /* MobileCoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MobileCoreServices.framework; path = System/Library/Frameworks/MobileCoreServices.framework; sourceTree = SDKROOT; };
+		6F57332B1E4B9C2000C86881 /* warning.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = warning.png; path = res/warning.png; sourceTree = "<group>"; };
+		6F57332D1E4B9F1700C86881 /* Reachability.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Reachability.swift; sourceTree = "<group>"; };
 		6F5D4E041E4237AB00DF3BCD /* res */ = {isa = PBXFileReference; lastKnownFileType = folder; path = res; sourceTree = SOURCE_ROOT; };
 		6F5D4E061E4239EA00DF3BCD /* NoNetworkView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NoNetworkView.swift; sourceTree = "<group>"; };
 		6F5D4E081E423AF900DF3BCD /* OverviewViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OverviewViewController.swift; sourceTree = "<group>"; };
+		6F6316651E48BB2200988A5A /* IP.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IP.swift; sourceTree = "<group>"; };
+		6F6316671E48BE4000988A5A /* Radar-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Radar-Bridging-Header.h"; sourceTree = "<group>"; };
 		6F6D07781E270C790019AF00 /* Radar.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Radar.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		6F6D077B1E270C790019AF00 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		6F6D077D1E270C790019AF00 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -101,6 +108,7 @@
 		6F6D076F1E270C780019AF00 = {
 			isa = PBXGroup;
 			children = (
+				6F57332B1E4B9C2000C86881 /* warning.png */,
 				6F9A333D1E4581C5003627FB /* check.png */,
 				6F9A333E1E4581C5003627FB /* wifi.png */,
 				6F481FE11E425D9B00558720 /* error.png */,
@@ -125,6 +133,8 @@
 		6F6D077A1E270C790019AF00 /* Radar */ = {
 			isa = PBXGroup;
 			children = (
+				6F6316651E48BB2200988A5A /* IP.swift */,
+				6F6316671E48BE4000988A5A /* Radar-Bridging-Header.h */,
 				6F767D9F1E42442C0088990D /* globals.swift */,
 				6F5D4E081E423AF900DF3BCD /* OverviewViewController.swift */,
 				6F6D077B1E270C790019AF00 /* AppDelegate.swift */,
@@ -137,6 +147,7 @@
 				6F6D07821E270C790019AF00 /* Assets.xcassets */,
 				6F6D07841E270C790019AF00 /* LaunchScreen.storyboard */,
 				6F6D07871E270C790019AF00 /* Info.plist */,
+				6F57332D1E4B9F1700C86881 /* Reachability.swift */,
 			);
 			path = Radar;
 			sourceTree = "<group>";
@@ -281,6 +292,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6F57332C1E4B9C2000C86881 /* warning.png in Resources */,
 				6F9A333F1E4581C5003627FB /* check.png in Resources */,
 				6F9A33401E4581C5003627FB /* wifi.png in Resources */,
 				6F6D07861E270C790019AF00 /* LaunchScreen.storyboard in Resources */,
@@ -316,6 +328,8 @@
 				6F8693681E422C410016581D /* SSID.swift in Sources */,
 				6F5D4E071E4239EA00DF3BCD /* NoNetworkView.swift in Sources */,
 				6F6D077E1E270C790019AF00 /* ViewController.swift in Sources */,
+				6F6316661E48BB2200988A5A /* IP.swift in Sources */,
+				6F57332E1E4B9F1700C86881 /* Reachability.swift in Sources */,
 				6F6D077C1E270C790019AF00 /* AppDelegate.swift in Sources */,
 				6F5D4E091E423AF900DF3BCD /* OverviewViewController.swift in Sources */,
 				6F767DA01E42442C0088990D /* globals.swift in Sources */,
@@ -473,6 +487,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = edu.swosu.comsc.sycamore;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "$(SRCROOT)/$(PROJECT_NAME)/$(PROJECT_NAME)-Bridging-Header.h";
 				SWIFT_VERSION = 3.0;
 			};
 			name = Debug;
@@ -486,6 +501,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = edu.swosu.comsc.sycamore;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "$(SRCROOT)/$(PROJECT_NAME)/$(PROJECT_NAME)-Bridging-Header.h";
 				SWIFT_VERSION = 3.0;
 			};
 			name = Release;

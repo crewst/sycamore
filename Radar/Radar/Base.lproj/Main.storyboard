@@ -161,17 +161,6 @@
                                 <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8iX-Nn-vAm">
-                                <rect key="frame" x="82" y="529" width="211" height="45"/>
-                                <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                <fontDescription key="fontDescription" name=".AppleSystemUIFont" family=".AppleSystemUIFont" pointSize="19"/>
-                                <state key="normal" title="Reload App">
-                                    <color key="titleColor" red="0.62592999800000004" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                </state>
-                                <connections>
-                                    <action selector="ActionButtonClick:" destination="8JH-LJ-fJ2" eventType="touchUpInside" id="NSY-xa-iLF"/>
-                                </connections>
-                            </button>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="error.png" translatesAutoresizingMaskIntoConstraints="NO" id="9g6-KL-UBy">
                                 <rect key="frame" x="37.5" y="66" width="300" height="300"/>
                                 <constraints>
@@ -179,27 +168,48 @@
                                     <constraint firstAttribute="width" constant="300" id="qlV-hP-eFv"/>
                                 </constraints>
                             </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text=" " textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Frg-xH-oak">
+                                <rect key="frame" x="185.5" y="482" width="4" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8iX-Nn-vAm">
+                                <rect key="frame" x="82" y="549" width="211" height="45"/>
+                                <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <fontDescription key="fontDescription" name=".AppleSystemUIFont" family=".AppleSystemUIFont" pointSize="19"/>
+                                <state key="normal" title="Retry">
+                                    <color key="titleColor" red="0.62592999800000004" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                </state>
+                                <connections>
+                                    <action selector="ActionButtonClick:" destination="8JH-LJ-fJ2" eventType="touchUpInside" id="NSY-xa-iLF"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" red="0.62592999800000004" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
                             <constraint firstItem="Ngf-Wl-JOC" firstAttribute="top" secondItem="kJa-GA-xzT" secondAttribute="bottom" constant="185" id="3vy-Tz-iqV"/>
+                            <constraint firstItem="Frg-xH-oak" firstAttribute="top" secondItem="kJa-GA-xzT" secondAttribute="bottom" id="BSk-f0-tEB"/>
+                            <constraint firstItem="8iX-Nn-vAm" firstAttribute="top" secondItem="Frg-xH-oak" secondAttribute="bottom" constant="46" id="INf-xg-Cg5"/>
                             <constraint firstItem="kJa-GA-xzT" firstAttribute="centerX" secondItem="EVF-Qw-y7e" secondAttribute="centerX" id="MKr-ZX-jZP"/>
                             <constraint firstItem="kJa-GA-xzT" firstAttribute="top" secondItem="9g6-KL-UBy" secondAttribute="bottom" constant="80" id="VSh-a0-iJd"/>
                             <constraint firstItem="9g6-KL-UBy" firstAttribute="centerX" secondItem="EVF-Qw-y7e" secondAttribute="centerX" id="XMj-u7-kM7"/>
                             <constraint firstItem="8iX-Nn-vAm" firstAttribute="centerX" secondItem="EVF-Qw-y7e" secondAttribute="centerX" id="Zba-IE-Ffb"/>
                             <constraint firstItem="8iX-Nn-vAm" firstAttribute="leading" secondItem="EVF-Qw-y7e" secondAttribute="leadingMargin" constant="66" id="b5m-se-zqv"/>
-                            <constraint firstItem="Ngf-Wl-JOC" firstAttribute="top" secondItem="8iX-Nn-vAm" secondAttribute="bottom" constant="93" id="tsl-Dz-KM3"/>
-                            <constraint firstItem="8iX-Nn-vAm" firstAttribute="top" secondItem="kJa-GA-xzT" secondAttribute="bottom" constant="47" id="ydJ-1b-EYS"/>
+                            <constraint firstItem="Ngf-Wl-JOC" firstAttribute="top" secondItem="8iX-Nn-vAm" secondAttribute="bottom" constant="73" id="tsl-Dz-KM3"/>
+                            <constraint firstItem="Frg-xH-oak" firstAttribute="centerX" secondItem="EVF-Qw-y7e" secondAttribute="centerX" id="vJu-X5-Wx3"/>
+                            <constraint firstItem="8iX-Nn-vAm" firstAttribute="top" secondItem="kJa-GA-xzT" secondAttribute="bottom" constant="67" id="ydJ-1b-EYS"/>
                         </constraints>
                     </view>
                     <connections>
                         <outlet property="ActionButton" destination="8iX-Nn-vAm" id="ori-0h-aLb"/>
                         <outlet property="ErrorLabel" destination="kJa-GA-xzT" id="beC-Ip-BCX"/>
+                        <outlet property="SubLabel" destination="Frg-xH-oak" id="z5f-Xc-QUl"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Rly-Tl-A7x" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="33" y="797"/>
+            <point key="canvasLocation" x="31.199999999999999" y="795.6521739130435"/>
         </scene>
         <!--Overview View Controller-->
         <scene sceneID="pqu-k4-Py1">
@@ -351,7 +361,9 @@
                     <connections>
                         <outlet property="BandwidthLabel" destination="axS-4k-Zz7" id="M4a-Le-835"/>
                         <outlet property="DiagnoseButton" destination="Eez-12-wA3" id="x7B-Zf-hrw"/>
+                        <outlet property="IPImage" destination="1cS-gA-XJF" id="MBP-R9-9cB"/>
                         <outlet property="IPLabel" destination="et3-KT-E12" id="Ied-eA-Tlr"/>
+                        <outlet property="InternetImage" destination="1mK-Fg-WkW" id="Y8K-lP-kpl"/>
                         <outlet property="RescanButton" destination="ssV-OL-bWf" id="Kza-Ua-i0I"/>
                         <outlet property="SSIDLabel" destination="H9r-kl-whG" id="dy0-mU-jTW"/>
                         <segue destination="8JH-LJ-fJ2" kind="show" id="1hB-gU-aJe"/>
@@ -368,7 +380,7 @@
         <image name="wifi.png" width="68" height="47"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="ckg-nQ-UMv"/>
+        <segue reference="1hB-gU-aJe"/>
         <segue reference="2sc-bS-Byu"/>
     </inferredMetricsTieBreakers>
 </document>

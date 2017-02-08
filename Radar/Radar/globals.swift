@@ -15,3 +15,6 @@ class Globals {
     }
 }
 var loadError = Globals(error:"UNDEF")
+
+
+// S.D.G.
