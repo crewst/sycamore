@@ -1,0 +1,180 @@
+%----------------------------------------------------------------------------------------
+%
+% COMSC-4173: Mobile Applications - Section 1423
+%
+% Project Report 3
+%
+% Created by Thomas W. Crews on Thursday, January 26, 2017
+%
+%
+% !!! MUST COMPILE WITH XeLaTeX ENGINE !!!
+%
+%----------------------------------------------------------------------------------------
+%
+\documentclass[letterpaper]{article}            % Defines type of document and paper size
+%
+%----------------------------------------------------------------------------------------
+% MODULE IMPORTS
+%
+\usepackage[english]{babel}                     % Not entirely sure, maybe spellcheck?
+\usepackage[utf8]{inputenc}                     % Encoding information (don't touch)
+\usepackage[margin=1.0in]{geometry}             % This module honestly scares me
+\usepackage{fontspec}                           % Allows advanced font formatting
+\usepackage{hyperref}                           % Allows linking between sections
+%\usepackage{soul}                              % Basically just for strikeout text
+%\usepackage{minted}                            % Syntax highlighting - requires PYGMENTS
+%\usepackage{array}                             % Allows advanced table formatting
+%\usepackage[table]{xcolor}                     % Allows table shading
+%
+%----------------------------------------------------------------------------------------
+% FONT SETTINGS
+%
+\setmainfont[Scale=1.1]{Helvetica Neue}         % Define main font and its scale
+\setmonofont[Scale=1.1]{Courier New}            % Define monospaced font likewise
+%
+% Note that Helvetica Neue is only available by default on Apple's Mac OS X 10.6 or newer
+% and that Inconsolata is likely not installed by default on any major operating systems.
+%
+%----------------------------------------------------------------------------------------
+% PRINTED DOCUMENT INFORMATION
+%
+\title{Mobile Applications}                     % Set title
+\author{Project Report 3}                       % Set author (subtitle, in this case)
+\date{Created by Tommy Crews on \today}         % Date of typesetting
+%
+%----------------------------------------------------------------------------------------
+
+\begin{document}
+
+\newcommand{\code}[1]{\texttt{#1}}              % I use this for inline code and such
+
+\setcounter{section}{3}							% Use when beginning with subsection
+
+\maketitle                                      % Just prints the title
+
+
+%\tableofcontents                               % For bigger documents, prints ToC
+
+%----------------------------------------------------------------------------------------
+%
+% PREDEFINED STRINGS
+%
+%----------------------------------------------------------------------------------------
+%	MAIN
+%----------------------------------------------------------------------------------------
+
+% I'll be using these big comment headers to keep track of sections. Subsections are
+% delineated by single lines of dashes. Sub-subsections are on their own.
+
+%\section{}
+
+%----------------------------------------------------------------------------------------
+
+\subsection{Please state your question}
+
+\subsubsection{Hopefully life has changed a little since Chapter 1. Please state what your question should be now.}
+
+Can a mobile application provide in-depth network analysis while remaining simple enough for use by average consumers?
+
+%----------------------------------------------------------------------------------------
+
+\subsection{Developing Project Management Tools}
+
+\subsubsection{What is the primary measure of success for your project?}
+
+The measure of success will be to what depth the project can perform; that is, how will its capabilities set it apart from the competition?
+
+\subsubsection{What is the secondary measure of success for your project?}
+
+The secondary measure of success will be the simplicity and usability of the project. Can a ten-year-old navigate the app and gain a basic understanding of its functionality?
+
+\subsubsection{What are a few meaningful measures of success for your weekly tasks?}
+
+I like to keep a count of how many fully-working functions can be incorporated in the project within a single week, plus how many features have been significantly improved.
+
+\subsubsection{At what point in your project is a component considered done?}
+
+A component is never considered "done" in my project. A component may be fully functional, but improvement is absolutely always possible, even if it just means repositioning an interface element three pixels to the left.
+
+\subsubsection{What parts of your project keep changing?}
+
+I find that I most frequently change minor interface configurations. I tend to be more concerned with the user experience than with piling on features.
+
+\subsubsection{What parts of your project will never be done?}
+
+No good software project is ever considered complete, nor are any of its components. Facebook continues to receive software updates every two weeks, and is constantly adding features. No part of this project will be considered "done."
+
+\subsubsection{How would you know if your project is in the red, yellow, or green?}
+
+For the purposes of this class, the project may never leave the yellow state. I believe this should be a period of constant development and testing, up until the last day. To publish it early would, in my opinion, be a waste of tuition money.
+
+\subsubsection{Describe the process from transition your project from red to green.}
+
+I plan to take a traditional alpha-beta approach to this project's development. At this time, the project is in its alpha state (in the red). Components are obviously missing and still in development, and many bugs exist, both known and unknown.
+
+The project will mature to its beta stage (yellow) near the end of the semester, when all the loose ends are tied, and when it and all its components are expected to perform as intended. Bugs are still expected to be discovered.
+
+When the project works cleanly and consistently nearly 100\% of the time, it will have left its beta stage and will be ready for publishing.
+
+%----------------------------------------------------------------------------------------
+
+\subsection{What did you get done this week for your project?}
+
+\subsubsection{What did you get done?}
+
+This week, I created two new branches for my project: \code{testgrounds} and \code{helloWorld}. 
+
+The purpose of \code{testgrounds} is to create a sort of sandbox in which to test new code. Committed changes in this branch are not certain, and the branch can be recreated when needed. When a feature or function is complete and ready to be added to the core development of the project, the committed branch will be merged with \code{dev}.
+
+The \code{helloWorld} branch was used solely for the assigned presentation at the end of this week, in which each student is required to present a Hello World screen and a button which leads to an activity of some kind. This branch will never be merged with \code{dev} and is separate from the project itself.
+
+In addition to the creation of these branches, I've experimented with several interface elements which will be used in this project, and discovered ways to link them to code using \code{IBOutlets}, a feature exclusive to Xcode.
+
+\subsubsection{How much time did you spend working on your project?}
+
+This week, I spent around 10 hours working on the project.
+
+%----------------------------------------------------------------------------------------
+
+\subsection{What do you plan to accomplish next week?}
+
+\subsubsection{What is your overall deliverable goal for the next week?}
+
+I plan to complete first icon files and finish network analysis function, leading to a basic overview screen which will display IP, average up/down speed, and whether or not the Internet is available.
+
+\subsubsection{What are the tasks you will complete to reach this goal?}
+
+Swift research will be conducted concerning network capabilities, as well as limitations imposed by iOS.
+
+\subsubsection{How much time will you have next week to work on your project?}
+
+10-16 hours.
+
+%----------------------------------------------------------------------------------------
+
+\subsection{What is keeping you from being successful?}
+
+\subsubsection{Please paraphrase what was keeping you from being successful last week, as noted in Chapter 2?}
+
+My lack of knowledge of the Swift programming language in the field of networking is the biggest obstacle.
+
+\subsubsection{Please explain what you did to fix the problems and explain what you asked others to do to fix the problems?}
+
+I have begun to research official and unofficial documentation sources.
+
+\subsubsection{What is it that is keeping you from being successful in your project?}
+
+Nothing at this time is obstructing this project's development.
+
+\subsubsection{Explain how this problem came to be, and please explain if this problem is related to your work in other classes?}
+
+This project actually benefits my work in other classes. It can be referenced to solve problems.
+
+\subsubsection{What are you doing to get this fixed and what have you asked others to do
+in order to fix this problem?}
+
+I continue to seek the advice and criticism of my classmates and coworkers throughout the course of this project's development.
+
+\end{document}
+
+% SDG
