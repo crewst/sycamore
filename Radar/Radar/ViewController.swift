@@ -29,7 +29,7 @@ class ViewController: UIViewController {
     override func viewDidAppear(_ animated: Bool) {
         if SSID.fetchSSIDInfo() == "didntGoIn" {
             loadError.error = "NoNet"
-            self.performSegue(withIdentifier: "ErrorSegue", sender: self)
+            self.performSegue(withIdentifier: "LoadCompleteSegue", sender: self)
         } else {
             MainProgress.angle = 133
             progressLabel.text = "37%"

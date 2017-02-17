@@ -19,10 +19,20 @@
 			<key>isShown</key>
 			<false/>
 		</dict>
+		<key>UICountingLabel.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
-		<key>768CDC16DB0E1F8067E49DAB232C36E2</key>
+		<key>746D8947E4EAA0D5E62B16B1DC92B689</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>9CB751F1D3F9BC544CE8AD7A329A99B3</key>
 		<dict>
 			<key>primary</key>
 			<true/>

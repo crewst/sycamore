@@ -30,11 +30,33 @@ class OverviewViewController: UIViewController {
         
         if loadError.error == "NoIP" {
             view.backgroundColor = UIColor(red: 220/255.0, green: 0/255.0, blue: 0/255.0, alpha: 1.0)
-            DiagnoseButton.tintColor = UIColor(red: 220/255.0, green: 0/255.0, blue: 0/255.0, alpha: 1.0)
-            RescanButton.tintColor = UIColor(red: 220/255.0, green: 0/255.0, blue: 0/255.0, alpha: 1.0)
+            DiagnoseButton.setTitleColor(UIColor(red: 220/255.0, green: 0/255.0, blue: 0/255.0, alpha: 1.0), for: .normal)
+            RescanButton.setTitleColor(UIColor(red: 220/255.0, green: 0/255.0, blue: 0/255.0, alpha: 1.0), for: .normal)
             IPImage.image = UIImage(named: "warning.png")
             InternetImage.image = UIImage(named: "warning.png")
+        } else if loadError.error == "NoNet" {
+            view.backgroundColor = UIColor(red: 220/255.0, green: 0/255.0, blue: 0/255.0, alpha: 1.0)
+            DiagnoseButton.setTitleColor(UIColor(red: 220/255.0, green: 0/255.0, blue: 0/255.0, alpha: 1.0), for: .normal)
+            RescanButton.setTitleColor(UIColor(red: 220/255.0, green: 0/255.0, blue: 0/255.0, alpha: 1.0), for: .normal)
+            IPImage.image = UIImage(named: "warning.png")
+            InternetImage.image = UIImage(named: "warning.png")
+            SSIDLabel.text = "No Network"
+            countAnimation(label: BandwidthLabel, initString: "100", termString: "0")
         }
+        
+        
+    }
+    
+    func countAnimation(label: UILabel, initString: String, termString: String)
+    {
+        UIView.transition(with: label,
+                                  duration: 2.0,
+                                  options: [.curveEaseOut],
+                                  animations: { () -> Void in
+                                    label.text = initString
+                                    label.text = termString
+        }, completion: nil)
+        
     }
 
     override func didReceiveMemoryWarning() {
