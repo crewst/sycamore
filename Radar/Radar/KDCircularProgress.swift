@@ -270,6 +270,7 @@ public class KDCircularProgress: UIView, CAAnimationDelegate {
         }
         
         let animation = CABasicAnimation(keyPath: "angle")
+        animation.timingFunction = CAMediaTimingFunction(name: kCAMediaTimingFunctionEaseInEaseOut)
         animation.fromValue = fromAngle
         animation.toValue = toAngle
         animation.duration = animationDuration

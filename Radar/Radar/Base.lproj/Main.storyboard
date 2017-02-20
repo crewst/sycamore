@@ -7,7 +7,6 @@
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12072"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
-        <capability name="Segues with Peek and Pop" minToolsVersion="7.1"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -29,7 +28,7 @@
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="UwS-Tm-7av" customClass="KDCircularProgress" customModule="Radar" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="0.0" width="419" height="417"/>
                                         <subviews>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0%" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UmN-xF-ino">
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0%" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UmN-xF-ino" customClass="UICountingLabel">
                                                 <rect key="frame" x="62" y="69" width="295" height="279"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="110"/>
                                                 <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
@@ -76,56 +75,14 @@
                                 <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0q3-og-7PG">
-                                <rect key="frame" x="82" y="550" width="211" height="45"/>
-                                <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="45" id="nNq-HA-76c"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" name=".AppleSystemUIFont" family=".AppleSystemUIFont" pointSize="19"/>
-                                <state key="normal" title="Test Overview">
-                                    <color key="titleColor" red="0.32549019610000002" green="0.69411764710000001" blue="0.97254901959999995" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
-                                </state>
-                                <connections>
-                                    <action selector="ActionButtonClick:" destination="8JH-LJ-fJ2" eventType="touchUpInside" id="IAO-ab-DAO"/>
-                                    <segue destination="PCZ-1K-Bfc" kind="show" animates="NO" id="2sc-bS-Byu">
-                                        <segue key="commit" inheritsFrom="parent" id="PIh-kv-RKT"/>
-                                        <segue key="preview" inheritsFrom="commit" id="mOS-L4-YA1"/>
-                                    </segue>
-                                </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3RU-ef-1gB">
-                                <rect key="frame" x="82" y="603" width="211" height="45"/>
-                                <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="45" id="Lbe-bb-AhA"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" name=".AppleSystemUIFont" family=".AppleSystemUIFont" pointSize="19"/>
-                                <state key="normal" title="Throw Error">
-                                    <color key="titleColor" red="0.32549019610000002" green="0.69411764710000001" blue="0.97254901959999995" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
-                                </state>
-                                <connections>
-                                    <action selector="ActionButtonClick:" destination="8JH-LJ-fJ2" eventType="touchUpInside" id="z60-V0-Wlt"/>
-                                    <segue destination="8JH-LJ-fJ2" kind="show" animates="NO" id="mm6-nf-ALi">
-                                        <segue key="commit" inheritsFrom="parent" id="zlu-Ku-y9j"/>
-                                        <segue key="preview" inheritsFrom="commit" id="FyF-pd-Egz"/>
-                                    </segue>
-                                </connections>
-                            </button>
                         </subviews>
                         <color key="backgroundColor" red="0.32506320940000083" green="0.69455543826007737" blue="0.97105586528778076" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                         <constraints>
                             <constraint firstItem="Yjh-cA-9yF" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="0iZ-b5-cRR"/>
                             <constraint firstItem="Yjh-cA-9yF" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="14g-4S-wgg"/>
-                            <constraint firstItem="0q3-og-7PG" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="66" id="6U6-hc-vMN"/>
                             <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="Yjh-cA-9yF" secondAttribute="bottom" constant="125" id="FYU-Ra-vBj"/>
-                            <constraint firstItem="3RU-ef-1gB" firstAttribute="top" secondItem="0q3-og-7PG" secondAttribute="bottom" constant="8" symbolic="YES" id="Gc3-o4-wvp"/>
                             <constraint firstItem="Yjh-cA-9yF" firstAttribute="top" secondItem="vjG-20-Je1" secondAttribute="bottom" constant="37" id="Lzq-ZT-tIz"/>
-                            <constraint firstItem="0q3-og-7PG" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="XDo-W7-d25"/>
                             <constraint firstItem="vjG-20-Je1" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="8" symbolic="YES" id="YHL-s3-8VO"/>
-                            <constraint firstItem="0q3-og-7PG" firstAttribute="top" secondItem="Yjh-cA-9yF" secondAttribute="bottom" constant="8" symbolic="YES" id="eGd-yF-dts"/>
-                            <constraint firstItem="3RU-ef-1gB" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="h6S-Sq-ocJ"/>
-                            <constraint firstItem="0q3-og-7PG" firstAttribute="leading" secondItem="3RU-ef-1gB" secondAttribute="leading" id="hJg-yR-0ey"/>
                             <constraint firstItem="vjG-20-Je1" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="v5q-fS-gBC"/>
                             <constraint firstItem="Yjh-cA-9yF" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="-38" id="yMO-DD-0UN"/>
                             <constraint firstItem="vjG-20-Je1" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" id="z4T-4S-fft"/>
@@ -135,81 +92,12 @@
                         <outlet property="MainProgress" destination="UwS-Tm-7av" id="sO1-mL-zta"/>
                         <outlet property="TitleLabel" destination="vjG-20-Je1" id="pyC-d1-S5h"/>
                         <outlet property="progressLabel" destination="UmN-xF-ino" id="FCB-14-0aI"/>
-                        <segue destination="8JH-LJ-fJ2" kind="show" identifier="ErrorSegue" animates="NO" id="ckg-nQ-UMv"/>
-                        <segue destination="PCZ-1K-Bfc" kind="show" identifier="LoadCompleteSegue" animates="NO" id="6ny-Fx-0Z4"/>
+                        <segue destination="PCZ-1K-Bfc" kind="presentation" identifier="LoadCompleteSegue" modalTransitionStyle="crossDissolve" id="6ny-Fx-0Z4"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="32.799999999999997" y="37.331334332833585"/>
-        </scene>
-        <!--No Network View-->
-        <scene sceneID="LPq-Fi-CBG">
-            <objects>
-                <viewController id="8JH-LJ-fJ2" customClass="NoNetworkView" customModule="Radar" customModuleProvider="target" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="xV9-kF-4Bh"/>
-                        <viewControllerLayoutGuide type="bottom" id="Ngf-Wl-JOC"/>
-                    </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="EVF-Qw-y7e">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Unknown Error" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kJa-GA-xzT">
-                                <rect key="frame" x="89" y="446" width="197" height="36"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="30"/>
-                                <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="error.png" translatesAutoresizingMaskIntoConstraints="NO" id="9g6-KL-UBy">
-                                <rect key="frame" x="37.5" y="66" width="300" height="300"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="300" id="Z4N-3l-C4X"/>
-                                    <constraint firstAttribute="width" constant="300" id="qlV-hP-eFv"/>
-                                </constraints>
-                            </imageView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text=" " textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Frg-xH-oak">
-                                <rect key="frame" x="185.5" y="482" width="4" height="21"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8iX-Nn-vAm">
-                                <rect key="frame" x="82" y="549" width="211" height="45"/>
-                                <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                <fontDescription key="fontDescription" name=".AppleSystemUIFont" family=".AppleSystemUIFont" pointSize="19"/>
-                                <state key="normal" title="Retry">
-                                    <color key="titleColor" red="0.62592999800000004" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                </state>
-                                <connections>
-                                    <action selector="ActionButtonClick:" destination="8JH-LJ-fJ2" eventType="touchUpInside" id="NSY-xa-iLF"/>
-                                </connections>
-                            </button>
-                        </subviews>
-                        <color key="backgroundColor" red="0.62592999800000004" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                        <constraints>
-                            <constraint firstItem="Ngf-Wl-JOC" firstAttribute="top" secondItem="kJa-GA-xzT" secondAttribute="bottom" constant="185" id="3vy-Tz-iqV"/>
-                            <constraint firstItem="Frg-xH-oak" firstAttribute="top" secondItem="kJa-GA-xzT" secondAttribute="bottom" id="BSk-f0-tEB"/>
-                            <constraint firstItem="8iX-Nn-vAm" firstAttribute="top" secondItem="Frg-xH-oak" secondAttribute="bottom" constant="46" id="INf-xg-Cg5"/>
-                            <constraint firstItem="kJa-GA-xzT" firstAttribute="centerX" secondItem="EVF-Qw-y7e" secondAttribute="centerX" id="MKr-ZX-jZP"/>
-                            <constraint firstItem="kJa-GA-xzT" firstAttribute="top" secondItem="9g6-KL-UBy" secondAttribute="bottom" constant="80" id="VSh-a0-iJd"/>
-                            <constraint firstItem="9g6-KL-UBy" firstAttribute="centerX" secondItem="EVF-Qw-y7e" secondAttribute="centerX" id="XMj-u7-kM7"/>
-                            <constraint firstItem="8iX-Nn-vAm" firstAttribute="centerX" secondItem="EVF-Qw-y7e" secondAttribute="centerX" id="Zba-IE-Ffb"/>
-                            <constraint firstItem="8iX-Nn-vAm" firstAttribute="leading" secondItem="EVF-Qw-y7e" secondAttribute="leadingMargin" constant="66" id="b5m-se-zqv"/>
-                            <constraint firstItem="Ngf-Wl-JOC" firstAttribute="top" secondItem="8iX-Nn-vAm" secondAttribute="bottom" constant="73" id="tsl-Dz-KM3"/>
-                            <constraint firstItem="Frg-xH-oak" firstAttribute="centerX" secondItem="EVF-Qw-y7e" secondAttribute="centerX" id="vJu-X5-Wx3"/>
-                            <constraint firstItem="8iX-Nn-vAm" firstAttribute="top" secondItem="kJa-GA-xzT" secondAttribute="bottom" constant="67" id="ydJ-1b-EYS"/>
-                        </constraints>
-                    </view>
-                    <connections>
-                        <outlet property="ActionButton" destination="8iX-Nn-vAm" id="ori-0h-aLb"/>
-                        <outlet property="ErrorLabel" destination="kJa-GA-xzT" id="beC-Ip-BCX"/>
-                        <outlet property="SubLabel" destination="Frg-xH-oak" id="z5f-Xc-QUl"/>
-                    </connections>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="Rly-Tl-A7x" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="31.199999999999999" y="795.6521739130435"/>
         </scene>
         <!--Overview View Controller-->
         <scene sceneID="pqu-k4-Py1">
@@ -262,7 +150,7 @@
                                 <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="axS-4k-Zz7">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="axS-4k-Zz7" customClass="UICountingLabel">
                                 <rect key="frame" x="16" y="228" width="343" height="211"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="190"/>
                                 <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
@@ -279,7 +167,6 @@
                                     <color key="titleColor" red="0.0" green="0.62745098040000002" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 </state>
                                 <connections>
-                                    <action selector="ActionButtonClick:" destination="8JH-LJ-fJ2" eventType="touchUpInside" id="bEz-rT-mdE"/>
                                     <action selector="RescanButtonClick:" destination="PCZ-1K-Bfc" eventType="touchUpInside" id="CGz-kZ-Pvh"/>
                                 </connections>
                             </button>
@@ -293,9 +180,6 @@
                                 <state key="normal" title="Diagnose">
                                     <color key="titleColor" red="0.0" green="0.62745098040000002" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 </state>
-                                <connections>
-                                    <action selector="ActionButtonClick:" destination="8JH-LJ-fJ2" eventType="touchUpInside" id="5cq-D9-FZi"/>
-                                </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="megabits per second" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CUC-5V-EBR">
                                 <rect key="frame" x="16" y="428" width="343" height="40"/>
@@ -366,21 +250,34 @@
                         <outlet property="InternetImage" destination="1mK-Fg-WkW" id="Y8K-lP-kpl"/>
                         <outlet property="RescanButton" destination="ssV-OL-bWf" id="Kza-Ua-i0I"/>
                         <outlet property="SSIDLabel" destination="H9r-kl-whG" id="dy0-mU-jTW"/>
-                        <segue destination="8JH-LJ-fJ2" kind="show" id="1hB-gU-aJe"/>
+                        <segue destination="UKP-9j-Sgk" kind="presentation" modalTransitionStyle="crossDissolve" id="yCx-A5-Kvm"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="nkh-Ve-KCq" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="736.79999999999995" y="36.431784107946029"/>
         </scene>
+        <!--Diagnostic View-->
+        <scene sceneID="uyx-Of-sUy">
+            <objects>
+                <viewController id="UKP-9j-Sgk" customClass="DiagnosticView" customModule="Radar" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="d5O-GQ-5iF"/>
+                        <viewControllerLayoutGuide type="bottom" id="mBi-qk-zLk"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="dlA-rk-4IN">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="1nS-dD-QQh" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1442" y="36"/>
+        </scene>
     </scenes>
     <resources>
         <image name="check.png" width="78" height="78"/>
-        <image name="error.png" width="1024" height="1024"/>
         <image name="wifi.png" width="68" height="47"/>
     </resources>
-    <inferredMetricsTieBreakers>
-        <segue reference="2sc-bS-Byu"/>
-        <segue reference="1hB-gU-aJe"/>
-    </inferredMetricsTieBreakers>
 </document>

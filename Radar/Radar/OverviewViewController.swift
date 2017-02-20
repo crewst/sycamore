@@ -7,18 +7,18 @@
 //
 
 import UIKit
+import UICountingLabel
 
 class OverviewViewController: UIViewController {
 
     @IBOutlet weak var RescanButton: UIButton!
     @IBOutlet weak var DiagnoseButton: UIButton!
-    @IBOutlet weak var BandwidthLabel: UILabel!
+    @IBOutlet weak var BandwidthLabel: UICountingLabel!
     @IBOutlet weak var IPLabel: UILabel!
     @IBOutlet weak var SSIDLabel: UILabel!
     @IBOutlet weak var InternetImage: UIImageView!
     @IBOutlet weak var IPImage: UIImageView!
-    
-    let IPAddress = IP()
+
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -26,36 +26,31 @@ class OverviewViewController: UIViewController {
         RescanButton.layer.cornerRadius = 5
         DiagnoseButton.layer.cornerRadius = 5
         
-        IPLabel.text = IPAddress.getWiFiAddress()
+        BandwidthLabel.method = UILabelCountingMethod.easeOut
+        BandwidthLabel.format = "%d"
+        BandwidthLabel.count(from: 0, to: CGFloat(Globals.shared.bandwidth))
         
-        if loadError.error == "NoIP" {
-            view.backgroundColor = UIColor(red: 220/255.0, green: 0/255.0, blue: 0/255.0, alpha: 1.0)
-            DiagnoseButton.setTitleColor(UIColor(red: 220/255.0, green: 0/255.0, blue: 0/255.0, alpha: 1.0), for: .normal)
-            RescanButton.setTitleColor(UIColor(red: 220/255.0, green: 0/255.0, blue: 0/255.0, alpha: 1.0), for: .normal)
-            IPImage.image = UIImage(named: "warning.png")
-            InternetImage.image = UIImage(named: "warning.png")
-        } else if loadError.error == "NoNet" {
-            view.backgroundColor = UIColor(red: 220/255.0, green: 0/255.0, blue: 0/255.0, alpha: 1.0)
-            DiagnoseButton.setTitleColor(UIColor(red: 220/255.0, green: 0/255.0, blue: 0/255.0, alpha: 1.0), for: .normal)
-            RescanButton.setTitleColor(UIColor(red: 220/255.0, green: 0/255.0, blue: 0/255.0, alpha: 1.0), for: .normal)
-            IPImage.image = UIImage(named: "warning.png")
-            InternetImage.image = UIImage(named: "warning.png")
-            SSIDLabel.text = "No Network"
-            countAnimation(label: BandwidthLabel, initString: "100", termString: "0")
-        }
+//        if loadError.error == "NoIP" {
+//            view.backgroundColor = UIColor(red: 220/255.0, green: 0/255.0, blue: 0/255.0, alpha: 1.0)
+//            DiagnoseButton.setTitleColor(UIColor(red: 220/255.0, green: 0/255.0, blue: 0/255.0, alpha: 1.0), for: .normal)
+//            RescanButton.setTitleColor(UIColor(red: 220/255.0, green: 0/255.0, blue: 0/255.0, alpha: 1.0), for: .normal)
+//            IPImage.image = UIImage(named: "warning.png")
+//            InternetImage.image = UIImage(named: "warning.png")
+//        } else if loadError.error == "NoNet" {
+//            view.backgroundColor = UIColor(red: 220/255.0, green: 0/255.0, blue: 0/255.0, alpha: 1.0)
+//            DiagnoseButton.setTitleColor(UIColor(red: 220/255.0, green: 0/255.0, blue: 0/255.0, alpha: 1.0), for: .normal)
+//            RescanButton.setTitleColor(UIColor(red: 220/255.0, green: 0/255.0, blue: 0/255.0, alpha: 1.0), for: .normal)
+//            IPImage.image = UIImage(named: "warning.png")
+//            InternetImage.image = UIImage(named: "warning.png")
+//            SSIDLabel.text = "No Network"
+//        }
+        
+        
         
         
     }
     
-    func countAnimation(label: UILabel, initString: String, termString: String)
-    {
-        UIView.transition(with: label,
-                                  duration: 2.0,
-                                  options: [.curveEaseOut],
-                                  animations: { () -> Void in
-                                    label.text = initString
-                                    label.text = termString
-        }, completion: nil)
+    override func viewDidAppear(_ animated: Bool) {
         
     }
 
@@ -65,7 +60,7 @@ class OverviewViewController: UIViewController {
     }
     
     @IBAction func RescanButtonClick(_ sender: Any) {
-        self.dismiss(animated: false, completion: {})
+        self.dismiss(animated: true, completion: {})
     }
 
     /*
