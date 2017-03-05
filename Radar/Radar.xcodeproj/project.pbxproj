@@ -936,6 +936,7 @@
 				6FE104A11E5AB1050075A1B9 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

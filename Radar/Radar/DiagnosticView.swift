@@ -10,10 +10,13 @@ import UIKit
 
 class DiagnosticView: UIViewController {
 
+    @IBOutlet weak var DismissalButton: UIButton!
+    @IBOutlet weak var NetStatusLabel: UILabel!
+    
     override func viewDidLoad() {
-        super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
+        
+        DismissalButton.layer.cornerRadius = 5
+        
     }
 
     override func didReceiveMemoryWarning() {
@@ -22,6 +25,10 @@ class DiagnosticView: UIViewController {
     }
     
 
+    @IBAction func DismissView(_ sender: Any) {
+        self.dismiss(animated: true, completion: nil)
+        
+    }
     /*
     // MARK: - Navigation
 

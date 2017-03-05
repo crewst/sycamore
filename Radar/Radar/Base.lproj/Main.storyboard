@@ -292,12 +292,64 @@
                     <view key="view" contentMode="scaleToFill" id="dlA-rk-4IN">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Diagnostics" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2r5-d2-u5Q">
+                                <rect key="frame" x="16" y="20" width="300" height="46"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="38"/>
+                                <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="No network information available." textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WKK-T0-e2e">
+                                <rect key="frame" x="16" y="105" width="378" height="24"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="x6e-9S-joj">
+                                <rect key="frame" x="324" y="22" width="70" height="43"/>
+                                <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="43" id="LOE-61-25V"/>
+                                    <constraint firstAttribute="width" constant="70" id="OD9-sa-rEl"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="22"/>
+                                <color key="tintColor" red="0.32549019610000002" green="0.69411764710000001" blue="0.97254901959999995" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                <state key="normal" title="Done"/>
+                                <connections>
+                                    <action selector="DismissView:" destination="UKP-9j-Sgk" eventType="touchUpInside" id="qhN-hR-B4s"/>
+                                </connections>
+                            </button>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Fds-ME-kaW">
+                                <rect key="frame" x="16" y="86" width="383" height="1"/>
+                                <color key="backgroundColor" red="1" green="1" blue="1" alpha="0.5" colorSpace="custom" customColorSpace="displayP3"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="1" id="1Th-6m-tUS"/>
+                                </constraints>
+                            </view>
+                        </subviews>
                         <color key="backgroundColor" red="0.32549019610000002" green="0.69411764710000001" blue="0.97254901959999995" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                        <constraints>
+                            <constraint firstAttribute="trailingMargin" secondItem="WKK-T0-e2e" secondAttribute="trailing" id="0cj-ke-AYk"/>
+                            <constraint firstItem="Fds-ME-kaW" firstAttribute="top" secondItem="2r5-d2-u5Q" secondAttribute="bottom" constant="20" id="1EV-HN-vMx"/>
+                            <constraint firstItem="2r5-d2-u5Q" firstAttribute="leading" secondItem="dlA-rk-4IN" secondAttribute="leadingMargin" constant="-4" id="6TD-uJ-Yvs"/>
+                            <constraint firstAttribute="trailing" secondItem="Fds-ME-kaW" secondAttribute="trailing" constant="15" id="AP5-4u-DJs"/>
+                            <constraint firstItem="Fds-ME-kaW" firstAttribute="leading" secondItem="dlA-rk-4IN" secondAttribute="leadingMargin" constant="-4" id="GOU-Ds-EAK"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="x6e-9S-joj" secondAttribute="trailing" id="Hf6-gP-dOd"/>
+                            <constraint firstItem="x6e-9S-joj" firstAttribute="leading" secondItem="2r5-d2-u5Q" secondAttribute="trailing" constant="8" id="KDT-Im-zib"/>
+                            <constraint firstItem="2r5-d2-u5Q" firstAttribute="top" secondItem="d5O-GQ-5iF" secondAttribute="bottom" id="OtP-KA-Pyh"/>
+                            <constraint firstItem="WKK-T0-e2e" firstAttribute="top" secondItem="2r5-d2-u5Q" secondAttribute="bottom" constant="39" id="Sxr-i6-uGv"/>
+                            <constraint firstItem="WKK-T0-e2e" firstAttribute="leading" secondItem="dlA-rk-4IN" secondAttribute="leadingMargin" constant="-4" id="WFY-cU-pdc"/>
+                            <constraint firstItem="x6e-9S-joj" firstAttribute="top" secondItem="d5O-GQ-5iF" secondAttribute="bottom" constant="2" id="w5d-ca-v4I"/>
+                        </constraints>
                     </view>
+                    <connections>
+                        <outlet property="DismissalButton" destination="x6e-9S-joj" id="QaH-vS-Dah"/>
+                        <outlet property="NetStatusLabel" destination="WKK-T0-e2e" id="ATt-VM-0Lj"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="1nS-dD-QQh" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1442" y="36"/>
+            <point key="canvasLocation" x="1439.1304347826087" y="35.054347826086961"/>
         </scene>
     </scenes>
     <resources>

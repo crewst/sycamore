@@ -105,6 +105,8 @@ class OverviewViewController: UIViewController, UIPickerViewDataSource, UIPicker
         default:
             return
         }
+        Globals.shared.speedUnits = units
+        print("Changed units to: " + Globals.shared.speedUnits)
     }
     
     

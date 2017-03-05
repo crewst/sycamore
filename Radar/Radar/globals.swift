@@ -17,4 +17,6 @@ final class Globals {
     var bandwidth: Int!
     var latency: Int!
     var DownComplete: Bool!
+    var externalIP: String!
+    var speedUnits: String! = "megabits per second"
 }

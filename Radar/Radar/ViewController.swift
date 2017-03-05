@@ -21,8 +21,6 @@ class ViewController: UIViewController {
     
     override func viewDidLoad() {
         
-        print("Good print")
-        
         progressLabel.format = "%d%%"
         
     }
@@ -37,6 +35,12 @@ class ViewController: UIViewController {
         let IPmodule = IP()
         Globals.shared.IPaddress = IPmodule.getWiFiAddress()
         Globals.shared.iAccess = Reachability.isConnectedToNetwork()
+        
+        let url = URL(string: "https://api.ipify.org/")
+        let ipAddress = try? String(contentsOf: url!, encoding: String.Encoding.utf8)
+        Globals.shared.externalIP = ipAddress
+        print("External IP: " + Globals.shared.externalIP)
+
         
         
         progressLabel.count(from: 0, to: 85, withDuration: 1)
@@ -62,8 +66,6 @@ class ViewController: UIViewController {
     
     func testSpeed()  {
         
-        print("Call successful")
-        
         let startTime = Date()
         
         let url = URL(string: "https://dl.dropboxusercontent.com/s/yjv93wu1mprq2nw/LargeTestFile")
@@ -75,7 +77,7 @@ class ViewController: UIViewController {
             
             guard error == nil && data != nil else{
                 
-                print("connection error or data is nill")
+                print("Connection error or data is nil")
                 
                 Globals.shared.iAccess = false
                 
@@ -85,7 +87,7 @@ class ViewController: UIViewController {
             
             guard resp != nil else{
                 
-                print("respons is nill")
+                print("Response is nil")
                 
                 Globals.shared.DownComplete = true
                 return
@@ -94,13 +96,13 @@ class ViewController: UIViewController {
             
             let length  = CGFloat( (resp?.expectedContentLength)!) / 1000000.0
             
-            print(length)
+            print("Test download size: \(length) MB")
             
             
             
             let elapsed = CGFloat( Date().timeIntervalSince(startTime))
             
-            print("elapsed: \(elapsed)")
+            print("Elapsed download time: \(elapsed)")
             
             Globals.shared.bandwidth = Int((length/elapsed) * 8)
             
