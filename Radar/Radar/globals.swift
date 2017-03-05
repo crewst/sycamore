@@ -1,20 +1,20 @@
 //
-//  globals.swift
+//  Globals.swift
 //  Radar
 //
-//  Created by Thomas Crews on 2/1/17.
+//  Created by Thomas Crews on 2/19/17.
 //  Copyright © 2017 Thomas Crews. All rights reserved.
 //
 
 import Foundation
 
-class Globals {
-    var error:String
-    init(error:String) {
-        self.error = error
-    }
+final class Globals {
+    static let shared = Globals()
+    
+    var currentSSID: String!
+    var IPaddress: String!
+    var iAccess: Bool!
+    var bandwidth: Int!
+    var latency: Int!
+    var DownComplete: Bool!
 }
-var loadError = Globals(error:"UNDEF")
-
-
-// S.D.G.

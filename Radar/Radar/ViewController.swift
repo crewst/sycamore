@@ -77,12 +77,17 @@ class ViewController: UIViewController {
                 
                 print("connection error or data is nill")
                 
+                Globals.shared.iAccess = false
+                
+                Globals.shared.DownComplete = true
                 return
             }
             
             guard resp != nil else{
                 
                 print("respons is nill")
+                
+                Globals.shared.DownComplete = true
                 return
             }
             
