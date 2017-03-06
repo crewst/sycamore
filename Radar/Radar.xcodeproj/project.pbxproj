@@ -28,6 +28,7 @@
 		6F9A333F1E4581C5003627FB /* check.png in Resources */ = {isa = PBXBuildFile; fileRef = 6F9A333D1E4581C5003627FB /* check.png */; };
 		6F9A33401E4581C5003627FB /* wifi.png in Resources */ = {isa = PBXBuildFile; fileRef = 6F9A333E1E4581C5003627FB /* wifi.png */; };
 		6FA202901E569686002DD2F3 /* UICountingLabel.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6FA2028F1E569686002DD2F3 /* UICountingLabel.framework */; };
+		6FBD8F871E6CEE5E0092AB94 /* specs.png in Resources */ = {isa = PBXBuildFile; fileRef = 6FBD8F861E6CEE5E0092AB94 /* specs.png */; };
 		6FE104891E5A6A920075A1B9 /* DiagnosticView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FE104881E5A6A920075A1B9 /* DiagnosticView.swift */; };
 		6FE1048D1E5AA48B0075A1B9 /* Globals.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FE1048C1E5AA48B0075A1B9 /* Globals.swift */; };
 		6FE104941E5AB1050075A1B9 /* NotificationCenter.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6FE104931E5AB1050075A1B9 /* NotificationCenter.framework */; };
@@ -110,6 +111,7 @@
 		6F9A333D1E4581C5003627FB /* check.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = check.png; path = res/check.png; sourceTree = "<group>"; };
 		6F9A333E1E4581C5003627FB /* wifi.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = wifi.png; path = res/wifi.png; sourceTree = "<group>"; };
 		6FA2028F1E569686002DD2F3 /* UICountingLabel.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UICountingLabel.framework; path = "../../../../../../../Developer/Xcode/DerivedData/Radar-gfjsvxpavlwkiaacuwozjckhaalz/Build/Products/Debug-iphonesimulator/UICountingLabel/UICountingLabel.framework"; sourceTree = "<group>"; };
+		6FBD8F861E6CEE5E0092AB94 /* specs.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = specs.png; path = res/specs.png; sourceTree = "<group>"; };
 		6FE104881E5A6A920075A1B9 /* DiagnosticView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DiagnosticView.swift; sourceTree = "<group>"; };
 		6FE1048C1E5AA48B0075A1B9 /* Globals.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Globals.swift; sourceTree = "<group>"; };
 		6FE104921E5AB1050075A1B9 /* RadarWidget.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = RadarWidget.appex; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -164,6 +166,7 @@
 		6F6D076F1E270C780019AF00 = {
 			isa = PBXGroup;
 			children = (
+				6FBD8F861E6CEE5E0092AB94 /* specs.png */,
 				6F57332B1E4B9C2000C86881 /* warning.png */,
 				6F9A333D1E4581C5003627FB /* check.png */,
 				6F9A333E1E4581C5003627FB /* wifi.png */,
@@ -413,6 +416,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6FBD8F871E6CEE5E0092AB94 /* specs.png in Resources */,
 				6F57332C1E4B9C2000C86881 /* warning.png in Resources */,
 				6F9A333F1E4581C5003627FB /* check.png in Resources */,
 				6F9A33401E4581C5003627FB /* wifi.png in Resources */,

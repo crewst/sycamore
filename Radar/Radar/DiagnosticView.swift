@@ -9,34 +9,24 @@
 import UIKit
 
 class DiagnosticView: UIViewController {
-
+    
+    // MARK: UI Outlets
+    
     @IBOutlet weak var DismissalButton: UIButton!
     @IBOutlet weak var NetStatusLabel: UILabel!
     
-    override func viewDidLoad() {
-        
-        DismissalButton.layer.cornerRadius = 5
-        
-    }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
     
-
+    // MARK: UI Actions
+    
     @IBAction func DismissView(_ sender: Any) {
         self.dismiss(animated: true, completion: nil)
-        
     }
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+    
+    
+    // MARK: Overrides
+    
+    override func viewDidLoad() {
+        DismissalButton.layer.cornerRadius = 5
     }
-    */
-
+    
 }

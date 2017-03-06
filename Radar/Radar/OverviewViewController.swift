@@ -11,6 +11,8 @@ import UICountingLabel
 
 class OverviewViewController: UIViewController, UIPickerViewDataSource, UIPickerViewDelegate {
 
+    // MARK: UI Outlets
+    
     @IBOutlet weak var RescanButton: UIButton!
     @IBOutlet weak var DiagnoseButton: UIButton!
     @IBOutlet weak var BandwidthLabel: UICountingLabel!
@@ -22,8 +24,32 @@ class OverviewViewController: UIViewController, UIPickerViewDataSource, UIPicker
     @IBOutlet weak var UnitPicker: UIPickerView!
     @IBOutlet weak var SSIDImage: UIImageView!
     
+    
+    // MARK: Global Declarations
+    
     let UnitPickerData = ["megabits per second","megabytes per second","kilobits per second","kilobytes per second"]
+    
+    let startupVC = ViewController()
+    
+    
+    // MARK: UI Actions
+    
+    // FIXME: Implement async to prevent UI lag
+    
+    @IBAction func RescanButtonClick(_ sender: Any) {
+        startupVC.reloadVC()
+        self.viewDidLoad()
+    }
+    
+    // TODO: Add animation
+    
+    @IBAction func UnitButtonPress(_ sender: Any) {
+        UnitPicker.isHidden = false
+        UnitButton.isHidden = true
+    }
+    
 
+    // MARK: Overrides
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -46,19 +72,22 @@ class OverviewViewController: UIViewController, UIPickerViewDataSource, UIPicker
             loadError(code: 3)
 
         } else {
-            BandwidthLabel.count(from: 0, to: CGFloat(Globals.shared.bandwidth))
+            BandwidthLabel.count(from: BandwidthLabel.currentValue(), to: CGFloat((Globals.shared.bandwidth) / 1000))
             IPLabel.text = Globals.shared.IPaddress
             SSIDLabel.text = Globals.shared.currentSSID
         }
         
     }
     
+    
+    //MARK: Custom Functions
+    
     func loadError(code: Int) {
         
         view.backgroundColor = UIColor(red: 190/255.0, green: 0/255.0, blue: 0/255.0, alpha: 1.0)
         DiagnoseButton.setTitleColor(UIColor(red: 190/255.0, green: 0/255.0, blue: 0/255.0, alpha: 1.0), for: .normal)
         RescanButton.setTitleColor(UIColor(red: 190/255.0, green: 0/255.0, blue: 0/255.0, alpha: 1.0), for: .normal)
-        BandwidthLabel.count(from: CGFloat(Globals.shared.bandwidth), to: 0)
+        BandwidthLabel.count(from: BandwidthLabel.currentValue(), to: 0)
         Globals.shared.bandwidth = 0
         
         switch code {
@@ -83,25 +112,17 @@ class OverviewViewController: UIViewController, UIPickerViewDataSource, UIPicker
         
     }
     
-    @IBAction func RescanButtonClick(_ sender: Any) {
-        self.dismiss(animated: true, completion: {})
-    }
-    
-    @IBAction func UnitButtonPress(_ sender: Any) {
-        UnitPicker.isHidden = false
-        UnitButton.isHidden = true
-    }
     
     func updateBandwidth(units: String) {
         switch units {
         case "megabits per second":
-            BandwidthLabel.count(from: BandwidthLabel.currentValue(), to: CGFloat(Globals.shared.bandwidth))
+            BandwidthLabel.count(from: BandwidthLabel.currentValue(), to: CGFloat(Globals.shared.bandwidth) / 1000)
             case "megabytes per second":
-            BandwidthLabel.count(from: BandwidthLabel.currentValue(), to: CGFloat((Globals.shared.bandwidth)/8))
+            BandwidthLabel.count(from: BandwidthLabel.currentValue(), to: CGFloat((Globals.shared.bandwidth) / 8000))
             case "kilobits per second":
-            BandwidthLabel.count(from: BandwidthLabel.currentValue(), to: CGFloat((Globals.shared.bandwidth)*1000))
+            BandwidthLabel.count(from: BandwidthLabel.currentValue(), to: CGFloat(Globals.shared.bandwidth))
             case "kilobytes per second":
-            BandwidthLabel.count(from: BandwidthLabel.currentValue(), to: CGFloat(((Globals.shared.bandwidth)*1000)/8))
+            BandwidthLabel.count(from: BandwidthLabel.currentValue(), to: CGFloat((Globals.shared.bandwidth) / 8))
         default:
             return
         }
@@ -110,7 +131,7 @@ class OverviewViewController: UIViewController, UIPickerViewDataSource, UIPicker
     }
     
     
-    // pickerView Data Sources
+    // MARK: pickerView Data Control
     
     func numberOfComponents(in pickerView: UIPickerView) -> Int {
         return 1
@@ -139,16 +160,7 @@ class OverviewViewController: UIViewController, UIPickerViewDataSource, UIPicker
         pickerLabel.attributedText = myTitle
         return pickerLabel
     }
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
+    
 
 }
 

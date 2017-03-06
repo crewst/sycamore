@@ -13,11 +13,14 @@ import UICountingLabel
 
 class ViewController: UIViewController {
     
+    // MARK: UI Outlets
+    
     @IBOutlet weak var TitleLabel: UILabel!
     @IBOutlet weak var MainProgress: KDCircularProgress!
     @IBOutlet weak var progressLabel: UICountingLabel!
     
     
+    //MARK: Overrides
     
     override func viewDidLoad() {
         
@@ -59,9 +62,36 @@ class ViewController: UIViewController {
         
     }
     
+    // TODO: To be removed or commented
+    
     override func viewWillAppear(_ animated: Bool) {
         MainProgress.angle = 0
         progressLabel.text = "0%"
+    }
+    
+    
+    // MARK: Custom Methods
+    
+    func reloadVC() {
+        print("User requested reload.")
+        
+        Globals.shared.DownComplete = false
+        
+        Globals.shared.currentSSID = SSID.fetchSSIDInfo()
+        let IPmodule = IP()
+        Globals.shared.IPaddress = IPmodule.getWiFiAddress()
+        Globals.shared.iAccess = Reachability.isConnectedToNetwork()
+        
+        let url = URL(string: "https://api.ipify.org/")
+        let ipAddress = try? String(contentsOf: url!, encoding: String.Encoding.utf8)
+        Globals.shared.externalIP = ipAddress
+        print("External IP: " + Globals.shared.externalIP)
+        
+        testSpeed()
+        while Globals.shared.DownComplete == false {
+            
+        }
+
     }
     
     func testSpeed()  {
@@ -104,7 +134,7 @@ class ViewController: UIViewController {
             
             print("Elapsed download time: \(elapsed)")
             
-            Globals.shared.bandwidth = Int((length/elapsed) * 8)
+            Globals.shared.bandwidth = Int((length/elapsed) * 8000)
             
             Globals.shared.DownComplete = true
             
