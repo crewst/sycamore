@@ -29,6 +29,8 @@
 		6F9A33401E4581C5003627FB /* wifi.png in Resources */ = {isa = PBXBuildFile; fileRef = 6F9A333E1E4581C5003627FB /* wifi.png */; };
 		6FA202901E569686002DD2F3 /* UICountingLabel.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6FA2028F1E569686002DD2F3 /* UICountingLabel.framework */; };
 		6FBD8F871E6CEE5E0092AB94 /* specs.png in Resources */ = {isa = PBXBuildFile; fileRef = 6FBD8F861E6CEE5E0092AB94 /* specs.png */; };
+		6FBD8F891E6DFC250092AB94 /* StandardOut.strings in Resources */ = {isa = PBXBuildFile; fileRef = 6FBD8F881E6DFC250092AB94 /* StandardOut.strings */; };
+		6FBD8F8B1E6E761C0092AB94 /* appSettings.plist in Resources */ = {isa = PBXBuildFile; fileRef = 6FBD8F8A1E6E761C0092AB94 /* appSettings.plist */; };
 		6FE104891E5A6A920075A1B9 /* DiagnosticView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FE104881E5A6A920075A1B9 /* DiagnosticView.swift */; };
 		6FE1048D1E5AA48B0075A1B9 /* Globals.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FE1048C1E5AA48B0075A1B9 /* Globals.swift */; };
 		6FE104941E5AB1050075A1B9 /* NotificationCenter.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6FE104931E5AB1050075A1B9 /* NotificationCenter.framework */; };
@@ -112,6 +114,8 @@
 		6F9A333E1E4581C5003627FB /* wifi.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = wifi.png; path = res/wifi.png; sourceTree = "<group>"; };
 		6FA2028F1E569686002DD2F3 /* UICountingLabel.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UICountingLabel.framework; path = "../../../../../../../Developer/Xcode/DerivedData/Radar-gfjsvxpavlwkiaacuwozjckhaalz/Build/Products/Debug-iphonesimulator/UICountingLabel/UICountingLabel.framework"; sourceTree = "<group>"; };
 		6FBD8F861E6CEE5E0092AB94 /* specs.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = specs.png; path = res/specs.png; sourceTree = "<group>"; };
+		6FBD8F881E6DFC250092AB94 /* StandardOut.strings */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.strings; path = StandardOut.strings; sourceTree = "<group>"; };
+		6FBD8F8A1E6E761C0092AB94 /* appSettings.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = appSettings.plist; sourceTree = "<group>"; };
 		6FE104881E5A6A920075A1B9 /* DiagnosticView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DiagnosticView.swift; sourceTree = "<group>"; };
 		6FE1048C1E5AA48B0075A1B9 /* Globals.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Globals.swift; sourceTree = "<group>"; };
 		6FE104921E5AB1050075A1B9 /* RadarWidget.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = RadarWidget.appex; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -195,6 +199,7 @@
 		6F6D077A1E270C790019AF00 /* Radar */ = {
 			isa = PBXGroup;
 			children = (
+				6FBD8F881E6DFC250092AB94 /* StandardOut.strings */,
 				6FE1048C1E5AA48B0075A1B9 /* Globals.swift */,
 				6F6316651E48BB2200988A5A /* IP.swift */,
 				6F6316671E48BE4000988A5A /* Radar-Bridging-Header.h */,
@@ -202,6 +207,7 @@
 				6F6D077B1E270C790019AF00 /* AppDelegate.swift */,
 				6F6D077D1E270C790019AF00 /* ViewController.swift */,
 				6F6D077F1E270C790019AF00 /* Main.storyboard */,
+				6FBD8F8A1E6E761C0092AB94 /* appSettings.plist */,
 				6FE104881E5A6A920075A1B9 /* DiagnosticView.swift */,
 				6F5D4E041E4237AB00DF3BCD /* res */,
 				6F8693671E422C410016581D /* SSID.swift */,
@@ -422,8 +428,10 @@
 				6F9A33401E4581C5003627FB /* wifi.png in Resources */,
 				6F6D07861E270C790019AF00 /* LaunchScreen.storyboard in Resources */,
 				6F5D4E051E4237AB00DF3BCD /* res in Resources */,
+				6FBD8F891E6DFC250092AB94 /* StandardOut.strings in Resources */,
 				6F481FE21E425D9B00558720 /* error.png in Resources */,
 				6F6D07831E270C790019AF00 /* Assets.xcassets in Resources */,
+				6FBD8F8B1E6E761C0092AB94 /* appSettings.plist in Resources */,
 				6F6D07811E270C790019AF00 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

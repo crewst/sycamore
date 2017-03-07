@@ -72,6 +72,10 @@ class OverviewViewController: UIViewController, UIPickerViewDataSource, UIPicker
             loadError(code: 3)
 
         } else {
+            view.backgroundColor = UIColor(red: 0/255, green: 160/255, blue: 0/255, alpha: 1.0)
+            DiagnoseButton.setTitleColor(UIColor(red: 0/255.0, green: 160/255.0, blue: 0/255.0, alpha: 1.0), for: .normal)
+            RescanButton.setTitleColor(UIColor(red: 0/255.0, green: 160/255.0, blue: 0/255.0, alpha: 1.0), for: .normal)
+
             BandwidthLabel.count(from: BandwidthLabel.currentValue(), to: CGFloat((Globals.shared.bandwidth) / 1000))
             IPLabel.text = Globals.shared.IPaddress
             SSIDLabel.text = Globals.shared.currentSSID
