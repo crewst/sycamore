@@ -8,12 +8,12 @@
 
 import UIKit
 import UICountingLabel
+import Foundation
 
 class OverviewViewController: UIViewController, UIPickerViewDataSource, UIPickerViewDelegate {
-
-    // MARK: UI Outlets
     
-    @IBOutlet weak var RescanButton: UIButton!
+    
+    // MARK: UI Outlets
     @IBOutlet weak var DiagnoseButton: UIButton!
     @IBOutlet weak var BandwidthLabel: UICountingLabel!
     @IBOutlet weak var IPLabel: UILabel!
@@ -31,30 +31,29 @@ class OverviewViewController: UIViewController, UIPickerViewDataSource, UIPicker
     
     let startupVC = ViewController()
     
+    let settings = UserDefaults.standard
+    
+    var avgBandwidthArray = [0, 0, 0, 0, 0]
+    var avgBandwidth = 0
+    var iterationCount = 0
+    
+    var reloadTimer: Timer!
+    
+    var isFirstRun = true
+    
     
     // MARK: UI Actions
-    
-    // FIXME: Implement async to prevent UI lag
-    
-    @IBAction func RescanButtonClick(_ sender: Any) {
-        startupVC.reloadVC()
-        self.viewDidLoad()
-    }
-    
-    // TODO: Add animation
     
     @IBAction func UnitButtonPress(_ sender: Any) {
         UnitPicker.isHidden = false
         UnitButton.isHidden = true
     }
     
-
+    
     // MARK: Overrides
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        RescanButton.layer.cornerRadius = 5
         DiagnoseButton.layer.cornerRadius = 5
         UnitButton.layer.cornerRadius = 5
         UnitPicker.setValue(UIColor.white, forKey: "textColor")
@@ -63,75 +62,141 @@ class OverviewViewController: UIViewController, UIPickerViewDataSource, UIPicker
         BandwidthLabel.format = "%d"
         BandwidthLabel.adjustsFontSizeToFitWidth = true
         
-        
-        if Globals.shared.currentSSID == "didntGoIn" {
-            loadError(code: 1)
-        } else if Globals.shared.iAccess == false {
-            loadError(code: 2)
-        } else if Globals.shared.IPaddress == nil {
-            loadError(code: 3)
-
-        } else {
-            view.backgroundColor = UIColor(red: 0/255, green: 160/255, blue: 0/255, alpha: 1.0)
-            DiagnoseButton.setTitleColor(UIColor(red: 0/255.0, green: 160/255.0, blue: 0/255.0, alpha: 1.0), for: .normal)
-            RescanButton.setTitleColor(UIColor(red: 0/255.0, green: 160/255.0, blue: 0/255.0, alpha: 1.0), for: .normal)
-
-            BandwidthLabel.count(from: BandwidthLabel.currentValue(), to: CGFloat((Globals.shared.bandwidth) / 1000))
-            IPLabel.text = Globals.shared.IPaddress
-            SSIDLabel.text = Globals.shared.currentSSID
+        for i in 0...4 {
+            avgBandwidthArray[i] = Globals.shared.bandwidth
+            print(String(avgBandwidthArray[i]))
         }
+        
+        avgBandwidth = Globals.shared.bandwidth
+        
+        reloadTimer = Timer.scheduledTimer(timeInterval: 5.0, target: self, selector: #selector(backgroundRescan), userInfo: nil, repeats: true)
+        
+        updateBandwidth()
+        
+        loadVC()
         
     }
     
     
     //MARK: Custom Functions
     
+    func backgroundRescan() {
+        DispatchQueue.global(qos: .background).async {
+            self.loadVC()
+            
+            DispatchQueue.main.async {
+                self.refreshUI()
+            }
+        }
+    }
+    
+    
     func loadError(code: Int) {
         
         view.backgroundColor = UIColor(red: 190/255.0, green: 0/255.0, blue: 0/255.0, alpha: 1.0)
         DiagnoseButton.setTitleColor(UIColor(red: 190/255.0, green: 0/255.0, blue: 0/255.0, alpha: 1.0), for: .normal)
-        RescanButton.setTitleColor(UIColor(red: 190/255.0, green: 0/255.0, blue: 0/255.0, alpha: 1.0), for: .normal)
         BandwidthLabel.count(from: BandwidthLabel.currentValue(), to: 0)
         Globals.shared.bandwidth = 0
         
         switch code {
         case 1:
+            print("error1")
             SSIDImage.alpha = 0.5
             IPImage.image = UIImage(named: "warning.png")
             InternetImage.image = UIImage(named: "warning.png")
             SSIDLabel.text = "No Network"
         case 2:
+            print("error2")
             InternetImage.image = UIImage(named: "warning.png")
             IPLabel.text = Globals.shared.IPaddress
         case 3:
+            print("error3")
             IPImage.image = UIImage(named: "warning.png")
             InternetImage.image = UIImage(named: "warning.png")
         default:
+            print("error4")
             SSIDImage.alpha = 0.5
             IPImage.image = UIImage(named: "warning.png")
             InternetImage.image = UIImage(named: "warning.png")
             SSIDLabel.text = "No Network"
         }
-
-        
     }
     
     
-    func updateBandwidth(units: String) {
-        switch units {
+    func updateBandwidth() {
+        switch Globals.shared.speedUnits {
         case "megabits per second":
-            BandwidthLabel.count(from: BandwidthLabel.currentValue(), to: CGFloat(Globals.shared.bandwidth) / 1000)
-            case "megabytes per second":
-            BandwidthLabel.count(from: BandwidthLabel.currentValue(), to: CGFloat((Globals.shared.bandwidth) / 8000))
-            case "kilobits per second":
-            BandwidthLabel.count(from: BandwidthLabel.currentValue(), to: CGFloat(Globals.shared.bandwidth))
-            case "kilobytes per second":
-            BandwidthLabel.count(from: BandwidthLabel.currentValue(), to: CGFloat((Globals.shared.bandwidth) / 8))
+            BandwidthLabel.count(from: BandwidthLabel.currentValue(), to: CGFloat((avgBandwidth) / 1000))
+            UnitPicker.selectRow(0, inComponent: 0, animated: false)
+        case "megabytes per second":
+            BandwidthLabel.count(from: BandwidthLabel.currentValue(), to: CGFloat((avgBandwidth) / 8000))
+            UnitPicker.selectRow(1, inComponent: 0, animated: false)
+        case "kilobits per second":
+            BandwidthLabel.count(from: BandwidthLabel.currentValue(), to: CGFloat(avgBandwidth))
+            UnitPicker.selectRow(2, inComponent: 0, animated: false)
+        case "kilobytes per second":
+            BandwidthLabel.count(from: BandwidthLabel.currentValue(), to: CGFloat((avgBandwidth) / 8))
+            UnitPicker.selectRow(3, inComponent: 0, animated: false)
         default:
             return
         }
-        Globals.shared.speedUnits = units
-        print("Changed units to: " + Globals.shared.speedUnits)
+    }
+    
+    
+    func loadVC() {
+        
+        if isFirstRun == false {
+            print("\nUser requested reload.")
+            
+            Globals.shared.DownComplete = false
+            
+            Globals.shared.currentSSID = Networking.fetchSSIDInfo()
+            Globals.shared.IPaddress = Networking.getWiFiAddress()
+            Globals.shared.iAccess = Networking.isConnectedToNetwork()
+            Globals.shared.externalIP = Networking.getExternalAddress()
+            
+            print("External IP: " + Globals.shared.externalIP)
+            
+            Networking.testSpeed()
+            while Globals.shared.DownComplete == false {
+            }
+        } else {
+            refreshUI()
+            print("first run")
+            isFirstRun = false
+        }
+        
+        avgBandwidthArray[iterationCount] = Globals.shared.bandwidth
+        
+        avgBandwidth = Int((avgBandwidthArray[0] + avgBandwidthArray[1] + avgBandwidthArray[2] + avgBandwidthArray[3] + avgBandwidthArray[4]) / 5)
+        
+        updateBandwidth()
+        
+        if iterationCount == 4 {
+            iterationCount = 0
+        } else {
+            iterationCount += 1
+        }
+        
+        print(Globals.shared.currentSSID)
+        
+    }
+    
+    func refreshUI() {
+        if Globals.shared.currentSSID == "didntGoIn" {
+            loadError(code: 1)
+        } else if Globals.shared.iAccess == false {
+            loadError(code: 2)
+        } else if Globals.shared.IPaddress == nil {
+            loadError(code: 3)
+            
+        } else {
+            view.backgroundColor = UIColor(red: 0/255, green: 160/255, blue: 0/255, alpha: 1.0)
+            DiagnoseButton.setTitleColor(UIColor(red: 0/255.0, green: 160/255.0, blue: 0/255.0, alpha: 1.0), for: .normal)
+            IPLabel.text = Globals.shared.IPaddress
+            SSIDLabel.text = Globals.shared.currentSSID
+        }
+        
     }
     
     
@@ -149,10 +214,13 @@ class OverviewViewController: UIViewController, UIPickerViewDataSource, UIPicker
     }
     
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
-        UnitButton.setTitle(UnitPickerData[row], for: .normal)
         UnitPicker.isHidden = true
         UnitButton.isHidden = false
-        updateBandwidth(units: UnitPickerData[row])
+        Globals.shared.speedUnits = UnitPickerData[row]
+        settings.set(UnitPickerData[row], forKey: "measurementUnits")
+        UnitButton.setTitle(Globals.shared.speedUnits, for: .normal)
+        print("Changed units to: " + Globals.shared.speedUnits)
+        updateBandwidth()
     }
     
     func pickerView(_ pickerView: UIPickerView, viewForRow row: Int, forComponent component: Int, reusing view: UIView?) -> UIView {
@@ -165,7 +233,7 @@ class OverviewViewController: UIViewController, UIPickerViewDataSource, UIPicker
         return pickerLabel
     }
     
-
+    
 }
 
 
