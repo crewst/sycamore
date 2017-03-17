@@ -55,6 +55,8 @@ class DiagnosticView: UIViewController {
         RecommendationLabel2.text = ""
         RecommendationLabel3.text = ""
         
+        NetStatusLabel.adjustsFontSizeToFitWidth = true
+        
         SSIDlabel.adjustsFontSizeToFitWidth = true
         DataUseLabel.adjustsFontSizeToFitWidth = true
         BSSIDlabel.adjustsFontSizeToFitWidth = true
@@ -96,7 +98,7 @@ class DiagnosticView: UIViewController {
             LatencyLabel.text = "N/A"
             ChannelLabel.text = "N/A"
             
-            NetStatusLabel.text = 
+            NetStatusLabel.text = NSLocalizedString("STATUS_WIFI_DISCONNECTED", comment: "")
         }
         
         
