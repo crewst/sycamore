@@ -26,7 +26,7 @@
 		6F9A33401E4581C5003627FB /* wifi.png in Resources */ = {isa = PBXBuildFile; fileRef = 6F9A333E1E4581C5003627FB /* wifi.png */; };
 		6FA202901E569686002DD2F3 /* UICountingLabel.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6FA2028F1E569686002DD2F3 /* UICountingLabel.framework */; };
 		6FBD8F871E6CEE5E0092AB94 /* specs.png in Resources */ = {isa = PBXBuildFile; fileRef = 6FBD8F861E6CEE5E0092AB94 /* specs.png */; };
-		6FBD8F891E6DFC250092AB94 /* StandardOut.strings in Resources */ = {isa = PBXBuildFile; fileRef = 6FBD8F881E6DFC250092AB94 /* StandardOut.strings */; };
+		6FBD8F891E6DFC250092AB94 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 6FBD8F881E6DFC250092AB94 /* Localizable.strings */; };
 		6FBD8F8D1E7067F80092AB94 /* 256.png in Resources */ = {isa = PBXBuildFile; fileRef = 6FBD8F8C1E7067F80092AB94 /* 256.png */; };
 		6FBD8F8F1E7068420092AB94 /* 512white.png in Resources */ = {isa = PBXBuildFile; fileRef = 6FBD8F8E1E7068420092AB94 /* 512white.png */; };
 		6FBD8F911E706E2A0092AB94 /* Networking.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FBD8F901E706E2A0092AB94 /* Networking.swift */; };
@@ -110,7 +110,7 @@
 		6F9A333E1E4581C5003627FB /* wifi.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = wifi.png; path = res/wifi.png; sourceTree = "<group>"; };
 		6FA2028F1E569686002DD2F3 /* UICountingLabel.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UICountingLabel.framework; path = "../../../../../../../Developer/Xcode/DerivedData/Radar-gfjsvxpavlwkiaacuwozjckhaalz/Build/Products/Debug-iphonesimulator/UICountingLabel/UICountingLabel.framework"; sourceTree = "<group>"; };
 		6FBD8F861E6CEE5E0092AB94 /* specs.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = specs.png; path = res/specs.png; sourceTree = "<group>"; };
-		6FBD8F881E6DFC250092AB94 /* StandardOut.strings */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.strings; path = StandardOut.strings; sourceTree = "<group>"; };
+		6FBD8F881E6DFC250092AB94 /* Localizable.strings */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.strings; path = Localizable.strings; sourceTree = "<group>"; };
 		6FBD8F8C1E7067F80092AB94 /* 256.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 256.png; sourceTree = "<group>"; };
 		6FBD8F8E1E7068420092AB94 /* 512white.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 512white.png; sourceTree = "<group>"; };
 		6FBD8F901E706E2A0092AB94 /* Networking.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Networking.swift; sourceTree = "<group>"; };
@@ -121,6 +121,7 @@
 		6FE104961E5AB1050075A1B9 /* TodayViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodayViewController.swift; sourceTree = "<group>"; };
 		6FE104991E5AB1050075A1B9 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/MainInterface.storyboard; sourceTree = "<group>"; };
 		6FE1049B1E5AB1050075A1B9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		6FE795FC1E7B662500C971D6 /* Apple80211.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Apple80211.framework; path = ../../../../../../../../../../System/Library/PrivateFrameworks/Apple80211.framework; sourceTree = "<group>"; };
 		94D0639A150D95F4BB9D77E8 /* Pods-RadarTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RadarTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-RadarTests/Pods-RadarTests.debug.xcconfig"; sourceTree = "<group>"; };
 		AA274F5E69F66D22793D368C /* Pods-RadarTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RadarTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-RadarTests/Pods-RadarTests.release.xcconfig"; sourceTree = "<group>"; };
 		CF855BADC563679F68763A11 /* Pods_Radar.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Radar.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -200,7 +201,7 @@
 			isa = PBXGroup;
 			children = (
 				6FBD8F901E706E2A0092AB94 /* Networking.swift */,
-				6FBD8F881E6DFC250092AB94 /* StandardOut.strings */,
+				6FBD8F881E6DFC250092AB94 /* Localizable.strings */,
 				6FE1048C1E5AA48B0075A1B9 /* Globals.swift */,
 				6F6316671E48BE4000988A5A /* Radar-Bridging-Header.h */,
 				6F5D4E081E423AF900DF3BCD /* OverviewViewController.swift */,
@@ -238,6 +239,7 @@
 		6F8693641E422C290016581D /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				6FE795FC1E7B662500C971D6 /* Apple80211.framework */,
 				6FA2028F1E569686002DD2F3 /* UICountingLabel.framework */,
 				6F5607FE1E42FD92007FA37B /* MobileCoreServices.framework */,
 				6F8693651E422C290016581D /* SystemConfiguration.framework */,
@@ -427,7 +429,7 @@
 				6F9A33401E4581C5003627FB /* wifi.png in Resources */,
 				6F6D07861E270C790019AF00 /* LaunchScreen.storyboard in Resources */,
 				6F5D4E051E4237AB00DF3BCD /* res in Resources */,
-				6FBD8F891E6DFC250092AB94 /* StandardOut.strings in Resources */,
+				6FBD8F891E6DFC250092AB94 /* Localizable.strings in Resources */,
 				6F481FE21E425D9B00558720 /* error.png in Resources */,
 				6F6D07831E270C790019AF00 /* Assets.xcassets in Resources */,
 				6F6D07811E270C790019AF00 /* Main.storyboard in Resources */,
@@ -781,6 +783,10 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = Z5WP4H7L7R;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(SYSTEM_LIBRARY_DIR)/PrivateFrameworks",
+				);
 				INFOPLIST_FILE = Radar/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = edu.swosu.comsc.sycamore;
@@ -797,6 +803,10 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = Z5WP4H7L7R;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(SYSTEM_LIBRARY_DIR)/PrivateFrameworks",
+				);
 				INFOPLIST_FILE = Radar/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = edu.swosu.comsc.sycamore;

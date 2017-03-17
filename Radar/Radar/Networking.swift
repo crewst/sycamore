@@ -50,28 +50,23 @@ public class Networking {
             }
         }
         
-        if currentSSID != "" {
-            
-            return currentSSID
-        } else {
-            return "didntGoIn"
-        }
+        return currentSSID
     }
     
     
     class func getWiFiAddress() -> String? {
         var address : String?
         
-        // Get list of all interfaces on the local machine:
+        // Get list of all interfaces on the local machine
         var ifaddr : UnsafeMutablePointer<ifaddrs>?
         guard getifaddrs(&ifaddr) == 0 else { return nil }
         guard let firstAddr = ifaddr else { return nil }
         
-        // For each interface ...
+        // For each interface
         for ifptr in sequence(first: firstAddr, next: { $0.pointee.ifa_next }) {
             let interface = ifptr.pointee
             
-            // Check for IPv4 or IPv6 interface:
+            // Check for IPv4 or IPv6 interface
             let addrFamily = interface.ifa_addr.pointee.sa_family
             if addrFamily == UInt8(AF_INET) || addrFamily == UInt8(AF_INET6) {
                 
@@ -79,7 +74,7 @@ public class Networking {
                 let name = String(cString: interface.ifa_name)
                 if  name == "en0" {
                     
-                    // Convert interface address to a human readable string:
+                    // Convert interface address to a human readable string
                     var addr = interface.ifa_addr.pointee
                     var hostname = [CChar](repeating: 0, count: Int(NI_MAXHOST))
                     getnameinfo(&addr, socklen_t(interface.ifa_addr.pointee.sa_len),
@@ -101,48 +96,93 @@ public class Networking {
         let url = URL(string: "https://api.ipify.org/")
         let ipAddress = try? String(contentsOf: url!, encoding: String.Encoding.utf8)
         
-        return ipAddress
+        if ipAddress != nil {
+            return ipAddress
+        } else {
+            return "Unavailable"
+        }
     }
     
     
     class func testSpeed() {
         
-        let startTime = Date()
-        let url = URL(string: "https://dl.dropboxusercontent.com/s/yjv93wu1mprq2nw/LargeTestFile")
-        let request = URLRequest(url: url!)
-        let session = URLSession.shared
-        let task = session.dataTask(with: request) { (data, resp, error) in
-    
-            guard error == nil && data != nil else{
-                
-                print("Connection error or data is nil")
-                Globals.shared.iAccess = false
-                Globals.shared.DownComplete = true
-                return
-            }
-            
-            guard resp != nil else{
-                
-                print("Response is nil")
-                Globals.shared.DownComplete = true
-                return
-            }
-
-            let length  = CGFloat( (resp?.expectedContentLength)!) / 1000000.0
-            
-            print("Test download size: \(length) MB")
-            let elapsed = CGFloat( Date().timeIntervalSince(startTime))
-            print("Elapsed download time: \(elapsed)")
-            Globals.shared.bandwidth = Int((length/elapsed) * 8000)
+        if Globals.shared.currentSSID == "" {
+            Globals.shared.bandwidth = 0
             Globals.shared.DownComplete = true
-        }
-        
-        task.resume()
-        while Globals.shared.DownComplete == false {
+        } else {
             
+            let startTime = Date()
+            let url = URL(string: "https://dl.dropboxusercontent.com/s/yjv93wu1mprq2nw/LargeTestFile")
+            let request = URLRequest(url: url!)
+            let session = URLSession.shared
+            let task = session.dataTask(with: request) { (data, resp, error) in
+                
+                guard error == nil && data != nil else{
+                    
+                    print("Connection error or data is nil")
+                    Globals.shared.iAccess = false
+                    Globals.shared.DownComplete = true
+                    return
+                }
+                
+                guard resp != nil else{
+                    
+                    print("Response is nil")
+                    Globals.shared.DownComplete = true
+                    return
+                }
+                
+                let length  = Double((resp?.expectedContentLength)!) / 1000000.0
+                
+                print("Test download size: \(length) MB")
+                Globals.shared.dataUse! += length
+                let elapsed = Double( Date().timeIntervalSince(startTime))
+                print("Elapsed download time: \(elapsed)")
+                Globals.shared.bandwidth = Int((length/elapsed) * 8000.0)
+                Globals.shared.DownComplete = true
+            }
+            
+            task.resume()
+            while Globals.shared.DownComplete == false {
+                
+            }
+            
+            session.invalidateAndCancel()
+        }
+    }
+    
+    class func getBSSID() -> String{
+        var currentBSSID = ""
+        if let interfaces = CNCopySupportedInterfaces() {
+            for i in 0..<CFArrayGetCount(interfaces) {
+                let interfaceName: UnsafeRawPointer = CFArrayGetValueAtIndex(interfaces, i)
+                let rec = unsafeBitCast(interfaceName, to: AnyObject.self)
+                let unsafeInterfaceData = CNCopyCurrentNetworkInfo("\(rec)" as CFString)
+                if unsafeInterfaceData != nil {
+                    let interfaceData = unsafeInterfaceData! as NSDictionary
+                    currentBSSID = interfaceData["BSSID"] as! String
+                }
+            }
         }
         
-        session.invalidateAndCancel()
+        return currentBSSID
+    }
+    
+    class func getDNS() -> String {
+        var numAddress = ""
+        let host = CFHostCreateWithName(nil,"www.google.com" as CFString).takeRetainedValue()
+        CFHostStartInfoResolution(host, .addresses, nil)
+        var success: DarwinBoolean = false
+        if let addresses = CFHostGetAddressing(host, &success)?.takeUnretainedValue() as NSArray?,
+            let theAddress = addresses.firstObject as? NSData {
+            var hostname = [CChar](repeating: 0, count: Int(NI_MAXHOST))
+            if getnameinfo(theAddress.bytes.assumingMemoryBound(to: sockaddr.self), socklen_t(theAddress.length),
+                           &hostname, socklen_t(hostname.count), nil, 0, NI_NUMERICHOST) == 0 {
+                numAddress = String(cString: hostname)
+            }
+        }
+        
+        return numAddress
     }
     
 }

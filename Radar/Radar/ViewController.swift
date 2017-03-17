@@ -45,6 +45,14 @@ class ViewController: UIViewController {
         Globals.shared.IPaddress = Networking.getWiFiAddress()
         Globals.shared.iAccess = Networking.isConnectedToNetwork()
         Globals.shared.externalIP = Networking.getExternalAddress()
+        Globals.shared.currentBSSID = Networking.getBSSID()
+        Globals.shared.DNSaddress = Networking.getDNS()
+        
+        // This is needed because my getWiFiAddress func returns a weird string without a network
+        //    (in the simulator, at least)
+        if Globals.shared.currentSSID == "" {
+            Globals.shared.IPaddress = ""
+        }
         
         print("External IP: " + Globals.shared.externalIP)
         
@@ -63,9 +71,6 @@ class ViewController: UIViewController {
         })
         
     }
-    
-    
-    // MARK: Custom Methods
     
 }
 

@@ -75,6 +75,8 @@ class OverviewViewController: UIViewController, UIPickerViewDataSource, UIPicker
         
         loadVC()
         
+        refreshUI()
+        
     }
     
     
@@ -93,10 +95,14 @@ class OverviewViewController: UIViewController, UIPickerViewDataSource, UIPicker
     
     func loadError(code: Int) {
         
+        Globals.shared.netIsGood = false
+        
         view.backgroundColor = UIColor(red: 190/255.0, green: 0/255.0, blue: 0/255.0, alpha: 1.0)
         DiagnoseButton.setTitleColor(UIColor(red: 190/255.0, green: 0/255.0, blue: 0/255.0, alpha: 1.0), for: .normal)
         BandwidthLabel.count(from: BandwidthLabel.currentValue(), to: 0)
         Globals.shared.bandwidth = 0
+        
+        avgBandwidth = 0
         
         switch code {
         case 1:
@@ -146,7 +152,7 @@ class OverviewViewController: UIViewController, UIPickerViewDataSource, UIPicker
     func loadVC() {
         
         if isFirstRun == false {
-            print("\nUser requested reload.")
+            print("\nMultithreading initialized background reload.")
             
             Globals.shared.DownComplete = false
             
@@ -154,10 +160,19 @@ class OverviewViewController: UIViewController, UIPickerViewDataSource, UIPicker
             Globals.shared.IPaddress = Networking.getWiFiAddress()
             Globals.shared.iAccess = Networking.isConnectedToNetwork()
             Globals.shared.externalIP = Networking.getExternalAddress()
+            Globals.shared.currentBSSID = Networking.getBSSID()
+            Globals.shared.DNSaddress = Networking.getDNS()
+            
+            // This is needed because my getWiFiAddress func returns a weird string without a network
+            //    (in the simulator, at least)
+            if Globals.shared.currentSSID == "" {
+                Globals.shared.IPaddress = ""
+            }
             
             print("External IP: " + Globals.shared.externalIP)
             
             Networking.testSpeed()
+            
             while Globals.shared.DownComplete == false {
             }
         } else {
@@ -183,7 +198,7 @@ class OverviewViewController: UIViewController, UIPickerViewDataSource, UIPicker
     }
     
     func refreshUI() {
-        if Globals.shared.currentSSID == "didntGoIn" {
+        if Globals.shared.currentSSID == "" {
             loadError(code: 1)
         } else if Globals.shared.iAccess == false {
             loadError(code: 2)
@@ -191,11 +206,19 @@ class OverviewViewController: UIViewController, UIPickerViewDataSource, UIPicker
             loadError(code: 3)
             
         } else {
+            Globals.shared.netIsGood = true
             view.backgroundColor = UIColor(red: 0/255, green: 160/255, blue: 0/255, alpha: 1.0)
             DiagnoseButton.setTitleColor(UIColor(red: 0/255.0, green: 160/255.0, blue: 0/255.0, alpha: 1.0), for: .normal)
             IPLabel.text = Globals.shared.IPaddress
             SSIDLabel.text = Globals.shared.currentSSID
+            SSIDImage.alpha = 1.0
+            IPImage.image = UIImage(named: "check.png")
+            InternetImage.image = UIImage(named: "check.png")
         }
+        
+        print("[" + String(avgBandwidthArray[0]) + "] [" + String(avgBandwidthArray[1]) + "] [" + String(avgBandwidthArray[2]) + "] [" + String(avgBandwidthArray[3]) + "] [" + String(avgBandwidthArray[4]) + "]")
+        
+        IPLabel.text = Globals.shared.IPaddress
         
     }
     

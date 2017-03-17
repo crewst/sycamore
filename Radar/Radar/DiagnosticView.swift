@@ -17,10 +17,9 @@ class DiagnosticView: UIViewController {
     
     @IBOutlet weak var DismissalButton: UIButton!
     @IBOutlet weak var NetStatusLabel: UILabel!
-    @IBOutlet weak var tableView: UITableView!
     
     @IBOutlet weak var SSIDlabel: UILabel!
-    @IBOutlet weak var SignalLabel: UILabel!
+    @IBOutlet weak var DataUseLabel: UILabel!
     @IBOutlet weak var BSSIDlabel: UILabel!
     @IBOutlet weak var IPv4Label: UILabel!
     @IBOutlet weak var ExIPlabel: UILabel!
@@ -32,6 +31,10 @@ class DiagnosticView: UIViewController {
     @IBOutlet weak var LatencyLabel: UILabel!
     @IBOutlet weak var ChannelLabel: UILabel!
     
+    @IBOutlet weak var RecommendationLabel0: UILabel!
+    @IBOutlet weak var RecommendationLabel1: UILabel!
+    @IBOutlet weak var RecommendationLabel2: UILabel!
+    @IBOutlet weak var RecommendationLabel3: UILabel!
     
     // MARK: UI Actions
     
@@ -47,8 +50,13 @@ class DiagnosticView: UIViewController {
         //        tableView.delegate = self
         //        tableView.dataSource = self
         
+        RecommendationLabel0.text = ""
+        RecommendationLabel1.text = ""
+        RecommendationLabel2.text = ""
+        RecommendationLabel3.text = ""
+        
         SSIDlabel.adjustsFontSizeToFitWidth = true
-        SignalLabel.adjustsFontSizeToFitWidth = true
+        DataUseLabel.adjustsFontSizeToFitWidth = true
         BSSIDlabel.adjustsFontSizeToFitWidth = true
         IPv4Label.adjustsFontSizeToFitWidth = true
         ExIPlabel.adjustsFontSizeToFitWidth = true
@@ -60,9 +68,37 @@ class DiagnosticView: UIViewController {
         LatencyLabel.adjustsFontSizeToFitWidth = true
         ChannelLabel.adjustsFontSizeToFitWidth = true
         
+        refreshUI()
+    }
+    
+    func refreshUI() {
+        
         SSIDlabel.text = Globals.shared.currentSSID
+        DataUseLabel.text = (String(Int(Globals.shared.dataUse)) + " MB")
         IPv4Label.text = Globals.shared.IPaddress
         ExIPlabel.text = Globals.shared.externalIP
+        BSSIDlabel.text = Globals.shared.currentBSSID
+        DNSlabel.text = Globals.shared.DNSaddress
+        
+        
+        
+        // Consolidated Missing Info Handler
+        
+        if Globals.shared.currentSSID == "" {
+            SSIDlabel.text = "N/A"
+            BSSIDlabel.text = "N/A"
+            IPv4Label.text = "N/A"
+            ExIPlabel.text = "N/A"
+            DNSlabel.text = "N/A"
+            GatewayLabel.text = "N/A"
+            IPv6Label.text = "N/A"
+            BandwidthLabel.text = "N/A"
+            LatencyLabel.text = "N/A"
+            ChannelLabel.text = "N/A"
+            
+            NetStatusLabel.text = 
+        }
+        
         
         switch Globals.shared.speedUnits {
         case "megabits per second":

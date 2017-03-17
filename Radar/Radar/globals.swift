@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import UIKit
 
 final class Globals {
     static let shared = Globals()
@@ -18,5 +19,14 @@ final class Globals {
     var latency: Int!
     var DownComplete: Bool!
     var externalIP: String!
-    var speedUnits: String! = "megabits per second"
+    var currentBSSID: String!
+    var DNSaddress: String!
+    
+    var speedUnits: String!
+    var dataUse: Double! = 0.0
+    
+    var netIsGood: Bool! = true
 }
+
+
+// S.D.G.
