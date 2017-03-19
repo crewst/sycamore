@@ -101,6 +101,11 @@ class DiagnosticView: UIViewController {
             NetStatusLabel.text = NSLocalizedString("STATUS_WIFI_DISCONNECTED", comment: "")
         }
         
+        if Globals.shared.netIsGood {
+            fillRecommendations(Status: NSLocalizedString("STATUS_OK", comment: ""), Rec0: NSLocalizedString("RECOMMENDATION_OK", comment: ""), Rec1: "", Rec2: "", Rec3: "")
+            
+        }
+        
         
         switch Globals.shared.speedUnits {
         case "megabits per second":
@@ -116,16 +121,12 @@ class DiagnosticView: UIViewController {
         }
     }
     
-    func numberOfSectionsInTableView(tableView: UITableView) -> Int {
-        return 1
+    func fillRecommendations(Status: String, Rec0: String, Rec1: String, Rec2: String, Rec3: String) {
+        NetStatusLabel.text = Status
+        RecommendationLabel0.text = Rec0
+        RecommendationLabel1.text = Rec1
+        
     }
-    
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 5
-    }
-    
-    //func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-    //}
     
 }
 
