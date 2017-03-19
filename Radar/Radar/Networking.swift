@@ -9,6 +9,7 @@
 import Foundation
 import SystemConfiguration.CaptiveNetwork
 import UIKit
+import PlainPing
 
 public class Networking {
     

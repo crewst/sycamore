@@ -1,12 +1,15 @@
 PODS:
+  - PlainPing (0.3.1)
   - UICountingLabel (1.4.0)
 
 DEPENDENCIES:
+  - PlainPing
   - UICountingLabel
 
 SPEC CHECKSUMS:
+  PlainPing: 3b740d74bc694f4593045b5c5b17ea1275d1920f
   UICountingLabel: ed5ce5b6d5ef278ff40d99cfa49577a30ab0c87b
 
-PODFILE CHECKSUM: 363cea4f562aca7f4ea21dd2152b12f8668eb609
+PODFILE CHECKSUM: 982b9a663b68884f65f524e5f725538c2a0f48aa
 
 COCOAPODS: 1.1.1

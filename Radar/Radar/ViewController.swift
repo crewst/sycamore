@@ -10,6 +10,7 @@ import UIKit
 import Dispatch
 import CoreTelephony
 import UICountingLabel
+import PlainPing
 
 class ViewController: UIViewController {
     
@@ -47,6 +48,19 @@ class ViewController: UIViewController {
         Globals.shared.externalIP = Networking.getExternalAddress()
         Globals.shared.currentBSSID = Networking.getBSSID()
         Globals.shared.DNSaddress = Networking.getDNS()
+        
+        PlainPing.ping("www.google.com", withTimeout: 1.0, completionBlock: { (timeElapsed:Double?, error:Error?) in
+            if let latency = timeElapsed {
+                print("Ping time is \(latency) ms.")
+                Globals.shared.latency = String(Int(latency)) + " ms"
+            }
+            
+            if error != nil {
+                print("Ping time is unknown.")
+                Globals.shared.latency = "Unknown"
+            }
+        })
+        
         
         // This is needed because my getWiFiAddress func returns a weird string without a network
         //    (in the simulator, at least)

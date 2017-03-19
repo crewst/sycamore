@@ -16,7 +16,7 @@ final class Globals {
     var IPaddress: String!
     var iAccess: Bool!
     var bandwidth: Int!
-    var latency: Int!
+    var latency: String!
     var DownComplete: Bool!
     var externalIP: String!
     var currentBSSID: String!

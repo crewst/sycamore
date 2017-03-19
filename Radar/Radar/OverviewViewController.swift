@@ -9,6 +9,7 @@
 import UIKit
 import UICountingLabel
 import Foundation
+import PlainPing
 
 class OverviewViewController: UIViewController, UIPickerViewDataSource, UIPickerViewDelegate {
     
@@ -163,6 +164,23 @@ class OverviewViewController: UIViewController, UIPickerViewDataSource, UIPicker
             Globals.shared.currentBSSID = Networking.getBSSID()
             Globals.shared.DNSaddress = Networking.getDNS()
             
+            
+            // TODO: Doesn't work here. Seems like it's locked from initial use.
+            
+            //            PlainPing.ping("www.google.com", withTimeout: 1.0, completionBlock: { (timeElapsed:Double?, error:Error?) in
+            //                if let latency = timeElapsed {
+            //                    print("Ping time is \(latency) ms.")
+            //                    Globals.shared.latency = String(Int(latency)) + " ms"
+            //                }
+            //
+            //                if error != nil {
+            //                    print("Ping time is unknown.")
+            //                    Globals.shared.latency = "Unknown"
+            //                }
+            //            })
+            
+            
+            
             // This is needed because my getWiFiAddress func returns a weird string without a network
             //    (in the simulator, at least)
             if Globals.shared.currentSSID == "" {
@@ -224,6 +242,7 @@ class OverviewViewController: UIViewController, UIPickerViewDataSource, UIPicker
         print("[" + String(avgBandwidthArray[0]) + "] [" + String(avgBandwidthArray[1]) + "] [" + String(avgBandwidthArray[2]) + "] [" + String(avgBandwidthArray[3]) + "] [" + String(avgBandwidthArray[4]) + "]")
         
         IPLabel.text = Globals.shared.IPaddress
+        UnitButton.setTitle(Globals.shared.speedUnits, for: .normal)
         
     }
     

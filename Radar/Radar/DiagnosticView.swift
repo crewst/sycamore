@@ -81,7 +81,7 @@ class DiagnosticView: UIViewController {
         ExIPlabel.text = Globals.shared.externalIP
         BSSIDlabel.text = Globals.shared.currentBSSID
         DNSlabel.text = Globals.shared.DNSaddress
-        
+        LatencyLabel.text = Globals.shared.latency
         
         
         // Consolidated Missing Info Handler
@@ -98,7 +98,7 @@ class DiagnosticView: UIViewController {
             LatencyLabel.text = "N/A"
             ChannelLabel.text = "N/A"
             
-            NetStatusLabel.text = NSLocalizedString("STATUS_WIFI_DISCONNECTED", comment: "")
+fillRecommendations(Status: NSLocalizedString("STATUS_WIFI_DISCONNECTED", comment: ""), Rec0: NSLocalizedString("RECOMMENDATION_WIFI_DISCONNECTED", comment: ""), Rec1: "", Rec2: "", Rec3: "")
         }
         
         if Globals.shared.netIsGood {
