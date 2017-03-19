@@ -125,7 +125,8 @@ class DiagnosticView: UIViewController {
         NetStatusLabel.text = Status
         RecommendationLabel0.text = Rec0
         RecommendationLabel1.text = Rec1
-        
+        RecommendationLabel2.text = Rec2
+        RecommendationLabel3.text = Rec3
     }
     
 }
