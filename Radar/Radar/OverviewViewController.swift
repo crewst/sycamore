@@ -163,7 +163,7 @@ class OverviewViewController: UIViewController, UIPickerViewDataSource, UIPicker
             Globals.shared.externalIP = Networking.getExternalAddress()
             Globals.shared.currentBSSID = Networking.getBSSID()
             Globals.shared.DNSaddress = Networking.getDNS()
-            
+            Globals.shared.IPv6address = Networking.getWiFiAddressV6()
             
             // TODO: Doesn't work here. Seems like it's locked from initial use.
             

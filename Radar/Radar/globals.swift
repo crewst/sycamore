@@ -21,6 +21,8 @@ final class Globals {
     var externalIP: String!
     var currentBSSID: String!
     var DNSaddress: String!
+    var IPv6address: String!
+    var channel: String!
     
     var speedUnits: String!
     var dataUse: Double! = 0.0

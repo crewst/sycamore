@@ -48,6 +48,8 @@ class ViewController: UIViewController {
         Globals.shared.externalIP = Networking.getExternalAddress()
         Globals.shared.currentBSSID = Networking.getBSSID()
         Globals.shared.DNSaddress = Networking.getDNS()
+        Globals.shared.IPv6address = Networking.getWiFiAddressV6()
+        Globals.shared.channel = Networking.getChannel()
         
         PlainPing.ping("www.google.com", withTimeout: 1.0, completionBlock: { (timeElapsed:Double?, error:Error?) in
             if let latency = timeElapsed {

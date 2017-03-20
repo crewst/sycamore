@@ -82,6 +82,7 @@ class DiagnosticView: UIViewController {
         BSSIDlabel.text = Globals.shared.currentBSSID
         DNSlabel.text = Globals.shared.DNSaddress
         LatencyLabel.text = Globals.shared.latency
+        IPv6Label.text = Globals.shared.IPv6address
         
         
         // Consolidated Missing Info Handler
