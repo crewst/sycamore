@@ -1,5 +1,5 @@
 //
-//  ViewController.swift
+//  InitViewController.swift
 //  Radar
 //
 //  Created by Thomas Crews on 1/11/17.
@@ -12,7 +12,7 @@ import CoreTelephony
 import UICountingLabel
 import PlainPing
 
-class ViewController: UIViewController {
+class InitViewController: UIViewController {
     
     let settings = UserDefaults.standard
     
@@ -49,7 +49,6 @@ class ViewController: UIViewController {
         Globals.shared.currentBSSID = Networking.getBSSID()
         Globals.shared.DNSaddress = Networking.getDNS()
         Globals.shared.IPv6address = Networking.getWiFiAddressV6()
-        Globals.shared.channel = Networking.getChannel()
         
         PlainPing.ping("www.google.com", withTimeout: 1.0, completionBlock: { (timeElapsed:Double?, error:Error?) in
             if let latency = timeElapsed {
@@ -72,22 +71,34 @@ class ViewController: UIViewController {
         
         print("External IP: " + Globals.shared.externalIP)
         
-        progressLabel.count(from: 0, to: 85, withDuration: 1)
-        MainProgress.animate(fromAngle: 0, toAngle: 306, duration: 1, completion: {(finished:Bool) in
-            Networking.testSpeed()
-            while Globals.shared.DownComplete == false {
-            }
-            
-            self.progressLabel.count(from: 85, to: 100, withDuration: 0.5)
-            self.MainProgress.animate(toAngle: 360, duration: 0.5, completion: {(finished:Bool) in
-                self.performSegue(withIdentifier: "LoadCompleteSegue", sender: self)
-                
-            })
-            
-        })
+        self.progressLabel.count(from: 0, to: 17, withDuration: 1)
+        self.MainProgress.animate(fromAngle: 0, toAngle: 60, duration: 1, completion: nil)
         
+        Networking().testSpeed()
+        updateProgress()
     }
     
+    func updateProgress() {
+        DispatchQueue.global().async {
+            while Globals.shared.DownComplete == false {
+                DispatchQueue.main.sync {
+                    if Globals.shared.dlprogress != nil {
+                        if Globals.shared.dlprogress < 17 {
+                        } else {
+                            self.progressLabel.text = String(Globals.shared.dlprogress) + "%"
+                            self.MainProgress.animate(fromAngle: self.MainProgress.angle, toAngle: Double(Globals.shared.dlprogress * 3) + 60, duration: 1, completion: nil)
+                        }
+                    } else {
+                        self.progressLabel.text = "17%"
+                    }
+                }
+            }
+            DispatchQueue.main.async {
+                self.performSegue(withIdentifier: "LoadCompleteSegue", sender: self)
+            }
+        }
+        
+    }
 }
 
 

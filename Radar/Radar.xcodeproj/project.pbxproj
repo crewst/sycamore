@@ -15,7 +15,7 @@
 		6F5D4E051E4237AB00DF3BCD /* res in Resources */ = {isa = PBXBuildFile; fileRef = 6F5D4E041E4237AB00DF3BCD /* res */; settings = {ASSET_TAGS = (New, ); }; };
 		6F5D4E091E423AF900DF3BCD /* OverviewViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F5D4E081E423AF900DF3BCD /* OverviewViewController.swift */; };
 		6F6D077C1E270C790019AF00 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F6D077B1E270C790019AF00 /* AppDelegate.swift */; };
-		6F6D077E1E270C790019AF00 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F6D077D1E270C790019AF00 /* ViewController.swift */; };
+		6F6D077E1E270C790019AF00 /* InitViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F6D077D1E270C790019AF00 /* InitViewController.swift */; };
 		6F6D07811E270C790019AF00 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6F6D077F1E270C790019AF00 /* Main.storyboard */; };
 		6F6D07831E270C790019AF00 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6F6D07821E270C790019AF00 /* Assets.xcassets */; };
 		6F6D07861E270C790019AF00 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6F6D07841E270C790019AF00 /* LaunchScreen.storyboard */; };
@@ -94,7 +94,7 @@
 		6F6316671E48BE4000988A5A /* Radar-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Radar-Bridging-Header.h"; sourceTree = "<group>"; };
 		6F6D07781E270C790019AF00 /* Radar.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Radar.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		6F6D077B1E270C790019AF00 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		6F6D077D1E270C790019AF00 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		6F6D077D1E270C790019AF00 /* InitViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InitViewController.swift; sourceTree = "<group>"; };
 		6F6D07801E270C790019AF00 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		6F6D07821E270C790019AF00 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		6F6D07851E270C790019AF00 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -206,7 +206,7 @@
 				6F6316671E48BE4000988A5A /* Radar-Bridging-Header.h */,
 				6F5D4E081E423AF900DF3BCD /* OverviewViewController.swift */,
 				6F6D077B1E270C790019AF00 /* AppDelegate.swift */,
-				6F6D077D1E270C790019AF00 /* ViewController.swift */,
+				6F6D077D1E270C790019AF00 /* InitViewController.swift */,
 				6F6D077F1E270C790019AF00 /* Main.storyboard */,
 				6FE104881E5A6A920075A1B9 /* DiagnosticView.swift */,
 				6F5D4E041E4237AB00DF3BCD /* res */,
@@ -605,7 +605,7 @@
 			files = (
 				6F2BAABD1E32831600571431 /* KDCircularProgress.swift in Sources */,
 				6FBD8F911E706E2A0092AB94 /* Networking.swift in Sources */,
-				6F6D077E1E270C790019AF00 /* ViewController.swift in Sources */,
+				6F6D077E1E270C790019AF00 /* InitViewController.swift in Sources */,
 				6F6D077C1E270C790019AF00 /* AppDelegate.swift in Sources */,
 				6FE104891E5A6A920075A1B9 /* DiagnosticView.swift in Sources */,
 				6F5D4E091E423AF900DF3BCD /* OverviewViewController.swift in Sources */,

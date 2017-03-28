@@ -12,7 +12,7 @@ import SystemConfiguration.SCNetwork
 import UIKit
 import PlainPing
 
-public class Networking {
+public class Networking: NSObject, URLSessionDelegate, URLSessionDownloadDelegate {
     
     class func isConnectedToNetwork() -> Bool {
         
@@ -143,51 +143,46 @@ public class Networking {
     }
     
     
-    class func testSpeed() {
+    func testSpeed() {
+        
+        Globals.shared.dlStartTime = Date()
+        Globals.shared.DownComplete = false
         
         if Globals.shared.currentSSID == "" {
             Globals.shared.bandwidth = 0
             Globals.shared.DownComplete = true
         } else {
             
-            let startTime = Date()
-            let url = URL(string: "https://dl.dropboxusercontent.com/s/yjv93wu1mprq2nw/LargeTestFile")
-            let request = URLRequest(url: url!)
-            let session = URLSession.shared
-            let task = session.dataTask(with: request) { (data, resp, error) in
-                
-                guard error == nil && data != nil else{
-                    
-                    print("Connection error or data is nil")
-                    Globals.shared.iAccess = false
-                    Globals.shared.DownComplete = true
-                    return
-                }
-                
-                guard resp != nil else{
-                    
-                    print("Response is nil")
-                    Globals.shared.DownComplete = true
-                    return
-                }
-                
-                let length  = Double((resp?.expectedContentLength)!) / 1000000.0
-                
-                print("Test download size: \(length) MB")
-                Globals.shared.dataUse! += length
-                let elapsed = Double( Date().timeIntervalSince(startTime))
-                print("Elapsed download time: \(elapsed)")
-                Globals.shared.bandwidth = Int((length/elapsed) * 8000.0)
-                Globals.shared.DownComplete = true
-            }
+            let url = URL(string: "https://dl.dropboxusercontent.com/s/lc1o5ld56jkkswj/LargeTestFile")
+            let session = URLSession(configuration: URLSessionConfiguration.default, delegate: self, delegateQueue: nil)
+            let task = session.downloadTask(with: url!)
+            
             
             task.resume()
-            while Globals.shared.DownComplete == false {
-                
-            }
-            
-            session.invalidateAndCancel()
         }
+    }
+    
+    public func urlSession(_ session: URLSession, downloadTask: URLSessionDownloadTask, didWriteData bytesWritten: Int64, totalBytesWritten: Int64, totalBytesExpectedToWrite: Int64) {
+        
+        Globals.shared.dlFileSize = (Double(totalBytesExpectedToWrite) * 8) / 1000
+        
+        //DispatchQueue.main.async() {
+        
+        
+        let progress = (Double(totalBytesWritten) / Double(totalBytesExpectedToWrite)) * 100.0
+        
+        Globals.shared.dlprogress = Int(progress)
+        
+        //}
+    }
+    
+    public func urlSession(_ session: URLSession, downloadTask: URLSessionDownloadTask, didFinishDownloadingTo location: URL) {
+        
+        let elapsed = Double( Date().timeIntervalSince(Globals.shared.dlStartTime))
+        Globals.shared.bandwidth = Int(Globals.shared.dlFileSize / elapsed)
+        Globals.shared.DownComplete = true
+        Globals.shared.dataUse! += (Globals.shared.dlFileSize! / 8000)
+        session.invalidateAndCancel()
     }
     
     class func getBSSID() -> String{
@@ -222,24 +217,6 @@ public class Networking {
         }
         
         return numAddress
-    }
-    
-    class func getChannel() -> String{
-        var channel = ""
-        if let interfaces = CNCopySupportedInterfaces() {
-            for i in 0..<CFArrayGetCount(interfaces) {
-                let interfaceName: UnsafeRawPointer = CFArrayGetValueAtIndex(interfaces, i)
-                let rec = unsafeBitCast(interfaceName, to: AnyObject.self)
-                let unsafeInterfaceData = CNCopyCurrentNetworkInfo("\(rec)" as CFString)
-                if unsafeInterfaceData != nil {
-                    let interfaceData = unsafeInterfaceData! as NSDictionary
-                    channel = interfaceData["BSSID"] as! String
-                    dump(interfaceData)
-                }
-            }
-        }
-        
-        return ""
     }
 
     

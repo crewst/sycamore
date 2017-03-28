@@ -30,8 +30,6 @@ class OverviewViewController: UIViewController, UIPickerViewDataSource, UIPicker
     
     let UnitPickerData = ["megabits per second","megabytes per second","kilobits per second","kilobytes per second"]
     
-    let startupVC = ViewController()
-    
     let settings = UserDefaults.standard
     
     var avgBandwidthArray = [0, 0, 0, 0, 0]
@@ -52,6 +50,10 @@ class OverviewViewController: UIViewController, UIPickerViewDataSource, UIPicker
     
     
     // MARK: Overrides
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        viewWillAppear(true)
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -165,31 +167,14 @@ class OverviewViewController: UIViewController, UIPickerViewDataSource, UIPicker
             Globals.shared.DNSaddress = Networking.getDNS()
             Globals.shared.IPv6address = Networking.getWiFiAddressV6()
             
-            // TODO: Doesn't work here. Seems like it's locked from initial use.
             
-            //            PlainPing.ping("www.google.com", withTimeout: 1.0, completionBlock: { (timeElapsed:Double?, error:Error?) in
-            //                if let latency = timeElapsed {
-            //                    print("Ping time is \(latency) ms.")
-            //                    Globals.shared.latency = String(Int(latency)) + " ms"
-            //                }
-            //
-            //                if error != nil {
-            //                    print("Ping time is unknown.")
-            //                    Globals.shared.latency = "Unknown"
-            //                }
-            //            })
-            
-            
-            
-            // This is needed because my getWiFiAddress func returns a weird string without a network
-            //    (in the simulator, at least)
             if Globals.shared.currentSSID == "" {
                 Globals.shared.IPaddress = ""
             }
             
             print("External IP: " + Globals.shared.externalIP)
             
-            Networking.testSpeed()
+            Networking().testSpeed()
             
             while Globals.shared.DownComplete == false {
             }

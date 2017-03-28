@@ -17,7 +17,7 @@ final class Globals {
     var iAccess: Bool!
     var bandwidth: Int!
     var latency: String!
-    var DownComplete: Bool!
+    var DownComplete: Bool! = false
     var externalIP: String!
     var currentBSSID: String!
     var DNSaddress: String!
@@ -28,6 +28,11 @@ final class Globals {
     var dataUse: Double! = 0.0
     
     var netIsGood: Bool! = true
+    var dlprogress: Int! = 0
+    var dlStartTime: Date!
+    var dlFileSize: Double!
+    
+    var initRun: Bool! = true
 }
 
 
