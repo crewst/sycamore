@@ -38,8 +38,6 @@ class OverviewViewController: UIViewController, UIPickerViewDataSource, UIPicker
     
     var reloadTimer: Timer!
     
-    var isFirstRun = true
-    
     
     // MARK: UI Actions
     
@@ -51,11 +49,10 @@ class OverviewViewController: UIViewController, UIPickerViewDataSource, UIPicker
     
     // MARK: Overrides
     
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        viewWillAppear(true)
-    }
-    
     override func viewDidLoad() {
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(ProcessFinished), name: NSNotification.Name(rawValue: "ProcessFinished"), object: nil)
+        
         super.viewDidLoad()
         DiagnoseButton.layer.cornerRadius = 5
         UnitButton.layer.cornerRadius = 5
@@ -76,8 +73,6 @@ class OverviewViewController: UIViewController, UIPickerViewDataSource, UIPicker
         
         updateBandwidth()
         
-        loadVC()
-        
         refreshUI()
         
     }
@@ -86,12 +81,8 @@ class OverviewViewController: UIViewController, UIPickerViewDataSource, UIPicker
     //MARK: Custom Functions
     
     func backgroundRescan() {
-        DispatchQueue.global(qos: .background).async {
-            self.loadVC()
-            
-            DispatchQueue.main.async {
-                self.refreshUI()
-            }
+        if Globals.shared.DownComplete {
+            loadVC()
         }
     }
     
@@ -153,36 +144,27 @@ class OverviewViewController: UIViewController, UIPickerViewDataSource, UIPicker
     
     
     func loadVC() {
+        print("\nInitialized reload.")
         
-        if isFirstRun == false {
-            print("\nMultithreading initialized background reload.")
-            
-            Globals.shared.DownComplete = false
-            
-            Globals.shared.currentSSID = Networking.fetchSSIDInfo()
-            Globals.shared.IPaddress = Networking.getWiFiAddress()
-            Globals.shared.iAccess = Networking.isConnectedToNetwork()
-            Globals.shared.externalIP = Networking.getExternalAddress()
-            Globals.shared.currentBSSID = Networking.getBSSID()
-            Globals.shared.DNSaddress = Networking.getDNS()
-            Globals.shared.IPv6address = Networking.getWiFiAddressV6()
-            
-            
-            if Globals.shared.currentSSID == "" {
-                Globals.shared.IPaddress = ""
-            }
-            
-            print("External IP: " + Globals.shared.externalIP)
-            
-            Networking().testSpeed()
-            
-            while Globals.shared.DownComplete == false {
-            }
-        } else {
-            refreshUI()
-            print("first run")
-            isFirstRun = false
+        Globals.shared.DownComplete = false
+        
+        Globals.shared.currentSSID = Networking.fetchSSIDInfo()
+        Globals.shared.IPaddress = Networking.getWiFiAddress()
+        Globals.shared.iAccess = Networking.isConnectedToNetwork()
+        Globals.shared.externalIP = Networking.getExternalAddress()
+        Globals.shared.currentBSSID = Networking.getBSSID()
+        Globals.shared.DNSaddress = Networking.getDNS()
+        Globals.shared.IPv6address = Networking.getWiFiAddressV6()
+        
+        
+        if Globals.shared.currentSSID == "" {
+            Globals.shared.IPaddress = ""
         }
+        
+        print("External IP: " + Globals.shared.externalIP)
+        
+        Networking().testSpeed()
+        print("first run")
         
         avgBandwidthArray[iterationCount] = Globals.shared.bandwidth
         
@@ -228,6 +210,12 @@ class OverviewViewController: UIViewController, UIPickerViewDataSource, UIPicker
         
         IPLabel.text = Globals.shared.IPaddress
         UnitButton.setTitle(Globals.shared.speedUnits, for: .normal)
+        
+    }
+    
+    func ProcessFinished(notification: Notification) {
+        // perform yout segue
+        refreshUI()
         
     }
     

@@ -15,7 +15,7 @@ import PlainPing
 class InitViewController: UIViewController {
     
     let settings = UserDefaults.standard
-    
+    var firstRun = true
     
     // MARK: UI Outlets
     
@@ -27,6 +27,9 @@ class InitViewController: UIViewController {
     //MARK: Overrides
     
     override func viewDidLoad() {
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(ProcessFinished), name: NSNotification.Name(rawValue: "ProcessFinished"), object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(ProcessUpdating), name: NSNotification.Name(rawValue: "ProcessUpdating"), object: nil)
         
         progressLabel.format = "%d%%"
         
@@ -75,29 +78,32 @@ class InitViewController: UIViewController {
         self.MainProgress.animate(fromAngle: 0, toAngle: 60, duration: 1, completion: nil)
         
         Networking().testSpeed()
-        updateProgress()
     }
     
-    func updateProgress() {
-        DispatchQueue.global().async {
-            while Globals.shared.DownComplete == false {
-                DispatchQueue.main.sync {
-                    if Globals.shared.dlprogress != nil {
-                        if Globals.shared.dlprogress < 17 {
-                        } else {
-                            self.progressLabel.text = String(Globals.shared.dlprogress) + "%"
-                            self.MainProgress.animate(fromAngle: self.MainProgress.angle, toAngle: Double(Globals.shared.dlprogress * 3) + 60, duration: 1, completion: nil)
-                        }
-                    } else {
-                        self.progressLabel.text = "17%"
-                    }
-                }
-            }
-            DispatchQueue.main.async {
-                self.performSegue(withIdentifier: "LoadCompleteSegue", sender: self)
-            }
-        }
+    func ProcessFinished(notification: Notification) {
+        // perform yout segue
+        if firstRun {
+        print("processFinished")
         
+        DispatchQueue.main.async {
+            self.performSegue(withIdentifier: "LoadCompleteSegue", sender: self)
+        }
+            firstRun = false
+        }
+    }
+    
+    func ProcessUpdating(notification: Notification) {
+        // update UI
+        if firstRun {
+        let dProgress = notification.userInfo!["progress"]! as! Double
+        let progress = Int(dProgress)
+        print(progress)
+        if progress < 17 {
+        } else {
+            progressLabel.text = String(progress) + "%"
+            MainProgress.animate(fromAngle: self.MainProgress.angle, toAngle: Double(progress * 3) + 60, duration: 1, completion: nil)
+        }
+        }
     }
 }
 

@@ -14,6 +14,9 @@ import PlainPing
 
 public class Networking: NSObject, URLSessionDelegate, URLSessionDownloadDelegate {
     
+    let url = URL(string: "https://dl.dropboxusercontent.com/s/lc1o5ld56jkkswj/LargeTestFile")
+    let session = URLSession(configuration: URLSessionConfiguration.default, delegate: self as? URLSessionDelegate, delegateQueue: nil)
+    
     class func isConnectedToNetwork() -> Bool {
         
         var zeroAddress = sockaddr_in(sin_len: 0, sin_family: 0, sin_port: 0, sin_addr: in_addr(s_addr: 0), sin_zero: (0, 0, 0, 0, 0, 0, 0, 0))
@@ -68,9 +71,9 @@ public class Networking: NSObject, URLSessionDelegate, URLSessionDownloadDelegat
         for ifptr in sequence(first: firstAddr, next: { $0.pointee.ifa_next }) {
             let interface = ifptr.pointee
             
-            // Check for IPv4 or IPv6 interface
+            // Check for IPv4 interface
             let addrFamily = interface.ifa_addr.pointee.sa_family
-            if addrFamily == UInt8(AF_INET) || addrFamily == UInt8(AF_INET6) {
+            if addrFamily == UInt8(AF_INET) {
                 
                 // Check interface name:
                 let name = String(cString: interface.ifa_name)
@@ -104,7 +107,7 @@ public class Networking: NSObject, URLSessionDelegate, URLSessionDownloadDelegat
         for ifptr in sequence(first: firstAddr, next: { $0.pointee.ifa_next }) {
             let interface = ifptr.pointee
             
-            // Check for IPv4 or IPv6 interface
+            // Check for IPv6 interface
             let addrFamily = interface.ifa_addr.pointee.sa_family
             if addrFamily == UInt8(AF_INET6) {
                 
@@ -148,15 +151,17 @@ public class Networking: NSObject, URLSessionDelegate, URLSessionDownloadDelegat
         Globals.shared.dlStartTime = Date()
         Globals.shared.DownComplete = false
         
+        let task = session.downloadTask(with: url!)
+        
         if Globals.shared.currentSSID == "" {
             Globals.shared.bandwidth = 0
             Globals.shared.DownComplete = true
+            
+            session.invalidateAndCancel()
+            
+            NotificationCenter.default.post(name: NSNotification.Name(rawValue: "ProcessFinished"), object: nil, userInfo: nil)
+            
         } else {
-            
-            let url = URL(string: "https://dl.dropboxusercontent.com/s/lc1o5ld56jkkswj/LargeTestFile")
-            let session = URLSession(configuration: URLSessionConfiguration.default, delegate: self, delegateQueue: nil)
-            let task = session.downloadTask(with: url!)
-            
             
             task.resume()
         }
@@ -164,25 +169,23 @@ public class Networking: NSObject, URLSessionDelegate, URLSessionDownloadDelegat
     
     public func urlSession(_ session: URLSession, downloadTask: URLSessionDownloadTask, didWriteData bytesWritten: Int64, totalBytesWritten: Int64, totalBytesExpectedToWrite: Int64) {
         
+        
         Globals.shared.dlFileSize = (Double(totalBytesExpectedToWrite) * 8) / 1000
-        
-        //DispatchQueue.main.async() {
-        
-        
         let progress = (Double(totalBytesWritten) / Double(totalBytesExpectedToWrite)) * 100.0
         
-        Globals.shared.dlprogress = Int(progress)
-        
-        //}
+        NotificationCenter.default.post(name: NSNotification.Name(rawValue: "ProcessUpdating"), object: nil, userInfo: ["progress" : progress])
     }
     
     public func urlSession(_ session: URLSession, downloadTask: URLSessionDownloadTask, didFinishDownloadingTo location: URL) {
-        
+        if Globals.shared.DownComplete == false {
         let elapsed = Double( Date().timeIntervalSince(Globals.shared.dlStartTime))
         Globals.shared.bandwidth = Int(Globals.shared.dlFileSize / elapsed)
         Globals.shared.DownComplete = true
         Globals.shared.dataUse! += (Globals.shared.dlFileSize! / 8000)
+        }
         session.invalidateAndCancel()
+        
+        NotificationCenter.default.post(name: NSNotification.Name(rawValue: "ProcessFinished"), object: nil, userInfo: nil)
     }
     
     class func getBSSID() -> String{
