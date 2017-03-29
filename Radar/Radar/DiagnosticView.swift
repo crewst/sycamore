@@ -47,8 +47,6 @@ class DiagnosticView: UIViewController {
     
     override func viewDidLoad() {
         DismissalButton.layer.cornerRadius = 5
-        //        tableView.delegate = self
-        //        tableView.dataSource = self
         
         RecommendationLabel0.text = ""
         RecommendationLabel1.text = ""

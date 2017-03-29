@@ -221,6 +221,22 @@ public class Networking: NSObject, URLSessionDelegate, URLSessionDownloadDelegat
         
         return numAddress
     }
+    
+    class func pingHost() -> String {
+        var result: String = "Unknown"
+        PlainPing.ping("www.google.com", withTimeout: 1.0, completionBlock: { (timeElapsed:Double?, error:Error?) in
+            if let latency = timeElapsed {
+                print("Ping time is \(latency) ms.")
+                result = String(Int(latency)) + " ms"
+            }
+            
+            if error != nil {
+                print("Ping time is unknown.")
+                result = "Unknown"
+            }
+        })
+        return result
+    }
 
     
 }

@@ -14,8 +14,13 @@ import PlainPing
 
 class InitViewController: UIViewController {
     
+    // MARK: Global Definitions
+    
     let settings = UserDefaults.standard
     var firstRun = true
+    
+    var readyToPresent = false
+    
     
     // MARK: UI Outlets
     
@@ -24,7 +29,7 @@ class InitViewController: UIViewController {
     @IBOutlet weak var progressLabel: UICountingLabel!
     
     
-    //MARK: Overrides
+    // MARK: Overrides
     
     override func viewDidLoad() {
         
@@ -39,38 +44,52 @@ class InitViewController: UIViewController {
             settings.set("megabits per second", forKey: "measurementUnits")
         }
         Globals.shared.speedUnits = settings.value(forKey: "measurementUnits") as! String
+        
+        firstPhase()
     }
     
+    
     override func viewDidAppear(_ animated: Bool) {
-        
-        Globals.shared.DownComplete = false
+        DispatchQueue.main.async {
+            while self.readyToPresent == false {
+            }
+            self.performSegue(withIdentifier: "LoadCompleteSegue", sender: self)
+        }
+    }
+    
+    
+    // MARK: Custom Functions
+    
+    
+    func firstPhase() {
         
         Globals.shared.currentSSID = Networking.fetchSSIDInfo()
+        
+        switch Globals.shared.currentSSID {
+        case "":
+            Globals.shared.IPaddress = ""
+            Globals.shared.iAccess = false
+            Globals.shared.externalIP = "Unavailable"
+            Globals.shared.currentSSID = ""
+            Globals.shared.DNSaddress = ""
+            Globals.shared.IPv6address = ""
+            Globals.shared.latency = "Unknown"
+            Globals.shared.bandwidth = 0
+            readyToPresent = true
+        default:
+            secondPhase()
+        }
+    }
+    
+    func secondPhase() {
+        
         Globals.shared.IPaddress = Networking.getWiFiAddress()
         Globals.shared.iAccess = Networking.isConnectedToNetwork()
         Globals.shared.externalIP = Networking.getExternalAddress()
         Globals.shared.currentBSSID = Networking.getBSSID()
         Globals.shared.DNSaddress = Networking.getDNS()
         Globals.shared.IPv6address = Networking.getWiFiAddressV6()
-        
-        PlainPing.ping("www.google.com", withTimeout: 1.0, completionBlock: { (timeElapsed:Double?, error:Error?) in
-            if let latency = timeElapsed {
-                print("Ping time is \(latency) ms.")
-                Globals.shared.latency = String(Int(latency)) + " ms"
-            }
-            
-            if error != nil {
-                print("Ping time is unknown.")
-                Globals.shared.latency = "Unknown"
-            }
-        })
-        
-        
-        // This is needed because my getWiFiAddress func returns a weird string without a network
-        //    (in the simulator, at least)
-        if Globals.shared.currentSSID == "" {
-            Globals.shared.IPaddress = ""
-        }
+        Globals.shared.latency = Networking.pingHost()
         
         print("External IP: " + Globals.shared.externalIP)
         
@@ -81,13 +100,8 @@ class InitViewController: UIViewController {
     }
     
     func ProcessFinished(notification: Notification) {
-        // perform yout segue
         if firstRun {
-        print("processFinished")
-        
-        DispatchQueue.main.async {
-            self.performSegue(withIdentifier: "LoadCompleteSegue", sender: self)
-        }
+            readyToPresent = true
             firstRun = false
         }
     }
@@ -95,14 +109,14 @@ class InitViewController: UIViewController {
     func ProcessUpdating(notification: Notification) {
         // update UI
         if firstRun {
-        let dProgress = notification.userInfo!["progress"]! as! Double
-        let progress = Int(dProgress)
-        print(progress)
-        if progress < 17 {
-        } else {
-            progressLabel.text = String(progress) + "%"
-            MainProgress.animate(fromAngle: self.MainProgress.angle, toAngle: Double(progress * 3) + 60, duration: 1, completion: nil)
-        }
+            let dProgress = notification.userInfo!["progress"]! as! Double
+            let progress = Int(dProgress)
+            print(progress)
+            if progress < 17 {
+            } else {
+                progressLabel.text = String(progress) + "%"
+                MainProgress.animate(fromAngle: self.MainProgress.angle, toAngle: Double(progress * 3) + 60, duration: 1, completion: nil)
+            }
         }
     }
 }
