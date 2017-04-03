@@ -16,6 +16,7 @@ You'll probably have to play around with project configuration as well. You obvi
 ### April 2, 2017
 
 \+ Initial beta publish.\
-\+ Added readme file.
+\+ Added readme file.\
+\- Removed old, unused source files.
 
 ![Demo 1](/demofinal1.png?raw=true)
