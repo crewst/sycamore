@@ -16,7 +16,7 @@ class InitViewController: UIViewController {
     
     // MARK: Global Definitions
     
-    let settings = UserDefaults.standard
+    let settings = UserDefaults(suiteName: "group.sycamore.defaults")!
     var firstRun = true
     
     var readyToPresent = false
@@ -31,30 +31,19 @@ class InitViewController: UIViewController {
     
     // MARK: Overrides
     
-    override func viewDidLoad() {
+    override func viewDidAppear(_ animated: Bool) {
         
         NotificationCenter.default.addObserver(self, selector: #selector(ProcessFinished), name: NSNotification.Name(rawValue: "ProcessFinished"), object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(ProcessUpdating), name: NSNotification.Name(rawValue: "ProcessUpdating"), object: nil)
         
         progressLabel.format = "%d%%"
         
-        if settings.string(forKey: "measurementUnits") != nil {
-            
-        } else {
+        if settings.string(forKey: "measurementUnits") == nil {
             settings.set("megabits per second", forKey: "measurementUnits")
         }
         Globals.shared.speedUnits = settings.value(forKey: "measurementUnits") as! String
         
         firstPhase()
-    }
-    
-    
-    override func viewDidAppear(_ animated: Bool) {
-        DispatchQueue.main.async {
-            while self.readyToPresent == false {
-            }
-            self.performSegue(withIdentifier: "LoadCompleteSegue", sender: self)
-        }
     }
     
     
@@ -64,6 +53,8 @@ class InitViewController: UIViewController {
     func firstPhase() {
         
         Globals.shared.currentSSID = Networking.fetchSSIDInfo()
+        
+        print("Current SSID: " + Globals.shared.currentSSID)
         
         switch Globals.shared.currentSSID {
         case "":
@@ -75,7 +66,7 @@ class InitViewController: UIViewController {
             Globals.shared.IPv6address = ""
             Globals.shared.latency = "Unknown"
             Globals.shared.bandwidth = 0
-            readyToPresent = true
+            self.performSegue(withIdentifier: "LoadCompleteSegue", sender: self)
         default:
             secondPhase()
         }
@@ -89,20 +80,30 @@ class InitViewController: UIViewController {
         Globals.shared.currentBSSID = Networking.getBSSID()
         Globals.shared.DNSaddress = Networking.getDNS()
         Globals.shared.IPv6address = Networking.getWiFiAddressV6()
-        Globals.shared.latency = Networking.pingHost()
+        
+        Networking.pingHost()
         
         print("External IP: " + Globals.shared.externalIP)
         
-        self.progressLabel.count(from: 0, to: 17, withDuration: 1)
-        self.MainProgress.animate(fromAngle: 0, toAngle: 60, duration: 1, completion: nil)
+        DispatchQueue.global().async {
+            
+            Networking().testSpeed()
+            
+        }
+        progressLabel.count(from: 0, to: 17, withDuration: 1)
+        MainProgress.animate(fromAngle: 0, toAngle: 60, duration: 1, completion: nil)
         
-        Networking().testSpeed()
     }
+    
+    
+    // MARK: Notification Observers
     
     func ProcessFinished(notification: Notification) {
         if firstRun {
-            readyToPresent = true
             firstRun = false
+            DispatchQueue.main.async {
+                self.performSegue(withIdentifier: "LoadCompleteSegue", sender: self)
+            }
         }
     }
     
@@ -111,11 +112,14 @@ class InitViewController: UIViewController {
         if firstRun {
             let dProgress = notification.userInfo!["progress"]! as! Double
             let progress = Int(dProgress)
-            print(progress)
-            if progress < 17 {
-            } else {
-                progressLabel.text = String(progress) + "%"
-                MainProgress.animate(fromAngle: self.MainProgress.angle, toAngle: Double(progress * 3) + 60, duration: 1, completion: nil)
+            DispatchQueue.global().async {
+                if progress < 17 {
+                } else {
+                    DispatchQueue.main.sync {
+                        self.progressLabel.text = String(progress) + "%"
+                        self.MainProgress.animate(fromAngle: self.MainProgress.angle, toAngle: Double(progress * 3) + 60, duration: 1, completion: nil)
+                    }
+                }
             }
         }
     }

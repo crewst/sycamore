@@ -97,7 +97,7 @@ class DiagnosticView: UIViewController {
             LatencyLabel.text = "N/A"
             ChannelLabel.text = "N/A"
             
-fillRecommendations(Status: NSLocalizedString("STATUS_WIFI_DISCONNECTED", comment: ""), Rec0: NSLocalizedString("RECOMMENDATION_WIFI_DISCONNECTED", comment: ""), Rec1: "", Rec2: "", Rec3: "")
+            fillRecommendations(Status: NSLocalizedString("STATUS_WIFI_DISCONNECTED", comment: ""), Rec0: NSLocalizedString("RECOMMENDATION_WIFI_DISCONNECTED", comment: ""), Rec1: "", Rec2: "", Rec3: "")
         }
         
         if Globals.shared.netIsGood {
@@ -108,11 +108,11 @@ fillRecommendations(Status: NSLocalizedString("STATUS_WIFI_DISCONNECTED", commen
         
         switch Globals.shared.speedUnits {
         case "megabits per second":
-            BandwidthLabel.text = ((String((Globals.shared.bandwidth) / 1000)) + " mb/s")
+            BandwidthLabel.text = ((String((Globals.shared.bandwidth) / 1000)) + " Mb/s")
         case "megabytes per second":
             BandwidthLabel.text = ((String((Globals.shared.bandwidth) / 8000)) + " MB/s")
         case "kilobits per second":
-            BandwidthLabel.text = ((String(Globals.shared.bandwidth)) + " kb/s")
+            BandwidthLabel.text = ((String(Globals.shared.bandwidth)) + " Kb/s")
         case "kilobytes per second":
             BandwidthLabel.text = ((String((Globals.shared.bandwidth) / 8)) + " KB/s")
         default:

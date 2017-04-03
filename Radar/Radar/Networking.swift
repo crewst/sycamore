@@ -14,8 +14,8 @@ import PlainPing
 
 public class Networking: NSObject, URLSessionDelegate, URLSessionDownloadDelegate {
     
-    let url = URL(string: "https://dl.dropboxusercontent.com/s/lc1o5ld56jkkswj/LargeTestFile")
-    let session = URLSession(configuration: URLSessionConfiguration.default, delegate: self as? URLSessionDelegate, delegateQueue: nil)
+    let url = URL(string: "https://dl.dropboxusercontent.com/s/tbjg34fo6u633vo/LargeTestFile")
+    
     
     class func isConnectedToNetwork() -> Bool {
         
@@ -112,16 +112,16 @@ public class Networking: NSObject, URLSessionDelegate, URLSessionDownloadDelegat
             if addrFamily == UInt8(AF_INET6) {
                 
                 // Check interface name:
-//                let name = String(cString: interface.ifa_name)
-//                if  name == "en0" {
+                //                let name = String(cString: interface.ifa_name)
+                //                if  name == "en0" {
                 
-                    // Convert interface address to a human readable string
-                    var addr = interface.ifa_addr.pointee
-                    var hostname = [CChar](repeating: 0, count: Int(NI_MAXHOST))
-                    getnameinfo(&addr, socklen_t(interface.ifa_addr.pointee.sa_len),
-                                &hostname, socklen_t(hostname.count),
-                                nil, socklen_t(0), NI_NUMERICHOST)
-                    address = String(cString: hostname)
+                // Convert interface address to a human readable string
+                var addr = interface.ifa_addr.pointee
+                var hostname = [CChar](repeating: 0, count: Int(NI_MAXHOST))
+                getnameinfo(&addr, socklen_t(interface.ifa_addr.pointee.sa_len),
+                            &hostname, socklen_t(hostname.count),
+                            nil, socklen_t(0), NI_NUMERICHOST)
+                address = String(cString: hostname)
                 //}
             }
         }
@@ -130,7 +130,7 @@ public class Networking: NSObject, URLSessionDelegate, URLSessionDownloadDelegat
         return address
         
     }
-
+    
     
     
     class func getExternalAddress() -> String? {
@@ -151,6 +151,9 @@ public class Networking: NSObject, URLSessionDelegate, URLSessionDownloadDelegat
         Globals.shared.dlStartTime = Date()
         Globals.shared.DownComplete = false
         
+        
+        let session = URLSession(configuration: URLSessionConfiguration.default, delegate: self, delegateQueue: nil)
+        
         let task = session.downloadTask(with: url!)
         
         if Globals.shared.currentSSID == "" {
@@ -162,31 +165,32 @@ public class Networking: NSObject, URLSessionDelegate, URLSessionDownloadDelegat
             NotificationCenter.default.post(name: NSNotification.Name(rawValue: "ProcessFinished"), object: nil, userInfo: nil)
             
         } else {
-            
+            print("Running Task")
             task.resume()
+            
         }
     }
     
     public func urlSession(_ session: URLSession, downloadTask: URLSessionDownloadTask, didWriteData bytesWritten: Int64, totalBytesWritten: Int64, totalBytesExpectedToWrite: Int64) {
-        
-        
         Globals.shared.dlFileSize = (Double(totalBytesExpectedToWrite) * 8) / 1000
         let progress = (Double(totalBytesWritten) / Double(totalBytesExpectedToWrite)) * 100.0
-        
         NotificationCenter.default.post(name: NSNotification.Name(rawValue: "ProcessUpdating"), object: nil, userInfo: ["progress" : progress])
     }
     
     public func urlSession(_ session: URLSession, downloadTask: URLSessionDownloadTask, didFinishDownloadingTo location: URL) {
+        print("Done")
         if Globals.shared.DownComplete == false {
-        let elapsed = Double( Date().timeIntervalSince(Globals.shared.dlStartTime))
-        Globals.shared.bandwidth = Int(Globals.shared.dlFileSize / elapsed)
-        Globals.shared.DownComplete = true
-        Globals.shared.dataUse! += (Globals.shared.dlFileSize! / 8000)
+            let elapsed = Double( Date().timeIntervalSince(Globals.shared.dlStartTime))
+            Globals.shared.bandwidth = Int(Globals.shared.dlFileSize / elapsed)
+            Globals.shared.DownComplete = true
+            Globals.shared.dataUse! += (Globals.shared.dlFileSize! / 8000)
         }
         session.invalidateAndCancel()
         
         NotificationCenter.default.post(name: NSNotification.Name(rawValue: "ProcessFinished"), object: nil, userInfo: nil)
     }
+    
+    
     
     class func getBSSID() -> String{
         var currentBSSID = ""
@@ -222,22 +226,21 @@ public class Networking: NSObject, URLSessionDelegate, URLSessionDownloadDelegat
         return numAddress
     }
     
-    class func pingHost() -> String {
-        var result: String = "Unknown"
+    class func pingHost() {
+        Globals.shared.latency = "..."
         PlainPing.ping("www.google.com", withTimeout: 1.0, completionBlock: { (timeElapsed:Double?, error:Error?) in
             if let latency = timeElapsed {
                 print("Ping time is \(latency) ms.")
-                result = String(Int(latency)) + " ms"
+                Globals.shared.latency = String(Int(latency)) + " ms"
             }
             
             if error != nil {
                 print("Ping time is unknown.")
-                result = "Unknown"
+                Globals.shared.latency = "Unknown"
             }
         })
-        return result
     }
-
+    
     
 }
 

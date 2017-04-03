@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		3635C4ED6D823AFCDD57E54F /* Pods_RadarTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 40242B0365693531CFA05F30 /* Pods_RadarTests.framework */; };
+		6A6594B4979CBA0AE733DF2A /* Pods_RadarWidget.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A63DDFAD7E08B06E6343B430 /* Pods_RadarWidget.framework */; };
 		6F2BAABD1E32831600571431 /* KDCircularProgress.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F2BAABC1E32831600571431 /* KDCircularProgress.swift */; };
 		6F481FE21E425D9B00558720 /* error.png in Resources */ = {isa = PBXBuildFile; fileRef = 6F481FE11E425D9B00558720 /* error.png */; };
 		6F5607FF1E42FD92007FA37B /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6F5607FE1E42FD92007FA37B /* MobileCoreServices.framework */; };
@@ -36,8 +37,11 @@
 		6FE104971E5AB1050075A1B9 /* TodayViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FE104961E5AB1050075A1B9 /* TodayViewController.swift */; };
 		6FE1049A1E5AB1050075A1B9 /* MainInterface.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6FE104981E5AB1050075A1B9 /* MainInterface.storyboard */; };
 		6FE1049E1E5AB1050075A1B9 /* RadarWidget.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 6FE104921E5AB1050075A1B9 /* RadarWidget.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		6FE321151E91678700835755 /* Globals.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FE1048C1E5AA48B0075A1B9 /* Globals.swift */; };
+		6FE3C29C1E9169B9000AA848 /* Networking.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FBD8F901E706E2A0092AB94 /* Networking.swift */; };
 		70F47BA8EA938737CE389509 /* Pods_Radar.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CF855BADC563679F68763A11 /* Pods_Radar.framework */; };
 		A48C9C916C9F72C4C9F66714 /* Pods_RadarUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 01F335A4F8563347EEDFCF63 /* Pods_RadarUITests.framework */; };
+		E8297639547059B0249E7BD0 /* Pods_Radar_RadarWidget.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8CA9051E66BC1F4ED6C03DD1 /* Pods_Radar_RadarWidget.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -81,12 +85,17 @@
 /* Begin PBXFileReference section */
 		000C5377D873486B17C1AAFC /* Pods-RadarUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RadarUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-RadarUITests/Pods-RadarUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		01F335A4F8563347EEDFCF63 /* Pods_RadarUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_RadarUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		0F6B47EADF0166A8C9124135 /* Pods-RadarWidget.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RadarWidget.debug.xcconfig"; path = "Pods/Target Support Files/Pods-RadarWidget/Pods-RadarWidget.debug.xcconfig"; sourceTree = "<group>"; };
+		3FD256DE11AF72BB8E159749 /* Pods-RadarWidget.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RadarWidget.release.xcconfig"; path = "Pods/Target Support Files/Pods-RadarWidget/Pods-RadarWidget.release.xcconfig"; sourceTree = "<group>"; };
 		40242B0365693531CFA05F30 /* Pods_RadarTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_RadarTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		42B11A6593CB99BBF4903D75 /* Pods-Radar.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Radar.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Radar/Pods-Radar.debug.xcconfig"; sourceTree = "<group>"; };
 		45631F1B214C5A852ACB62F1 /* Pods-Radar.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Radar.release.xcconfig"; path = "Pods/Target Support Files/Pods-Radar/Pods-Radar.release.xcconfig"; sourceTree = "<group>"; };
 		5D6B8706AA507EA8019020BF /* Pods-RadarUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RadarUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-RadarUITests/Pods-RadarUITests.release.xcconfig"; sourceTree = "<group>"; };
 		6F2BAABC1E32831600571431 /* KDCircularProgress.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KDCircularProgress.swift; sourceTree = "<group>"; };
 		6F481FE11E425D9B00558720 /* error.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = error.png; path = res/error.png; sourceTree = "<group>"; };
+		6F5371D21E916A96003E7559 /* RadarWidget-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "RadarWidget-Bridging-Header.h"; sourceTree = "<group>"; };
+		6F5371D31E9188B1003E7559 /* Radar.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Radar.entitlements; sourceTree = "<group>"; };
+		6F5371D41E9188FA003E7559 /* RadarWidget.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = RadarWidget.entitlements; sourceTree = "<group>"; };
 		6F5607FE1E42FD92007FA37B /* MobileCoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MobileCoreServices.framework; path = System/Library/Frameworks/MobileCoreServices.framework; sourceTree = SDKROOT; };
 		6F57332B1E4B9C2000C86881 /* warning.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = warning.png; path = res/warning.png; sourceTree = "<group>"; };
 		6F5D4E041E4237AB00DF3BCD /* res */ = {isa = PBXFileReference; lastKnownFileType = folder; path = res; sourceTree = SOURCE_ROOT; };
@@ -122,8 +131,12 @@
 		6FE104991E5AB1050075A1B9 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/MainInterface.storyboard; sourceTree = "<group>"; };
 		6FE1049B1E5AB1050075A1B9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		6FE795FC1E7B662500C971D6 /* Apple80211.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Apple80211.framework; path = ../../../../../../../../../../System/Library/PrivateFrameworks/Apple80211.framework; sourceTree = "<group>"; };
+		7733110531A46703A67323D0 /* Pods-Radar-RadarWidget.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Radar-RadarWidget.release.xcconfig"; path = "Pods/Target Support Files/Pods-Radar-RadarWidget/Pods-Radar-RadarWidget.release.xcconfig"; sourceTree = "<group>"; };
+		8CA9051E66BC1F4ED6C03DD1 /* Pods_Radar_RadarWidget.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Radar_RadarWidget.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		94D0639A150D95F4BB9D77E8 /* Pods-RadarTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RadarTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-RadarTests/Pods-RadarTests.debug.xcconfig"; sourceTree = "<group>"; };
+		A63DDFAD7E08B06E6343B430 /* Pods_RadarWidget.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_RadarWidget.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		AA274F5E69F66D22793D368C /* Pods-RadarTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RadarTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-RadarTests/Pods-RadarTests.release.xcconfig"; sourceTree = "<group>"; };
+		AA8E4A09006BFA6ABC93DB27 /* Pods-Radar-RadarWidget.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Radar-RadarWidget.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Radar-RadarWidget/Pods-Radar-RadarWidget.debug.xcconfig"; sourceTree = "<group>"; };
 		CF855BADC563679F68763A11 /* Pods_Radar.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Radar.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -160,6 +173,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				6FE104941E5AB1050075A1B9 /* NotificationCenter.framework in Frameworks */,
+				E8297639547059B0249E7BD0 /* Pods_Radar_RadarWidget.framework in Frameworks */,
+				6A6594B4979CBA0AE733DF2A /* Pods_RadarWidget.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -200,6 +215,7 @@
 		6F6D077A1E270C790019AF00 /* Radar */ = {
 			isa = PBXGroup;
 			children = (
+				6F5371D31E9188B1003E7559 /* Radar.entitlements */,
 				6FBD8F901E706E2A0092AB94 /* Networking.swift */,
 				6FBD8F881E6DFC250092AB94 /* Localizable.strings */,
 				6FE1048C1E5AA48B0075A1B9 /* Globals.swift */,
@@ -247,6 +263,8 @@
 				40242B0365693531CFA05F30 /* Pods_RadarTests.framework */,
 				01F335A4F8563347EEDFCF63 /* Pods_RadarUITests.framework */,
 				6FE104931E5AB1050075A1B9 /* NotificationCenter.framework */,
+				8CA9051E66BC1F4ED6C03DD1 /* Pods_Radar_RadarWidget.framework */,
+				A63DDFAD7E08B06E6343B430 /* Pods_RadarWidget.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -254,7 +272,9 @@
 		6FE104951E5AB1050075A1B9 /* RadarWidget */ = {
 			isa = PBXGroup;
 			children = (
+				6F5371D41E9188FA003E7559 /* RadarWidget.entitlements */,
 				6FE104961E5AB1050075A1B9 /* TodayViewController.swift */,
+				6F5371D21E916A96003E7559 /* RadarWidget-Bridging-Header.h */,
 				6FE104981E5AB1050075A1B9 /* MainInterface.storyboard */,
 				6FE1049B1E5AB1050075A1B9 /* Info.plist */,
 			);
@@ -270,6 +290,10 @@
 				AA274F5E69F66D22793D368C /* Pods-RadarTests.release.xcconfig */,
 				000C5377D873486B17C1AAFC /* Pods-RadarUITests.debug.xcconfig */,
 				5D6B8706AA507EA8019020BF /* Pods-RadarUITests.release.xcconfig */,
+				AA8E4A09006BFA6ABC93DB27 /* Pods-Radar-RadarWidget.debug.xcconfig */,
+				7733110531A46703A67323D0 /* Pods-Radar-RadarWidget.release.xcconfig */,
+				0F6B47EADF0166A8C9124135 /* Pods-RadarWidget.debug.xcconfig */,
+				3FD256DE11AF72BB8E159749 /* Pods-RadarWidget.release.xcconfig */,
 			);
 			name = Pods;
 			sourceTree = "<group>";
@@ -345,9 +369,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 6FE1049F1E5AB1050075A1B9 /* Build configuration list for PBXNativeTarget "RadarWidget" */;
 			buildPhases = (
+				D56963FD2EA1F3E95D218053 /* [CP] Check Pods Manifest.lock */,
 				6FE1048E1E5AB1050075A1B9 /* Sources */,
 				6FE1048F1E5AB1050075A1B9 /* Frameworks */,
 				6FE104901E5AB1050075A1B9 /* Resources */,
+				323D736F2490177BF074191C /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -368,13 +394,18 @@
 					New,
 				);
 				LastSwiftUpdateCheck = 0830;
-				LastUpgradeCheck = 0820;
+				LastUpgradeCheck = 0830;
 				ORGANIZATIONNAME = "Thomas Crews";
 				TargetAttributes = {
 					6F6D07771E270C780019AF00 = {
 						CreatedOnToolsVersion = 8.2.1;
 						DevelopmentTeam = Z5WP4H7L7R;
 						ProvisioningStyle = Automatic;
+						SystemCapabilities = {
+							com.apple.ApplicationGroups.iOS = {
+								enabled = 1;
+							};
+						};
 					};
 					6F6D078B1E270C790019AF00 = {
 						CreatedOnToolsVersion = 8.2.1;
@@ -392,6 +423,11 @@
 						CreatedOnToolsVersion = 8.3;
 						DevelopmentTeam = Z5WP4H7L7R;
 						ProvisioningStyle = Automatic;
+						SystemCapabilities = {
+							com.apple.ApplicationGroups.iOS = {
+								enabled = 1;
+							};
+						};
 					};
 				};
 			};
@@ -491,6 +527,21 @@
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-RadarTests/Pods-RadarTests-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
+		323D736F2490177BF074191C /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-RadarWidget/Pods-RadarWidget-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
 		482FB91266D344165D58D4B4 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -581,6 +632,21 @@
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-RadarUITests/Pods-RadarUITests-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
+		D56963FD2EA1F3E95D218053 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
 		D5E01F030A38EF36CDFD8CB6 /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -633,6 +699,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6FE3C29C1E9169B9000AA848 /* Networking.swift in Sources */,
+				6FE321151E91678700835755 /* Globals.swift in Sources */,
 				6FE104971E5AB1050075A1B9 /* TodayViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -782,6 +850,7 @@
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = Radar/Radar.entitlements;
 				DEVELOPMENT_TEAM = Z5WP4H7L7R;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -802,6 +871,7 @@
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = Radar/Radar.entitlements;
 				DEVELOPMENT_TEAM = Z5WP4H7L7R;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -880,8 +950,10 @@
 		};
 		6FE104A01E5AB1050075A1B9 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 0F6B47EADF0166A8C9124135 /* Pods-RadarWidget.debug.xcconfig */;
 			buildSettings = {
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CODE_SIGN_ENTITLEMENTS = RadarWidget/RadarWidget.entitlements;
 				DEVELOPMENT_TEAM = Z5WP4H7L7R;
 				INFOPLIST_FILE = RadarWidget/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
@@ -889,14 +961,17 @@
 				PRODUCT_BUNDLE_IDENTIFIER = edu.swosu.comsc.sycamore.RadarWidget;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
+				SWIFT_OBJC_BRIDGING_HEADER = "$(SRCROOT)/$(PROJECT_NAME)/$(PROJECT_NAME)-Bridging-Header.h";
 				SWIFT_VERSION = 3.0;
 			};
 			name = Debug;
 		};
 		6FE104A11E5AB1050075A1B9 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 3FD256DE11AF72BB8E159749 /* Pods-RadarWidget.release.xcconfig */;
 			buildSettings = {
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CODE_SIGN_ENTITLEMENTS = RadarWidget/RadarWidget.entitlements;
 				DEVELOPMENT_TEAM = Z5WP4H7L7R;
 				INFOPLIST_FILE = RadarWidget/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
@@ -904,6 +979,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = edu.swosu.comsc.sycamore.RadarWidget;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
+				SWIFT_OBJC_BRIDGING_HEADER = "$(SRCROOT)/$(PROJECT_NAME)/$(PROJECT_NAME)-Bridging-Header.h";
 				SWIFT_VERSION = 3.0;
 			};
 			name = Release;

@@ -30,7 +30,7 @@ class OverviewViewController: UIViewController, UIPickerViewDataSource, UIPicker
     
     let UnitPickerData = ["megabits per second","megabytes per second","kilobits per second","kilobytes per second"]
     
-    let settings = UserDefaults.standard
+    let settings = UserDefaults(suiteName: "group.sycamore.defaults")!
     
     var avgBandwidthArray = [0, 0, 0, 0, 0]
     var avgBandwidth = 0
@@ -64,7 +64,6 @@ class OverviewViewController: UIViewController, UIPickerViewDataSource, UIPicker
         
         for i in 0...4 {
             avgBandwidthArray[i] = Globals.shared.bandwidth
-            print(String(avgBandwidthArray[i]))
         }
         
         avgBandwidth = Globals.shared.bandwidth
@@ -82,6 +81,7 @@ class OverviewViewController: UIViewController, UIPickerViewDataSource, UIPicker
     
     func backgroundRescan() {
         if Globals.shared.DownComplete {
+            print("Got this far")
             loadVC()
         }
     }
@@ -149,12 +149,24 @@ class OverviewViewController: UIViewController, UIPickerViewDataSource, UIPicker
         Globals.shared.DownComplete = false
         
         Globals.shared.currentSSID = Networking.fetchSSIDInfo()
+        
+        if Globals.shared.currentSSID == "" {
+            refreshUI()
+        } else {
+            finishLoad()
+        }
+    }
+    
+    func finishLoad() {
+    
         Globals.shared.IPaddress = Networking.getWiFiAddress()
         Globals.shared.iAccess = Networking.isConnectedToNetwork()
         Globals.shared.externalIP = Networking.getExternalAddress()
         Globals.shared.currentBSSID = Networking.getBSSID()
         Globals.shared.DNSaddress = Networking.getDNS()
         Globals.shared.IPv6address = Networking.getWiFiAddressV6()
+        
+        Networking.pingHost()
         
         
         if Globals.shared.currentSSID == "" {
@@ -164,7 +176,6 @@ class OverviewViewController: UIViewController, UIPickerViewDataSource, UIPicker
         print("External IP: " + Globals.shared.externalIP)
         
         Networking().testSpeed()
-        print("first run")
         
         avgBandwidthArray[iterationCount] = Globals.shared.bandwidth
         
