@@ -81,8 +81,10 @@ class OverviewViewController: UIViewController, UIPickerViewDataSource, UIPicker
     
     func backgroundRescan() {
         if Globals.shared.DownComplete {
-            print("Got this far")
+            Globals.shared.DownComplete = false
             loadVC()
+        } else {
+            print("WARNING: Broke multithreading attempt.")
         }
     }
     
@@ -98,23 +100,24 @@ class OverviewViewController: UIViewController, UIPickerViewDataSource, UIPicker
         
         avgBandwidth = 0
         
+        Globals.shared.DownComplete = true
+        
+        print("ERROR: Code " + String(code))
+        
         switch code {
         case 1:
-            print("error1")
             SSIDImage.alpha = 0.5
             IPImage.image = UIImage(named: "warning.png")
+            IPLabel.text = ""
             InternetImage.image = UIImage(named: "warning.png")
             SSIDLabel.text = "No Network"
         case 2:
-            print("error2")
             InternetImage.image = UIImage(named: "warning.png")
             IPLabel.text = Globals.shared.IPaddress
         case 3:
-            print("error3")
             IPImage.image = UIImage(named: "warning.png")
             InternetImage.image = UIImage(named: "warning.png")
         default:
-            print("error4")
             SSIDImage.alpha = 0.5
             IPImage.image = UIImage(named: "warning.png")
             InternetImage.image = UIImage(named: "warning.png")
@@ -144,7 +147,7 @@ class OverviewViewController: UIViewController, UIPickerViewDataSource, UIPicker
     
     
     func loadVC() {
-        print("\nInitialized reload.")
+        print("\nINFO: Initialized reload.")
         
         Globals.shared.DownComplete = false
         
@@ -173,7 +176,7 @@ class OverviewViewController: UIViewController, UIPickerViewDataSource, UIPicker
             Globals.shared.IPaddress = ""
         }
         
-        print("External IP: " + Globals.shared.externalIP)
+        print("INFO: External IP is " + Globals.shared.externalIP)
         
         Networking().testSpeed()
         
@@ -189,7 +192,9 @@ class OverviewViewController: UIViewController, UIPickerViewDataSource, UIPicker
             iterationCount += 1
         }
         
-        print(Globals.shared.currentSSID)
+        print("INFO: SSID is " + Globals.shared.currentSSID)
+        
+        refreshUI()
         
     }
     
@@ -216,8 +221,6 @@ class OverviewViewController: UIViewController, UIPickerViewDataSource, UIPicker
             IPImage.image = UIImage(named: "check.png")
             InternetImage.image = UIImage(named: "check.png")
         }
-        
-        print("[" + String(avgBandwidthArray[0]) + "] [" + String(avgBandwidthArray[1]) + "] [" + String(avgBandwidthArray[2]) + "] [" + String(avgBandwidthArray[3]) + "] [" + String(avgBandwidthArray[4]) + "]")
         
         IPLabel.text = Globals.shared.IPaddress
         UnitButton.setTitle(Globals.shared.speedUnits, for: .normal)
@@ -250,7 +253,7 @@ class OverviewViewController: UIViewController, UIPickerViewDataSource, UIPicker
         Globals.shared.speedUnits = UnitPickerData[row]
         settings.set(UnitPickerData[row], forKey: "measurementUnits")
         UnitButton.setTitle(Globals.shared.speedUnits, for: .normal)
-        print("Changed units to: " + Globals.shared.speedUnits)
+        print("WARNING: Changed units to: " + Globals.shared.speedUnits)
         updateBandwidth()
     }
     

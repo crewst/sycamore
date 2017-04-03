@@ -165,9 +165,7 @@ public class Networking: NSObject, URLSessionDelegate, URLSessionDownloadDelegat
             NotificationCenter.default.post(name: NSNotification.Name(rawValue: "ProcessFinished"), object: nil, userInfo: nil)
             
         } else {
-            print("Running Task")
             task.resume()
-            
         }
     }
     
@@ -178,19 +176,25 @@ public class Networking: NSObject, URLSessionDelegate, URLSessionDownloadDelegat
     }
     
     public func urlSession(_ session: URLSession, downloadTask: URLSessionDownloadTask, didFinishDownloadingTo location: URL) {
-        print("Done")
+        print("INFO: Process completed.")
         if Globals.shared.DownComplete == false {
             let elapsed = Double( Date().timeIntervalSince(Globals.shared.dlStartTime))
             Globals.shared.bandwidth = Int(Globals.shared.dlFileSize / elapsed)
             Globals.shared.DownComplete = true
             Globals.shared.dataUse! += (Globals.shared.dlFileSize! / 8000)
         }
-        session.invalidateAndCancel()
         
         NotificationCenter.default.post(name: NSNotification.Name(rawValue: "ProcessFinished"), object: nil, userInfo: nil)
     }
     
-    
+    public func urlSession(_ session: URLSession, task: URLSessionTask, didCompleteWithError error: Error?) {
+        if error != nil {
+        print("ERROR: Process interrupted.")
+        Globals.shared.bandwidth = 0
+        Globals.shared.DownComplete = true
+        NotificationCenter.default.post(name: NSNotification.Name(rawValue: "ProcessFinished"), object: nil, userInfo: nil)
+        }
+    }
     
     class func getBSSID() -> String{
         var currentBSSID = ""
@@ -230,12 +234,12 @@ public class Networking: NSObject, URLSessionDelegate, URLSessionDownloadDelegat
         Globals.shared.latency = "..."
         PlainPing.ping("www.google.com", withTimeout: 1.0, completionBlock: { (timeElapsed:Double?, error:Error?) in
             if let latency = timeElapsed {
-                print("Ping time is \(latency) ms.")
+                print("INFO: Ping time is \(latency) ms.")
                 Globals.shared.latency = String(Int(latency)) + " ms"
             }
             
             if error != nil {
-                print("Ping time is unknown.")
+                print("WARNING: Ping time is unknown.")
                 Globals.shared.latency = "Unknown"
             }
         })

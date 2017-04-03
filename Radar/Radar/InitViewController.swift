@@ -54,7 +54,7 @@ class InitViewController: UIViewController {
         
         Globals.shared.currentSSID = Networking.fetchSSIDInfo()
         
-        print("Current SSID: " + Globals.shared.currentSSID)
+        print("INFO: SSID is " + Globals.shared.currentSSID)
         
         switch Globals.shared.currentSSID {
         case "":
@@ -83,7 +83,7 @@ class InitViewController: UIViewController {
         
         Networking.pingHost()
         
-        print("External IP: " + Globals.shared.externalIP)
+        print("INFO: External IP is " + Globals.shared.externalIP)
         
         DispatchQueue.global().async {
             
@@ -100,24 +100,27 @@ class InitViewController: UIViewController {
     
     func ProcessFinished(notification: Notification) {
         if firstRun {
-            firstRun = false
+            print("WARNING: Running from initial VC!")
             DispatchQueue.main.async {
                 self.performSegue(withIdentifier: "LoadCompleteSegue", sender: self)
             }
         }
+        firstRun = false
     }
     
     func ProcessUpdating(notification: Notification) {
         // update UI
-        if firstRun {
-            let dProgress = notification.userInfo!["progress"]! as! Double
-            let progress = Int(dProgress)
-            DispatchQueue.global().async {
-                if progress < 17 {
-                } else {
-                    DispatchQueue.main.sync {
-                        self.progressLabel.text = String(progress) + "%"
-                        self.MainProgress.animate(fromAngle: self.MainProgress.angle, toAngle: Double(progress * 3) + 60, duration: 1, completion: nil)
+        DispatchQueue.global().async {
+            if self.firstRun {
+                let dProgress = notification.userInfo!["progress"]! as! Double
+                let progress = Int(dProgress)
+                DispatchQueue.global().async {
+                    if progress < 17 {
+                    } else {
+                        DispatchQueue.main.sync {
+                            self.progressLabel.text = String(progress) + "%"
+                            self.MainProgress.animate(fromAngle: self.MainProgress.angle, toAngle: Double(progress * 3) + 60, duration: 1, completion: nil)
+                        }
                     }
                 }
             }
