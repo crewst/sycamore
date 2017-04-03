@@ -1,0 +1,27 @@
+# Uncomment the next line to define a global platform for your project
+# platform :ios, '9.0'
+
+target 'Radar' do
+  # Comment the next line if you're not using Swift and don't want to use dynamic frameworks
+  use_frameworks!
+  pod 'UICountingLabel'
+  pod "PlainPing"
+
+  # Pods for Radar
+
+  target 'RadarTests' do
+    inherit! :search_paths
+    # Pods for testing
+  end
+
+  target 'RadarUITests' do
+    inherit! :search_paths
+    # Pods for testing
+  end
+  
+  target 'RadarWidget' do
+      # use_frameworks!
+    inherit! :search_paths
+  end
+
+end
