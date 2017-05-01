@@ -15,7 +15,7 @@ You'll probably have to play around with project configuration as well. You obvi
 
 ### May 1, 2017
 
-\• Updated readme file to use hierarchically correct language.
+• Updated readme file to use hierarchically correct language.\
 
 ### April 2, 2017
 
